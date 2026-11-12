@@ -18,6 +18,9 @@ Lege die Dateien in `assets/musik/` mit genau diesen Namen ab. Die App findet si
 | `turm.mp3` | Abenteuer 3, Szene 2 | aufsteigend, Spannung, Fackelknistern |
 | `boss.mp3` | Abenteuer 3, Szene 3 | dramatisch-komisch, Cembalo |
 | `versoehnung.mp3` | Abenteuer 3, Versöhnung | sanft, Klavier, rührend |
+| `riff.mp3` | Abenteuer 4, Szene 1 | fröhlich, Marimba, Wasserplätschern — **fehlt noch** |
+| `wrack.mp3` | Abenteuer 4, Szene 2 | knarzig, Seemannslied, lustig — **fehlt noch** |
+| `tiefe.mp3` | Abenteuer 4, Szene 3 | geheimnisvoll, Glocken, leise, nicht gruselig — **fehlt noch** |
 | `kampf-lustig.mp3` | Alle Kämpfe | schnell, verspielt, Pizzicato |
 | `sieg.mp3` | Jeder Abschluss | feierlich, Glockenspiel |
 

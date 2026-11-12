@@ -1,0 +1,208 @@
+{
+  "id": "a4-tiefsee",
+  "nummer": 4,
+  "titel": "Das Geheimnis der Tiefsee",
+  "epoche": "Meer und Tiefsee",
+  "stempel": "Tiefsee",
+  "dauerMin": "35-45",
+  "kurz": "Aus dem Tiefsee-Buch fehlen Seiten. Die Helden tauchen mit Luftblasen-Helmen hinab, putzen einem Hai die Zähne und finden Krake Kuno, der Seiten sammelt, weil ihm niemand vorliest.",
+  "karte": null,
+  "vorbereitung": [
+    "Charakterbögen, je 6 W6 pro Spieler, Glückssterne, Plüschwürfel",
+    "Figurenkarten Krake Kuno und Hai Hermann (noch nicht gezeichnet)",
+    "Bonus: ein kurzes Lieblingsbuch für die Vorlese-Szene mit Kuno",
+    "Bonus: Seifenblasen für die Luftblasen-Helme"
+  ],
+  "szenen": [
+    {
+      "id": "a4-s1",
+      "titel": "Abtauchen ins Korallenriff",
+      "ort": "Bibliothek und Korallenriff",
+      "schauplatz": "tiefsee",
+      "dauerMin": 10,
+      "musik": { "datei": "riff.mp3", "stimmung": "fröhlich, Marimba, Wasserplätschern" },
+      "vorlesen": [
+        "Das neue Buch ruckelt im Regal. Auf dem Umschlag steht: „Die Tiefsee“. Eulalia schlägt es auf. Die Seiten sind leer und nass, und es blubbert leise. „Jemand hat Seiten herausgezogen!“, ruft sie. Vom Regal ruft die Gräfin Glitzer: „Ich war's nicht! Ich passe doch jetzt auf glänzende Dinge auf.“",
+        "Eulalia pustet in einen Strohhalm. Für jeden Helden wächst eine schimmernde Luftblase, die sich wie ein Helm über den Kopf legt. Sogar Krümel bekommt eine winzige. „Damit könnt ihr unter Wasser atmen. Lies mich, nimm mich mit!“",
+        "Platsch! Ihr schwebt in warmem, blauem Wasser. Unter euch leuchtet ein Korallenriff in allen Farben. Fische flitzen hin und her. Ein kleiner orange-weißer Fisch schwimmt euch aufgeregt entgegen. „Endlich Hilfe! Ich bin Clara. Ein Krake hat hier Seiten verloren, und jetzt ist das ganze Riff durcheinander!“"
+      ],
+      "lernFakten": [
+        {
+          "von": "Clara",
+          "text": "Wir Clownfische wohnen in Seeanemonen. Ihre Fangarme brennen bei anderen Fischen, aber uns schützt eine Schleimschicht auf der Haut.",
+          "regie": "Clara wackelt stolz mit der Schwanzflosse."
+        }
+      ],
+      "raetsel": [
+        {
+          "von": "Clara",
+          "thema": "Tiere und Mathe",
+          "klasse1": {
+            "frage": "Ich wohne in einem Tier, das aussieht wie eine Blume mit vielen weichen Armen. Wie heißt mein Zuhause?",
+            "antwort": "Seeanemone"
+          },
+          "klasse2": {
+            "frage": "Im Riff schwimmen 3 Fischschwärme. In jedem Schwarm sind 5 Fische. Wie viele Fische sind das zusammen?",
+            "antwort": "15"
+          },
+          "belohnung": "1 Glücksstern",
+          "extra": "Emilias Naturblick passt hier perfekt. Sie darf die Seeanemone als Erste erkennen."
+        }
+      ],
+      "proben": [
+        {
+          "was": "Durch den Korallengarten schwimmen, ohne etwas anzustoßen",
+          "eigenschaften": ["Geschick", "Köpfchen"],
+          "schwierigkeit": 4,
+          "hinweis": "Fehlschlag: Ein Seeigel pikst sanft in den Po, und alle lachen. Clara zeigt danach einen besseren Weg."
+        }
+      ],
+      "uebergang": "Clara zeigt mit der Flosse nach unten. Dort liegt im Sand ein altes Schiff, schief und voller Algen. Neben dem Wrack treibt eine nasse Buchseite."
+    },
+    {
+      "id": "a4-s2",
+      "titel": "Der Hai im Schiffswrack",
+      "ort": "Schiffswrack",
+      "schauplatz": "tiefsee",
+      "dauerMin": 15,
+      "musik": { "datei": "wrack.mp3", "stimmung": "knarzig, Seemannslied, lustig" },
+      "kampfMusik": { "datei": "kampf-lustig.mp3", "stimmung": "schnell, verspielt, Pizzicato" },
+      "vorlesen": [
+        "Das Wrack knarzt, wenn das Wasser hindurchströmt. Ihr schwimmt durch ein großes Loch im Bauch des Schiffs. Drinnen steht eine Schatztruhe mit einem dicken Schloss. Auf der Truhe liegt ein Hai und hält sich die Flosse an die Backe. „Ooooh, meine Zähne!“, jammert er. „Ich bin Hermann. Hier kommt keiner rein, mir geht's nämlich schlecht!“"
+      ],
+      "lernFakten": [
+        {
+          "von": "Hermann",
+          "text": "Haie verlieren ständig Zähne. Dahinter wachsen immer neue nach, ein ganzes Haileben lang.",
+          "regie": "Hermann zeigt grinsend seine vielen Zahnreihen."
+        }
+      ],
+      "raetsel": [
+        {
+          "von": "Hermann",
+          "thema": "Tiere und Mathe",
+          "einleitung": "„Wer mein Rätsel löst, darf an die Truhe!“, brummt Hermann.",
+          "klasse1": {
+            "frage": "Ich verliere einen Zahn. Wächst bei mir ein neuer nach: ja oder nein?",
+            "antwort": "Ja! Bei Haien wachsen Zähne immer wieder nach."
+          },
+          "klasse2": {
+            "frage": "Ich habe 10 Zähne verloren. Jeden Tag wachsen 2 neue nach. Nach wie vielen Tagen sind alle wieder da?",
+            "antwort": "Nach 5 Tagen"
+          },
+          "belohnung": "1 Glücksstern",
+          "ohneLoesung": "Hermann ist so müde vom Zahnweh, dass er von selbst zur Seite rutscht. Dann gibt es keinen Glücksstern."
+        }
+      ],
+      "schloss": {
+        "was": "Die Schatztruhe",
+        "eigenschaft": "Geschick",
+        "schwierigkeit": 5,
+        "ohneSchlossknacker": "Alle ziehen gemeinsam am Deckel (Kraft, 5+), oder Clara schwimmt durch ein Astloch hinein und drückt den Riegel auf."
+      },
+      "nachVorlesen": [
+        "Der Deckel springt auf. In der Truhe liegt kein Gold, sondern eine riesige Zahnbürste. Hermann reißt die Augen auf. „Das ist MEINE! Die hat mir der Krake weggenommen!“ Er schnappt danach und wird ganz wild."
+      ],
+      "kampf": {
+        "gegner": "hai-hermann",
+        "anzahl": 1,
+        "schwachstelle": "Die Zahnbürste aus der Truhe",
+        "hinweis": "Zähmen geht am besten: Wer Hermann die Zähne putzt, macht eine Herz-Probe ab 4. Jede gelungene Probe nimmt ihm 1 Herz Wut.",
+        "lernFakt": "Manche Haie haben über 20 Zahnreihen hintereinander."
+      },
+      "loesung": "Ist Hermann friedlich, grinst er mit blitzblanken Zähnen. Er erzählt, dass der Krake Kuno in der dunklen Tiefe wohnt und alles sammelt, was er findet. Hermann schiebt den Helden die Buchseite zu."
+    },
+    {
+      "id": "a4-s3",
+      "titel": "Kuno in der dunklen Tiefe",
+      "ort": "Tiefsee",
+      "schauplatz": "tiefsee",
+      "dauerMin": 15,
+      "musik": { "datei": "tiefe.mp3", "stimmung": "geheimnisvoll, Glocken, leise, nicht gruselig" },
+      "kampfMusik": { "datei": "boss.mp3", "stimmung": "dramatisch-komisch, Cembalo" },
+      "versoehnungsMusik": { "datei": "versoehnung.mp3", "stimmung": "sanft, Klavier, rührend" },
+      "vorlesen": [
+        "Ihr taucht tiefer und tiefer. Das Wasser wird erst dunkelblau, dann schwarz. Plötzlich glimmt vor euch ein kleines Licht. Es hängt an der Stirn eines Fisches mit großem Maul. „Keine Angst“, sagt der Fisch freundlich. „Ich bin Anni. Ich leuchte euch den Weg.“"
+      ],
+      "lernFakten": [
+        {
+          "von": "Anni",
+          "text": "Ganz tief im Meer kommt kein Sonnenlicht mehr an. Darum habe ich eine eigene kleine Leuchtlampe an der Stirn. Ich bin ein Anglerfisch.",
+          "regie": "Mit einer Taschenlampe unter dem Kinn leuchten."
+        }
+      ],
+      "proben": [
+        {
+          "was": "Anni im Dunkeln folgen, ohne sie zu verlieren",
+          "eigenschaften": ["Köpfchen", "Geschick"],
+          "schwierigkeit": 4,
+          "hinweis": "Lady Flämmchens Glitzerspucke macht den Weg hell (+1 Würfel)."
+        }
+      ],
+      "nachVorlesen": [
+        "Hinter einem Felsen leuchten hunderte Buchseiten. Sie kleben an einer Höhlenwand wie Bilder in einem Museum. Davor sitzt ein dicker roter Krake und hält in jedem Arm eine Seite. „Wer stört?“, blubbert er. „Das sind MEINE Seiten! Hier unten ist es so langweilig!“"
+      ],
+      "raetsel": [
+        {
+          "von": "Kuno",
+          "thema": "Mathe",
+          "einleitung": "„Wenn ihr so schlau seid, dann zählt mal!“",
+          "klasse1": {
+            "frage": "Ich habe 8 Arme. In jedem Arm halte ich 1 Seite. Wie viele Seiten sind das?",
+            "antwort": "8"
+          },
+          "klasse2": {
+            "frage": "Ich habe 8 Arme. In jedem Arm halte ich 2 Seiten. Wie viele Seiten sind das?",
+            "antwort": "16"
+          },
+          "belohnung": "1 Glücksstern"
+        }
+      ],
+      "kampf": {
+        "gegner": "krake-kuno",
+        "anzahl": 1,
+        "schwachstelle": "Eine Geschichte vorlesen. Wer eine spannende Seite vorliest, bekommt +2 Würfel.",
+        "hinweis": "Der beste Weg ist Zähmen: Jede Herz-Probe, bei der ein Held Kuno etwas vorliest oder erzählt, nimmt ihm 1 Herz Wut. Ein echtes kurzes Buch vom Tisch gibt +1 Würfel. Die Glitzerkrone macht ihn nur eine Runde lang zum Huhn."
+      },
+      "kruemel": "Krümel pustet in seinen kleinen Luftblasen-Helm, und bunte Leuchtblasen steigen auf. Wirft der Kleine den Plüschwürfel, sieht Kuno bei 4 bis 6 zum ersten Mal die Bilder auf seinen Seiten und verliert sofort 2 Herzen Wut. Bei 1 bis 3 platzen die Blasen mit einem lustigen Plopp auf Kunos Nase, und er muss kichern.",
+      "schlussVorlesen": [
+        "Kuno lässt die Arme sinken. „Ich kann doch gar nicht lesen“, flüstert er. „Ich wollte nur, dass mir mal jemand eine Geschichte erzählt.“ Er schiebt euch alle Seiten zu, eine nach der anderen. „Kommt ihr wieder und lest mir vor?“"
+      ],
+      "loesung": "Alle Seiten einsammeln, bevor die Strömung sie wegträgt: Geschick-Probe ab 4, jeder Held fängt eine. Kuno hilft mit seinen acht Armen, also klappt es spätestens beim zweiten Versuch."
+    }
+  ],
+  "abschluss": {
+    "musik": { "datei": "sieg.mp3", "stimmung": "feierlich, Glockenspiel" },
+    "vorlesen": [
+      "Die Luftblasen tragen euch nach oben, und plötzlich steht ihr wieder in der Bibliothek. Eulalia klebt die nassen Seiten ins Buch, und das Blubbern hört auf. „Hervorragend! Ganz hervorragend!“ Dann zwinkert sie. „Und für Kuno legen wir ab jetzt jeden Abend ein Buch ins Meer.“"
+    ],
+    "punkte": [
+      "Jeder Held bekommt Stempel 4: „Tiefsee“.",
+      "Jeder Held bekommt einen Glücksstern zum Behalten.",
+      "Krümel bekommt einen Stempel auf die Hand.",
+      "Frage an alle: „Welche Geschichte würdet ihr Kuno vorlesen?“"
+    ]
+  },
+  "planB": [
+    {
+      "situation": "Ein Kind findet die dunkle Tiefe unheimlich",
+      "loesung": "Anni dreht ihre Lampe ganz hell auf, und Krümel pustet so viele Leuchtblasen, dass es aussieht wie ein Sternenhimmel."
+    },
+    {
+      "situation": "Der Kampf mit Hermann dauert zu lange",
+      "loesung": "Hermann sieht sich in einem Stück Spiegelglas im Wrack, entdeckt seine schmutzigen Zähne und bittet von selbst ums Putzen."
+    },
+    {
+      "situation": "Niemand will Kuno etwas vorlesen",
+      "loesung": "Eulalia ruft aus dem Buch einen Reim, alle sprechen ihn nach. Das zählt als Vorlesen."
+    },
+    {
+      "situation": "Die Zeit wird knapp",
+      "loesung": "Die Probe im Dunkeln weglassen. Anni führt die Helden direkt zu Kunos Höhle."
+    },
+    {
+      "situation": "Die Helden wollen die Gräfin mitnehmen",
+      "loesung": "Gerne. Sie bekommt eine Luftblase über den Federhut und darf in Szene 1 die glitzernden Fische bewundern. Kämpfen tut sie nicht."
+    }
+  ]
+}

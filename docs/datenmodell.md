@@ -27,7 +27,7 @@ Bilder: Steht in den Daten `bild.png`, sucht die App erst `bild.png`, dann `bild
 | Feld | Typ | Bedeutung |
 | --- | --- | --- |
 | `id`, `titel`, `ort`, `dauerMin` | | Kopf der Szene |
-| `schauplatz` | Text | `bibliothek`, `roemerlager`, `aegypten` oder `burg`. Steuert, welche Geräusche oben im Soundboard stehen |
+| `schauplatz` | Text | `bibliothek`, `roemerlager`, `aegypten`, `burg` oder `tiefsee`. Steuert, welche Geräusche oben im Soundboard stehen |
 | `musik`, `kampfMusik`, `versoehnungsMusik` | `{ datei, stimmung }` | Dateiname in `assets/musik/` |
 | `bild` | Pfad | Bild für „Bild zeigen“ |
 | `nachUebung` | Text | Hinweis, wenn vorher die Übungsszene lief |

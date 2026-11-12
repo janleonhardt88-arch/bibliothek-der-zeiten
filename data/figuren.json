@@ -150,6 +150,68 @@
       "anzahl": "wie Helden",
       "angriff": "Sie kitzeln. Wer getroffen wird, verliert ein Herz und muss lachen.",
       "schwachstelle": "Wind und Niesen (+2 Würfel)"
+    },
+    {
+      "id": "clara",
+      "name": "Clara",
+      "art": "Clownfisch",
+      "rolle": "Helferin",
+      "abenteuer": [
+        "a4-tiefsee"
+      ],
+      "bild": null,
+      "stimme": "Hoch, aufgeregt, redet sehr schnell.",
+      "lernFakt": "Clownfische wohnen in Seeanemonen. Eine Schleimschicht schützt sie vor deren brennenden Fangarmen."
+    },
+    {
+      "id": "hai-hermann",
+      "name": "Hai Hermann",
+      "art": "Hai mit Zahnweh",
+      "rolle": "Rabauke",
+      "abenteuer": [
+        "a4-tiefsee"
+      ],
+      "bild": null,
+      "stimme": "Jammert, nuschelt mit der Flosse an der Backe.",
+      "stufe": "Rabauke",
+      "herzen": 3,
+      "ausweichenAb": 4,
+      "angriff": "Schwanzflossen-Platscher: eine Welle schubst die Helden durcheinander.",
+      "spezial": "Einmal im Kampf Riesengähnen: Alle Helden müssen mitgähnen und haben bei der nächsten Probe 1 Würfel weniger.",
+      "schwachstelle": "Zahnbürste (+2 Würfel)",
+      "geheimnis": "Er will nur, dass ihm jemand die Zähne putzt.",
+      "lernFakt": "Haie verlieren ständig Zähne, und dahinter wachsen immer neue nach."
+    },
+    {
+      "id": "anni",
+      "name": "Anni",
+      "art": "Anglerfisch mit Leuchtlampe",
+      "rolle": "Helferin",
+      "abenteuer": [
+        "a4-tiefsee"
+      ],
+      "bild": null,
+      "stimme": "Ruhig, freundlich, ein bisschen verschlafen.",
+      "lernFakt": "In der Tiefsee kommt kein Sonnenlicht an. Der Anglerfisch hat ein eigenes Leuchtorgan an der Stirn."
+    },
+    {
+      "id": "krake-kuno",
+      "name": "Krake Kuno",
+      "art": "Dicker roter Krake",
+      "rolle": "Gegenspieler, Boss in Abenteuer 4",
+      "abenteuer": [
+        "a4-tiefsee"
+      ],
+      "bild": null,
+      "stimme": "Blubbernd, beleidigt, wird am Ende ganz leise.",
+      "stufe": "Boss",
+      "herzen": 6,
+      "ausweichenAb": 5,
+      "angriff": "Kitzelt mit acht Armen gleichzeitig.",
+      "spezial": "Tintenwolke jede zweite Runde: Jeder Held hat bei der nächsten Probe 1 Würfel weniger.",
+      "schwachstelle": "Eine Geschichte vorlesen (+2 Würfel)",
+      "geheimnis": "Er kann nicht lesen und will nur, dass ihm jemand vorliest.",
+      "lernFakt": "Ein Krake hat drei Herzen und blaues Blut."
     }
   ]
 }

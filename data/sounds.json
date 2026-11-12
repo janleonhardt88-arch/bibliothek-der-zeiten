@@ -19,12 +19,12 @@
     { "id": "marsch", "name": "Soldaten marschieren", "datei": "marsch.ogg", "schauplatz": ["roemerlager"], "wann": "Ankunft am Limes", "maxSek": 4 },
     { "id": "dino-grunz", "name": "Dino grunzt", "datei": "dino-grunz.ogg", "schauplatz": ["roemerlager"], "wann": "Trixi" },
     { "id": "nuesse", "name": "Nüsse kullern", "datei": "nuesse.ogg", "schauplatz": ["roemerlager", "burg"], "wann": "Schwachstelle der Krähen" },
-    { "id": "wasser", "name": "Wasser blubbert", "datei": "wasser.ogg", "schauplatz": ["aegypten"], "wann": "Das Nilpferd taucht auf" },
+    { "id": "wasser", "name": "Wasser blubbert", "datei": "wasser.ogg", "schauplatz": ["aegypten", "tiefsee"], "wann": "Das Nilpferd taucht auf" },
     { "id": "kamel", "name": "Kamel brummt", "datei": "kamel.ogg", "schauplatz": ["aegypten"], "wann": "Kamel Karl", "maxSek": 4 },
     { "id": "steintuer", "name": "Steintür gleitet", "datei": "steintuer.wav", "schauplatz": ["aegypten"], "wann": "Tür-Rätsel gelöst" },
     { "id": "miau", "name": "Statue miaut", "datei": "miau.ogg", "schauplatz": ["aegypten"], "wann": "Fehlschlag an der Katzenstatue" },
     { "id": "ruestung", "name": "Rüstung quietscht", "datei": "ruestung.ogg", "schauplatz": ["burg"], "wann": "Ritter Rostig bewegt sich" },
-    { "id": "schloss", "name": "Schloss klickt", "datei": "schloss.ogg", "schauplatz": ["roemerlager", "burg"], "wann": "Marvin knackt ein Schloss" },
+    { "id": "schloss", "name": "Schloss klickt", "datei": "schloss.ogg", "schauplatz": ["roemerlager", "burg", "tiefsee"], "wann": "Marvin knackt ein Schloss" },
     { "id": "fackel", "name": "Fackel knistert", "datei": "fackel.ogg", "schauplatz": ["burg"], "wann": "Wendeltreppe", "maxSek": 6 },
     { "id": "stempel", "name": "Stempel", "datei": "stempel.ogg", "schauplatz": ["alle"], "wann": "Stempel im Ausweis" }
   ]

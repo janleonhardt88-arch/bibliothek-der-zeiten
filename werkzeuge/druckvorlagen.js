@@ -1,6 +1,7 @@
 // Baut alle Druckvorlagen in eine Datei: node werkzeuge/druckvorlagen.js
-// Ergebnis: druck/druckvorlagen.html. Daraus macht Chrome das PDF (siehe druck/LIESMICH.md).
-// Die Charakterbögen kommen aus data/helden.json und data/regeln.json, alles andere aus assets/quelle/.
+// Ergebnis: druck/druckvorlagen.html (daraus macht Chrome das PDF, siehe druck/LIESMICH.md)
+// und druck/heldenbogen-vorschau.html (nur die Heldenbögen, zum Anschauen auf dem Bildschirm).
+// Die Heldenbögen kommen aus data/helden.json und data/regeln.json, alles andere aus assets/quelle/.
 const fs = require('fs');
 const path = require('path');
 
@@ -12,35 +13,40 @@ const helden = JSON.parse(lies('data/helden.json')).helden;
 const regeln = JSON.parse(lies('data/regeln.json'));
 const EIGENSCHAFTEN = ['Kraft', 'Geschick', 'Köpfchen', 'Herz'];
 
-const HERZ = (leer, gestrichelt) => `<svg width="34" height="34" viewBox="0 0 40 40"><path d="M20 34 C8 25 4 18 7 12 C10 6 17 7 20 13 C23 7 30 6 33 12 C36 18 32 25 20 34 Z" fill="${leer ? 'none' : '#E58AA8'}" stroke="#A8322C" stroke-width="2.5" ${gestrichelt ? 'stroke-dasharray="4 3"' : ''} stroke-linejoin="round"/></svg>`;
-const STERN = `<svg width="34" height="34" viewBox="0 0 40 40"><path d="M20 5 L24.5 15 L35 16 L27 23 L29.5 34 L20 28.5 L10.5 34 L13 23 L5 16 L15.5 15 Z" fill="none" stroke="#A86A1E" stroke-width="2.5" stroke-linejoin="round"/></svg>`;
+const HERZ = gestrichelt => `<svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34 C8 25 4 18 7 12 C10 6 17 7 20 13 C23 7 30 6 33 12 C36 18 32 25 20 34 Z" fill="none" stroke="#D23A3F" stroke-width="2.6" ${gestrichelt ? 'stroke-dasharray="4 3"' : ''} stroke-linejoin="round"/></svg>`;
+const STERN = `<svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5 L24.5 15 L35 16 L27 23 L29.5 34 L20 28.5 L10.5 34 L13 23 L5 16 L15.5 15 Z" fill="none" stroke="#C08A1A" stroke-width="2.6" stroke-linejoin="round"/></svg>`;
 
-function charakterbogen(held) {
-  const name = held?.name || '';
-  const spieler = held ? held.spieler.split(' ')[0] : '';
-  const wer = held?.wer || '';
-  const zeile = (wert, platz) => wert ? `<span class="wert">${esc(wert)}</span>` : `<span class="linie" style="min-width:${platz}px"></span>`;
+// Ein Heldenbogen. Vorausgefüllt sind Name, Werte, Talent und Zaubergegenstand.
+// „Gespielt von“ und „Wer bin ich?“ bleiben leer, die tragen die Spieler selbst ein.
+function heldenbogen(held) {
   const reihen = EIGENSCHAFTEN.map(e => {
     const punkte = held?.eigenschaften?.[e] || 0;
     return `<tr><td><b>${e}</b><small>${esc(regeln.eigenschaften[e])}</small></td>
       <td class="punkte">${punkte || ''}</td>
       <td class="kaestchen">${Array.from({ length: 5 }, (_, i) => `<span class="${i < punkte ? 'an' : ''}"></span>`).join('')}</td></tr>`;
   }).join('');
-  const stempel = Array.from({ length: 6 }, (_, i) => `<div class="stempelfeld${(i + 1) % 3 === 0 ? ' auf' : ''}"><span>${i + 1}</span><small>${(i + 1) % 3 === 0 ? 'Aufstieg!' : ''}</small></div>`).join('');
-  return `<section class="seite"><div class="bogen">
+  const stempel = Array.from({ length: 6 }, (_, i) => `<span class="${(i + 1) % 3 === 0 ? 'auf' : ''}">${i + 1}</span>`).join('');
+  return `<div class="bogen">
   <div class="kopfzeile"><h1>Heldenbogen</h1><p>Bibliothek der Zeiten</p></div>
 
-  <div class="ausweis">
-    <div class="ausweis-kopf">Bibliotheksausweis</div>
-    <div class="ausweis-innen">
-      <div class="felder">
-        <p><small>Name</small>${zeile(name, 300)}</p>
-        <p><small>Gespielt von</small>${zeile(spieler, 300)}</p>
-        <p><small>Wer bin ich?</small>${zeile(wer, 300)}</p>
-        ${held ? '' : '<p><span class="linie" style="min-width:380px"></span></p>'}
+  <div class="oben">
+    <div class="links">
+      <div class="ausweis">
+        <div class="ausweis-kopf">Bibliotheksausweis</div>
+        <div class="felder">
+          <p><small>Name</small>${held?.name ? `<span class="wert">${esc(held.name)}</span>` : '<span class="linie"></span>'}</p>
+          <p><small>Gespielt von</small><span class="linie"></span></p>
+          <p><small>Wer bin ich?</small><span class="linie"></span></p>
+        </div>
       </div>
-      <div class="bildfeld"><span>Mein Bild<br><small>hier malen</small></span></div>
+      <div class="kasten zaehler">
+        <div class="zeile"><h2>Herzen</h2><div class="symbole">${[0, 1, 2, 3, 4].map(() => HERZ(false)).join('')}${HERZ(true)}${HERZ(true)}</div></div>
+        <small>verloren? ausmalen · die gestrichelten gibt es beim Aufstieg</small>
+        <div class="zeile"><h2>Glückssterne</h2><div class="symbole">${Array.from({ length: 5 }, () => STERN).join('')}</div></div>
+        <small>für jedes gelöste Rätsel · je +2 Würfel</small>
+      </div>
     </div>
+    <div class="bildfeld"><span>Mein Bild</span></div>
   </div>
 
   <table class="eigenschaften">
@@ -50,33 +56,75 @@ function charakterbogen(held) {
 
   <div class="zwei">
     <div class="kasten"><h2>Mein Talent <small>+1 Würfel, wenn es passt</small></h2>
-      ${held ? `<p class="name">${esc(held.talent.name)}</p><p class="klein">${esc(held.talent.gilt)}</p>` : '<p class="leer"></p><p class="leer"></p>'}
+      ${held ? `<p class="name">${esc(held.talent.name)}</p><p class="klein">${esc(held.talent.gilt)}</p>` : '<span class="linie"></span><span class="linie"></span>'}
     </div>
     <div class="kasten"><h2>Mein Zaubergegenstand <small>1× pro Abenteuer</small></h2>
-      ${held ? `<p class="name">${esc(held.zaubergegenstand.name)}</p><p class="klein">${esc(held.zaubergegenstand.regel)}</p>` : '<p class="leer"></p><p class="leer"></p>'}
+      ${held ? `<p class="name">${esc(held.zaubergegenstand.name)}</p><p class="klein">${esc(held.zaubergegenstand.regel)}</p>` : '<span class="linie"></span><span class="linie"></span>'}
       <p class="benutzt"><span class="kreis"></span> benutzt</p>
     </div>
   </div>
 
-  <div class="zwei">
-    <div class="kasten reihe"><h2>Herzen <small>verloren? ausmalen</small></h2>
-      <div>${[0, 1, 2, 3, 4].map(() => HERZ(true)).join('')}${HERZ(true, true)}${HERZ(true, true)}</div>
-      <p class="klein">Start: 5 Herzen. Die gestrichelten gibt es beim Aufstieg.</p>
-    </div>
-    <div class="kasten reihe"><h2>Glückssterne <small>je +2 Würfel</small></h2>
-      <div>${Array.from({ length: 5 }, () => STERN).join('')}</div>
-      <p class="klein">Für jedes gelöste Rätsel. Darf verschenkt werden.</p>
-    </div>
+  <div class="unten">
+    <div class="kasten rucksack"><h2>Rucksack <small>was ich dabeihabe</small></h2><div class="linien"></div></div>
+    <div class="kasten stempel"><h2>Stempel <small>gold = Aufstieg</small></h2><div class="stempelfelder">${stempel}</div></div>
   </div>
 
-  <div class="zwei unten">
-    <div class="kasten"><h2>Rucksack</h2>${'<p class="leer"></p>'.repeat(3)}</div>
-    <div class="kasten"><h2>Stempel <small>einer pro Abenteuer</small></h2><div class="stempelreihe">${stempel}</div></div>
-  </div>
-
-  <p class="fussnote">Würfeln: so viele W6 wie Punkte, der höchste zählt. Ab 4 klappt es, bei Schwerem ab 5, jede 6 ist ein Volltreffer.</p>
-</div></section>`;
+  <p class="fussnote">So viele W6 wie Punkte · der höchste zählt · ab 4 klappt es · schwer ab 5 · jede 6 ist ein Volltreffer</p>
+</div>`;
 }
+
+const BOGEN_CSS = `
+.bogen { width: 794px; height: 1123px; box-sizing: border-box; padding: 30px 40px; background: #FFFFFF; color: #1C1C1E; font-family: Nunito, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; gap: 12px; }
+.bogen > * { flex-shrink: 0; }
+.bogen h1, .bogen h2, .ausweis-kopf { font-family: Fredoka, "Segoe UI", Roboto, sans-serif; font-weight: 600; margin: 0; }
+.bogen p { margin: 0; }
+.kopfzeile { display: flex; justify-content: space-between; align-items: baseline; }
+.kopfzeile h1 { font-size: 30px; }
+.kopfzeile p { font-size: 13px; color: #6E6E73; }
+.oben { display: grid; grid-template-columns: 1fr 340px; gap: 14px; }
+.links { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.ausweis { border: 2px solid #1C1C1E; border-radius: 14px; overflow: hidden; }
+.ausweis-kopf { background: #1C1C1E; color: #fff; padding: 7px 16px; font-size: 17px; }
+.felder { display: flex; flex-direction: column; gap: 8px; padding: 10px 16px 14px; }
+.felder p { display: flex; flex-direction: column; }
+.bogen small { font-size: 12px; color: #6E6E73; font-family: Nunito, "Segoe UI", Roboto, sans-serif; font-weight: 400; }
+.wert { font-family: Fredoka, sans-serif; font-size: 21px; border-bottom: 1.5px solid #1C1C1E; padding-bottom: 2px; }
+.linie { display: block; border-bottom: 1.5px solid #9A9AA1; height: 26px; }
+.bildfeld { border: 2px dashed #9A9AA1; border-radius: 14px; position: relative; }
+.bildfeld span { position: absolute; top: 10px; left: 14px; font-family: Fredoka, sans-serif; font-size: 15px; color: #9A9AA1; }
+.kasten { border: 2px solid #1C1C1E; border-radius: 14px; padding: 9px 14px; }
+.kasten h2 { font-size: 16px; margin-bottom: 4px; }
+.kasten h2 small { margin-left: 4px; }
+.zaehler { display: flex; flex-direction: column; gap: 2px; }
+.zaehler .zeile { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.zaehler .zeile h2 { margin: 0; }
+.zaehler .symbole { display: flex; gap: 2px; }
+.zaehler small + .zeile { margin-top: 8px; }
+.klein { font-size: 12.5px; line-height: 1.35; color: #2C2C30; }
+.kasten .name { font-family: Fredoka, sans-serif; font-size: 18px; margin: 1px 0 2px; }
+table.eigenschaften { width: 100%; border-collapse: separate; border-spacing: 0; border: 2px solid #1C1C1E; border-radius: 14px; overflow: hidden; }
+.eigenschaften th { text-align: left; font-size: 12px; color: #6E6E73; font-weight: 700; padding: 7px 12px; border-bottom: 1.5px solid #1C1C1E; }
+.eigenschaften td { padding: 5px 12px; border-bottom: 1px solid #E2E2E5; vertical-align: middle; }
+.eigenschaften tr:last-child td { border-bottom: 0; }
+.eigenschaften td b { font-family: Fredoka, sans-serif; font-weight: 600; font-size: 19px; display: inline-block; min-width: 92px; }
+.eigenschaften .punkte { width: 70px; text-align: center; font-family: Fredoka, sans-serif; font-size: 24px; font-weight: 600; }
+.kaestchen { white-space: nowrap; }
+.kaestchen span { display: inline-block; width: 27px; height: 27px; border: 2px solid #1C1C1E; border-radius: 6px; margin-right: 6px; vertical-align: middle; position: relative; }
+.kaestchen span.an::before, .kaestchen span.an::after { content: ""; position: absolute; left: 11.5px; top: 1.5px; width: 3px; height: 23px; background: #1C1C1E; border-radius: 2px; transform: rotate(45deg); }
+.kaestchen span.an::after { transform: rotate(-45deg); }
+.zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.zwei .linie { height: 24px; }
+.benutzt { margin-top: 5px; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+.kreis { width: 15px; height: 15px; border: 2px solid #1C1C1E; border-radius: 50%; display: inline-block; }
+.unten { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stempel { align-self: start; }
+.rucksack { display: flex; flex-direction: column; }
+.rucksack .linien { flex: 1; background-image: repeating-linear-gradient(to bottom, transparent 0 27px, #9A9AA1 27px 28.5px); }
+.stempelfelder { display: flex; justify-content: space-between; margin: 6px 0 2px; }
+.stempelfelder span { width: 40px; height: 40px; border: 1.5px dashed #9A9AA1; border-radius: 50%; display: grid; place-items: center; color: #B5B5BA; font-family: Fredoka, sans-serif; font-size: 14px; box-sizing: border-box; }
+.stempelfelder span.auf { border: 2px solid #C08A1A; color: #C08A1A; }
+.fussnote { font-size: 13.5px; font-weight: 700; white-space: nowrap; color: #1C1C1E; text-align: center; background: #F2F2F4; border-radius: 10px; padding: 8px 12px; }
+`;
 
 // Inhalt einer Canvas-Datei aus assets/quelle/ ohne die Hilfs-Tags.
 function quelle(datei) {
@@ -86,10 +134,12 @@ function quelle(datei) {
   return html;
 }
 const seite = (html, quer) => `<section class="seite${quer ? ' quer' : ''}">${html}</section>`;
+const SCHRIFTEN = '<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">';
 
+// ---------- Alle Druckvorlagen (für das PDF) ----------
 const seiten = [
-  ...helden.map(charakterbogen),
-  charakterbogen(null),
+  ...helden.map(h => seite(heldenbogen(h))),
+  seite(heldenbogen(null)),
   seite(quelle('Spielerkarte.dc.html')),
   seite(quelle('Spielerkarte.dc.html')),
   seite(quelle('Main.dc.html')),
@@ -101,9 +151,9 @@ const seiten = [
   seite(quelle('Karte-Burg.dc.html'), true)
 ];
 
-const html = `<!doctype html>
+const druck = `<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Druckvorlagen – Bibliothek der Zeiten</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+${SCHRIFTEN}
 <style>
 @page { size: A4 portrait; margin: 0; }
 @page quer { size: A4 landscape; margin: 0; }
@@ -112,58 +162,59 @@ body { background: #888; -webkit-print-color-adjust: exact; print-color-adjust: 
 .seite { width: 794px; height: 1123px; overflow: hidden; break-after: page; background: #fff; margin: 0 auto; }
 .seite.quer { page: quer; width: 1123px; height: 794px; }
 @media screen { .seite { margin: 16px auto; } }
-
-.bogen { width: 794px; height: 1123px; box-sizing: border-box; padding: 30px 44px; background: #F8F2E4; color: #2A2733; font-family: Nunito, sans-serif; display: flex; flex-direction: column; gap: 11px; }
-.bogen h1, .bogen h2, .ausweis-kopf { font-family: Fredoka, sans-serif; font-weight: 600; margin: 0; }
-.kopfzeile { display: flex; justify-content: space-between; align-items: baseline; }
-.kopfzeile h1 { font-size: 32px; }
-.kopfzeile p { margin: 0; font-size: 13px; color: #5A5560; }
-.ausweis { border: 3px solid #2E7472; border-radius: 18px; background: #FFFDF7; overflow: hidden; }
-.ausweis-kopf { background: #2E7472; color: #fff; padding: 8px 18px; font-size: 20px; }
-.ausweis-innen { display: flex; gap: 18px; padding: 12px 18px 16px; }
-.felder { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-.felder p { margin: 0; display: flex; flex-direction: column; }
-.felder small { font-size: 12px; color: #5A5560; }
-.wert { font-family: Fredoka, sans-serif; font-size: 20px; border-bottom: 2px solid #2A2733; padding-bottom: 2px; min-height: 26px; }
-.linie { display: block; border-bottom: 2px solid #2A2733; height: 26px; }
-.bildfeld { width: 150px; height: 150px; border: 2px dashed #8A8290; border-radius: 14px; display: grid; place-items: center; text-align: center; color: #8A8290; font-family: Fredoka, sans-serif; font-size: 16px; line-height: 1.2; }
-table.eigenschaften { width: 100%; border-collapse: separate; border-spacing: 0; background: #FFFDF7; border: 2px solid #2A2733; border-radius: 14px; overflow: hidden; }
-.eigenschaften th { text-align: left; font-size: 12px; color: #5A5560; padding: 7px 12px; border-bottom: 2px solid #2A2733; }
-.eigenschaften th small { font-weight: 400; }
-.eigenschaften td { padding: 5px 12px; border-bottom: 1px solid #D9CFBA; vertical-align: middle; }
-.eigenschaften tr:last-child td { border-bottom: 0; }
-.eigenschaften td b { font-family: Fredoka, sans-serif; font-weight: 600; font-size: 19px; display: block; }
-.eigenschaften td small { font-size: 12px; color: #5A5560; }
-.eigenschaften .punkte { width: 70px; text-align: center; font-family: Fredoka, sans-serif; font-size: 24px; font-weight: 600; }
-.kaestchen { white-space: nowrap; }
-.kaestchen span { display: inline-block; width: 27px; height: 27px; border: 2px solid #2A2733; border-radius: 6px; margin-right: 6px; vertical-align: middle; position: relative; }
-.kaestchen span.an::before, .kaestchen span.an::after { content: ""; position: absolute; left: 11.5px; top: 1.5px; width: 3px; height: 23px; background: #2E7472; border-radius: 2px; transform: rotate(45deg); }
-.kaestchen span.an::after { transform: rotate(-45deg); }
-.zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.kasten { background: #FFFDF7; border: 2px solid #2A2733; border-radius: 14px; padding: 10px 14px; }
-.kasten h2 { font-size: 17px; margin-bottom: 4px; }
-.kasten h2 small { font-family: Nunito, sans-serif; font-weight: 400; font-size: 12px; color: #5A5560; margin-left: 4px; }
-.kasten .name { font-family: Fredoka, sans-serif; font-size: 18px; margin: 2px 0; }
-.kasten .klein, .reihe .klein { font-size: 11.5px; line-height: 1.35; color: #3A3640; margin: 2px 0; }
-.kasten .leer { border-bottom: 1.5px solid #8A8290; height: 22px; margin: 0; }
-.benutzt { margin: 6px 0 0; font-size: 13px; display: flex; align-items: center; gap: 6px; }
-.kreis { width: 16px; height: 16px; border: 2px solid #2A2733; border-radius: 50%; display: inline-block; }
-.reihe div { display: flex; gap: 2px; }
-.bogen > * { flex-shrink: 0; }
-.unten { flex: 1 1 auto; min-height: 0; }
-.stempelreihe { display: flex; justify-content: space-between; margin-top: 6px; }
-.stempelfeld { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-.stempelfeld span { width: 44px; height: 44px; border: 2px dashed #8A8290; border-radius: 50%; display: grid; place-items: center; color: #B9B2A6; font-family: Fredoka, sans-serif; font-size: 15px; }
-.stempelfeld.auf span { border: 2.5px solid #E6B84A; }
-.stempelfeld small { font-size: 10px; font-weight: 700; color: #A86A1E; height: 13px; }
-.fussnote { margin: 0; font-size: 12px; color: #5A5560; text-align: center; }
+${BOGEN_CSS}
 </style></head>
 <body>
 ${seiten.join('\n')}
 </body></html>
 `;
 
+// ---------- Vorschau der Heldenbögen (Artefakt zum Anschauen) ----------
+const beispiel = helden.find(h => h.id === 'filipa') || helden[0];
+const vorschau = `<title>Heldenbogen Vorschau</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+${SCHRIFTEN}
+<style>
+:root { --grund: #EDEDEF; --tinte: #1C1C1E; --leise: #6E6E73; --blatt-schatten: 0 1px 3px rgba(0,0,0,.12), 0 8px 24px rgba(0,0,0,.08); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --grund: #111113; --tinte: #F2F2F4; --leise: #9A9AA1; --blatt-schatten: none; color-scheme: dark; } }
+:root[data-theme="dark"] { --grund: #111113; --tinte: #F2F2F4; --leise: #9A9AA1; --blatt-schatten: none; color-scheme: dark; }
+body { background: var(--grund); color: var(--tinte); font-family: Nunito, "Segoe UI", Roboto, sans-serif; }
+.huelle { max-width: 860px; margin: 0 auto; padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 28px; }
+.huelle header h1 { font-family: Fredoka, sans-serif; font-weight: 600; font-size: 1.6rem; margin: 0 0 4px; text-wrap: balance; }
+.huelle header p { margin: 0; color: var(--leise); max-width: 62ch; line-height: 1.5; }
+figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+figcaption { font-weight: 700; font-size: .95rem; }
+figcaption span { color: var(--leise); font-weight: 400; }
+.rahmen { width: 100%; overflow: hidden; border-radius: 4px; box-shadow: var(--blatt-schatten); background: #fff; }
+.rahmen .bogen { transform-origin: 0 0; }
+${BOGEN_CSS}
+</style>
+<div class="huelle">
+  <header>
+    <h1>Heldenbogen, Entwurf 2</h1>
+    <p>Weißer Hintergrund, großes Bildfeld zum Malen, „Gespielt von“ und „Wer bin ich?“ bleiben leer. Mehr Platz im Rucksack, kleinere Stempel. Gedruckt wird später in A4.</p>
+  </header>
+  <figure><figcaption>Ausgefüllt <span>Beispiel: ${esc(beispiel.name || beispiel.spieler)}</span></figcaption><div class="rahmen">${heldenbogen(beispiel)}</div></figure>
+  <figure><figcaption>Leer <span>für neue Helden</span></figcaption><div class="rahmen">${heldenbogen(null)}</div></figure>
+</div>
+<script>
+  // Das A4-Blatt (794 × 1123 px) auf die Bildschirmbreite verkleinern.
+  function passe() {
+    document.querySelectorAll('.rahmen').forEach(r => {
+      const s = Math.min(1, r.clientWidth / 794);
+      const b = r.querySelector('.bogen');
+      b.style.transform = 'scale(' + s + ')';
+      r.style.height = (1123 * s) + 'px';
+    });
+  }
+  passe();
+  window.addEventListener('resize', passe);
+  if (document.fonts) document.fonts.ready.then(passe);
+</script>
+`;
+
 const ziel = path.join(WURZEL, 'druck');
 fs.mkdirSync(ziel, { recursive: true });
-fs.writeFileSync(path.join(ziel, 'druckvorlagen.html'), html, 'utf8');
-console.log(`druck/druckvorlagen.html: ${seiten.length} Seiten`);
+fs.writeFileSync(path.join(ziel, 'druckvorlagen.html'), druck, 'utf8');
+fs.writeFileSync(path.join(ziel, 'heldenbogen-vorschau.html'), vorschau, 'utf8');
+console.log(`druck/druckvorlagen.html: ${seiten.length} Seiten, druck/heldenbogen-vorschau.html: 2 Bögen`);

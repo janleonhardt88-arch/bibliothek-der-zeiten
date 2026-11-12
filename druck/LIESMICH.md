@@ -15,6 +15,18 @@
 
 Die Karten und Figurenkarten verraten nichts über den Ablauf: keine Legende, keine Reihenfolge, keine Schwachstellen.
 
+## Einzelne PDFs
+
+| Datei | Seiten | Inhalt |
+| --- | --- | --- |
+| `Erster-Abend.pdf` | 10 | Alles für den ersten Abend: Heldenbögen, Spielerkarten, Figurenkarten, Zahlen-Tafel, Karte Römerlager |
+| `Heldenboegen.pdf` | 5 | Vier Heldenbögen und ein leerer |
+| `Spielerkarten.pdf` | 1 | „So spielst du“, 4 Karten |
+| `Figurenkarten.pdf` | 2 | Figurenkarten Blatt 1 und 2 |
+| `Handout-Zahlen-Tafel.pdf` | 1 | Gaius' Zahlen-Tafel (Abenteuer 1) |
+| `Handout-Hieroglyphen.pdf` | 1 | Neferets Hieroglyphen-Tafel (Abenteuer 2) |
+| `Karte-Roemerlager.pdf`, `Karte-Aegypten.pdf`, `Karte-Burg.pdf` | je 1 | Karten im Querformat |
+
 Beim Drucken „Tatsächliche Größe“ bzw. „100 %“ wählen, nicht „An Seite anpassen“.
 
 ## Neu erzeugen
@@ -22,4 +34,5 @@ Beim Drucken „Tatsächliche Größe“ bzw. „100 %“ wählen, nicht „An S
 Ändern sich Helden in `data/helden.json`, Figuren in `data/figuren.json` oder Zeichnungen in `assets/quelle/`, Claude Code bitten: „Erzeuge die Druckvorlagen neu.“ Technisch:
 
 1. `node werkzeuge/druckvorlagen.js` schreibt `druck/druckvorlagen.html`, die beiden Vorschauen und die Karten der App (`assets/bilder/karte-*.svg`).
-2. Den Testserver starten (`node werkzeuge/server.js`) und Chrome im Hintergrund drucken lassen: `chrome --headless=new --no-pdf-header-footer --virtual-time-budget=15000 --print-to-pdf=druck/Druckvorlagen.pdf http://localhost:8080/druck/druckvorlagen.html`
+2. Den Testserver starten (`node werkzeuge/server.js`).
+3. `werkzeuge/pdf-erzeugen.ps1` ausführen. Es druckt mit Chrome im Hintergrund alle PDFs in diesen Ordner.

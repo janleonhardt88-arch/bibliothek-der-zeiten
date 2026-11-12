@@ -2,3 +2,6 @@
 # CLAUDE.md und .claude/ enthalten Angaben zur Familie und die Claude-Befehle.
 CLAUDE.md
 .claude/
+
+# Zwischenschritt für die einzelnen PDFs, wird von werkzeuge/druckvorlagen.js erzeugt
+druck/einzeln/

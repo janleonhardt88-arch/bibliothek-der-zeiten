@@ -231,8 +231,21 @@ const PAKET = [
 ];
 const seiten = PAKET.map(p => seite(p.html, p.quer));
 
-const druck = `<!doctype html>
-<html lang="de"><head><meta charset="utf-8"><title>Druckvorlagen – Bibliothek der Zeiten</title>
+// Einzelne PDFs neben dem Gesamt-PDF: Dateiname → welche Seiten aus dem Paket.
+const EINZELN = {
+  'Erster-Abend': p => p.wann !== 'spaeter',
+  'Heldenboegen': p => p.titel.startsWith('Heldenbogen'),
+  'Spielerkarten': p => p.titel.startsWith('Spielerkarten'),
+  'Figurenkarten': p => p.titel.startsWith('Figurenkarten'),
+  'Handout-Zahlen-Tafel': p => p.titel.includes('Zahlen-Tafel'),
+  'Handout-Hieroglyphen': p => p.titel.includes('Hieroglyphen'),
+  'Karte-Roemerlager': p => p.titel === 'Karte Römerlager',
+  'Karte-Aegypten': p => p.titel === 'Karte Ägypten',
+  'Karte-Burg': p => p.titel === 'Karte Burg'
+};
+
+const druckHtml = (liste, titel) => `<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>${titel} – Bibliothek der Zeiten</title>
 ${SCHRIFTEN}
 <style>
 @page { size: A4 portrait; margin: 0; }
@@ -245,9 +258,10 @@ body { background: #888; -webkit-print-color-adjust: exact; print-color-adjust: 
 ${BOGEN_CSS}
 </style></head>
 <body>
-${seiten.join('\n')}
+${liste.join('\n')}
 </body></html>
 `;
+const druck = druckHtml(seiten, 'Druckvorlagen');
 
 // ---------- Vorschau der Heldenbögen (Artefakt zum Anschauen) ----------
 const beispiel = helden.find(h => h.id === 'filipa') || helden[0];
@@ -370,6 +384,13 @@ ${BOGEN_CSS}
 const ziel = path.join(WURZEL, 'druck');
 fs.mkdirSync(ziel, { recursive: true });
 fs.writeFileSync(path.join(ziel, 'druckvorlagen.html'), druck, 'utf8');
+// Einzelseiten als HTML in druck/einzeln/ ablegen, daraus druckt Chrome die einzelnen PDFs.
+const einzelOrdner = path.join(ziel, 'einzeln');
+fs.mkdirSync(einzelOrdner, { recursive: true });
+for (const [name, filter] of Object.entries(EINZELN)) {
+  const liste = PAKET.filter(filter).map(p => seite(p.html, p.quer));
+  fs.writeFileSync(path.join(einzelOrdner, `${name}.html`), druckHtml(liste, name.replace(/-/g, ' ')), 'utf8');
+}
 fs.writeFileSync(path.join(ziel, 'heldenbogen-vorschau.html'), vorschau, 'utf8');
 fs.writeFileSync(path.join(ziel, 'druckpaket-vorschau.html'), paket, 'utf8');
 for (const [datei, name] of [['Karte-Roemerlager.dc.html', 'karte-roemerlager'], ['Karte-Aegypten.dc.html', 'karte-aegypten'], ['Karte-Burg.dc.html', 'karte-burg']]) {

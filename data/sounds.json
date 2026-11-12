@@ -1,5 +1,5 @@
 {
-  "hinweis": "Dateien liegen in assets/sounds/. Schauplatz 'alle' erscheint immer im Soundboard. 'ereignisse' legt fest, welches Geräusch die App bei einem Knopfdruck von selbst spielt.",
+  "hinweis": "Dateien liegen in assets/sounds/. Schauplatz 'alle' erscheint immer im Soundboard. 'maxSek' kürzt lange Geräusche beim Abspielen. 'ereignisse' legt fest, welches Geräusch die App bei einem Knopfdruck von selbst spielt. Herkunft und Lizenzen: data/quellen.json.",
   "ereignisse": {
     "kruemelGut": "fanfare-klein",
     "kruemelLustig": "niesen",
@@ -7,25 +7,25 @@
     "stempel": "stempel"
   },
   "sounds": [
-    { "id": "tuer-knarzt", "name": "Tür knarzt", "datei": "tuer-knarzt.mp3", "schauplatz": ["bibliothek"], "wann": "Ankunft in der Bibliothek" },
-    { "id": "eule", "name": "Eule ruft", "datei": "eule.mp3", "schauplatz": ["bibliothek"], "wann": "Eulalia taucht auf" },
-    { "id": "buch-wirbel", "name": "Buch-Portal", "datei": "buch-wirbel.mp3", "schauplatz": ["alle"], "wann": "„Lies mich, nimm mich mit!“" },
-    { "id": "niesen", "name": "Krümel niest", "datei": "niesen.mp3", "schauplatz": ["alle"], "wann": "Krümels Funken, 1–3 beim Glückswurf" },
-    { "id": "fanfare-klein", "name": "Kleine Fanfare", "datei": "fanfare-klein.mp3", "schauplatz": ["alle"], "wann": "Rätsel gelöst, Krümel würfelt 4–6, Volltreffer" },
-    { "id": "elster", "name": "Elster zetert", "datei": "elster.mp3", "schauplatz": ["alle"], "wann": "Gräfin Glitzer erscheint" },
-    { "id": "kraehen", "name": "Krähen krächzen", "datei": "kraehen.mp3", "schauplatz": ["roemerlager", "burg"], "wann": "Krähenbande greift an" },
-    { "id": "huhn", "name": "Huhn gackert", "datei": "huhn.mp3", "schauplatz": ["alle"], "wann": "Glitzerkrone verwandelt jemanden" },
-    { "id": "glitzer", "name": "Glitzerzauber", "datei": "glitzer.mp3", "schauplatz": ["alle"], "wann": "Glitzerspucke, Waldstab, Glitzerkristall" },
-    { "id": "marsch", "name": "Soldaten marschieren", "datei": "marsch.mp3", "schauplatz": ["roemerlager"], "wann": "Ankunft am Limes" },
-    { "id": "dino-grunz", "name": "Dino grunzt", "datei": "dino-grunz.mp3", "schauplatz": ["roemerlager"], "wann": "Trixi" },
-    { "id": "nuesse", "name": "Nüsse kullern", "datei": "nuesse.mp3", "schauplatz": ["roemerlager", "burg"], "wann": "Schwachstelle der Krähen" },
-    { "id": "wasser", "name": "Wasser blubbert", "datei": "wasser.mp3", "schauplatz": ["aegypten"], "wann": "Das Nilpferd taucht auf" },
-    { "id": "kamel", "name": "Kamel brummt", "datei": "kamel.mp3", "schauplatz": ["aegypten"], "wann": "Kamel Karl" },
-    { "id": "steintuer", "name": "Steintür gleitet", "datei": "steintuer.mp3", "schauplatz": ["aegypten"], "wann": "Tür-Rätsel gelöst" },
-    { "id": "miau", "name": "Statue miaut", "datei": "miau.mp3", "schauplatz": ["aegypten"], "wann": "Fehlschlag an der Katzenstatue" },
-    { "id": "ruestung", "name": "Rüstung quietscht", "datei": "ruestung.mp3", "schauplatz": ["burg"], "wann": "Ritter Rostig bewegt sich" },
-    { "id": "schloss", "name": "Schloss klickt", "datei": "schloss.mp3", "schauplatz": ["roemerlager", "burg"], "wann": "Marvin knackt ein Schloss" },
-    { "id": "fackel", "name": "Fackel knistert", "datei": "fackel.mp3", "schauplatz": ["burg"], "wann": "Wendeltreppe" },
-    { "id": "stempel", "name": "Stempel", "datei": "stempel.mp3", "schauplatz": ["alle"], "wann": "Stempel im Ausweis" }
+    { "id": "tuer-knarzt", "name": "Tür knarzt", "datei": "tuer-knarzt.ogg", "schauplatz": ["bibliothek"], "wann": "Ankunft in der Bibliothek" },
+    { "id": "eule", "name": "Eule ruft", "datei": "eule.ogg", "schauplatz": ["bibliothek"], "wann": "Eulalia taucht auf" },
+    { "id": "buch-wirbel", "name": "Buch-Portal", "datei": "buch-wirbel.ogg", "schauplatz": ["alle"], "wann": "„Lies mich, nimm mich mit!“" },
+    { "id": "niesen", "name": "Krümel niest", "datei": "niesen.ogg", "schauplatz": ["alle"], "wann": "Krümels Funken, 1–3 beim Glückswurf" },
+    { "id": "fanfare-klein", "name": "Kleine Fanfare", "datei": "fanfare-klein.ogg", "schauplatz": ["alle"], "wann": "Rätsel gelöst, Krümel würfelt 4–6, Volltreffer" },
+    { "id": "elster", "name": "Elster zetert", "datei": "elster.flac", "schauplatz": ["alle"], "wann": "Gräfin Glitzer erscheint" },
+    { "id": "kraehen", "name": "Krähen krächzen", "datei": "kraehen.ogg", "schauplatz": ["roemerlager", "burg"], "wann": "Krähenbande greift an" },
+    { "id": "huhn", "name": "Huhn gackert", "datei": "huhn.ogg", "schauplatz": ["alle"], "wann": "Glitzerkrone verwandelt jemanden" },
+    { "id": "glitzer", "name": "Glitzerzauber", "datei": "glitzer.ogg", "schauplatz": ["alle"], "wann": "Glitzerspucke, Waldstab, Glitzerkristall" },
+    { "id": "marsch", "name": "Soldaten marschieren", "datei": "marsch.ogg", "schauplatz": ["roemerlager"], "wann": "Ankunft am Limes", "maxSek": 4 },
+    { "id": "dino-grunz", "name": "Dino grunzt", "datei": "dino-grunz.ogg", "schauplatz": ["roemerlager"], "wann": "Trixi" },
+    { "id": "nuesse", "name": "Nüsse kullern", "datei": "nuesse.ogg", "schauplatz": ["roemerlager", "burg"], "wann": "Schwachstelle der Krähen" },
+    { "id": "wasser", "name": "Wasser blubbert", "datei": "wasser.ogg", "schauplatz": ["aegypten"], "wann": "Das Nilpferd taucht auf" },
+    { "id": "kamel", "name": "Kamel brummt", "datei": "kamel.ogg", "schauplatz": ["aegypten"], "wann": "Kamel Karl", "maxSek": 4 },
+    { "id": "steintuer", "name": "Steintür gleitet", "datei": "steintuer.wav", "schauplatz": ["aegypten"], "wann": "Tür-Rätsel gelöst" },
+    { "id": "miau", "name": "Statue miaut", "datei": "miau.ogg", "schauplatz": ["aegypten"], "wann": "Fehlschlag an der Katzenstatue" },
+    { "id": "ruestung", "name": "Rüstung quietscht", "datei": "ruestung.ogg", "schauplatz": ["burg"], "wann": "Ritter Rostig bewegt sich" },
+    { "id": "schloss", "name": "Schloss klickt", "datei": "schloss.ogg", "schauplatz": ["roemerlager", "burg"], "wann": "Marvin knackt ein Schloss" },
+    { "id": "fackel", "name": "Fackel knistert", "datei": "fackel.ogg", "schauplatz": ["burg"], "wann": "Wendeltreppe", "maxSek": 6 },
+    { "id": "stempel", "name": "Stempel", "datei": "stempel.ogg", "schauplatz": ["alle"], "wann": "Stempel im Ausweis" }
   ]
 }

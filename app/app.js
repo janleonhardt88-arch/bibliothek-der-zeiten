@@ -277,6 +277,7 @@ async function spieleGeraeusch(id) {
   const a = new Audio(url);
   a.volume = geraeuschLautstaerke();
   a.play().catch(() => {});
+  if (g.maxSek) setTimeout(() => blende(a, 0, 400, () => a.pause()), g.maxSek * 1000);
 }
 
 const ereignis = name => { const id = D.soundEreignisse[name]; if (id) spieleGeraeusch(id); };
@@ -661,7 +662,7 @@ async function zeigeHilfe(reiter = hilfeReiter) {
   hilfeReiter = reiter;
   const reiterListe = [
     ...(ABENTEUER && ansicht === 'walk' ? [['planb', 'Plan B']] : []),
-    ['spick', 'Spickzettel'], ['spieler', 'Spielerkarte'], ['regeln', 'Wahrscheinlichkeit']
+    ['spick', 'Spickzettel'], ['spieler', 'Spielerkarte'], ['regeln', 'Wahrscheinlichkeit'], ['quellen', 'Quellen']
   ];
   if (!reiterListe.some(r => r[0] === reiter)) reiter = hilfeReiter = reiterListe[0][0];
   let inhalt = '';
@@ -674,6 +675,14 @@ async function zeigeHilfe(reiter = hilfeReiter) {
       inhalt = `<p>Chance, dass es klappt:</p><table class="werte"><tr><th>Würfel</th><th>ab 4</th><th>ab 5</th><th>ab 6</th></tr>
         ${w.tabelle.map(z => `<tr><td class="zahl">${z.wuerfel}</td><td>${z.leicht}</td><td>${z.schwer}</td><td>${z.episch}</td></tr>`).join('')}</table>
         <p class="meta">${esc(w.quelle)}</p>`;
+    }
+    if (reiter === 'quellen') {
+      const q = await ladeJson('data/quellen.json');
+      inhalt = `<p>Musik und Geräusche in dieser App:</p>${q.quellen.map(x => `<div class="kasten">
+        <p><b>„${esc(x.titel)}“</b> · ${esc(x.von)}</p>
+        <p class="meta">${esc(x.datei)}</p>
+        <p><a href="${esc(q.lizenzen[x.lizenz] || x.url)}" target="_blank" rel="noopener">${esc(x.lizenz)}</a> · <a href="${esc(x.url)}" target="_blank" rel="noopener">Quelle</a></p>
+      </div>`).join('')}`;
     }
   } catch (e) { inhalt = `<p>Konnte nicht laden: ${esc(e.message)}</p>`; }
   oeffneEbene('Hilfe', `<div class="reiter">${reiterListe.map(([id, name]) => `<button data-aktion="hilfe-reiter" data-r="${id}" class="${id === reiter ? 'an' : ''}">${name}</button>`).join('')}</div>${inhalt}`);

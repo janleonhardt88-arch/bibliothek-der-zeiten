@@ -1,0 +1,29 @@
+{
+  "hinweis": "Herkunft und Lizenz jeder Musik- und Geräuschdatei. Die App zeigt diese Liste unter Hilfe → Quellen. Stand: 2026-11-12.",
+  "lizenzen": {
+    "CC BY 4.0": "https://creativecommons.org/licenses/by/4.0/",
+    "CC BY-SA 3.0": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "CC0": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "quellen": [
+    { "datei": "musik/bibliothek.mp3", "titel": "Frost Waltz", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/roemerlager.mp3", "titel": "Children's March Theme", "von": "CleytonKauffman", "lizenz": "CC0", "url": "https://opengameart.org/content/childrens-march-theme" },
+    { "datei": "musik/dino.mp3", "titel": "Bumbly March", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/nil.mp3", "titel": "Desert City", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/wueste.mp3", "titel": "Tabuk", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/pyramide.mp3", "titel": "Mystery Bazaar", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/burg.mp3", "titel": "Master of the Feast", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/turm.mp3", "titel": "Hidden Agenda", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/boss.mp3", "titel": "Guess Who", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/versoehnung.mp3", "titel": "Touching Moments Four - Melody", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/kampf-lustig.mp3", "titel": "Run Amok", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+    { "datei": "musik/sieg.mp3", "titel": "Golly Gee", "von": "Kevin MacLeod (incompetech.com)", "lizenz": "CC BY 4.0", "url": "https://incompetech.com" },
+
+    { "datei": "sounds/kamel.ogg", "titel": "Cri du chameau", "von": "J.P Longre, S. Mercier, M. Harry, P. Louisons, C. Ferry, G. Muys, K. Lens, B. Picard, V. Sandrilli, H. Van Hoeven, L. Rodriguez, B. Couderc", "lizenz": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Cri_du_chameau.ogg" },
+    { "datei": "sounds/steintuer.wav", "titel": "Rock/Metal Slide", "von": "Hansjörg Malthaner (opengameart.org/users/varkalandar)", "lizenz": "CC BY 4.0", "url": "https://opengameart.org/node/107669" },
+    { "datei": "sounds/tuer-knarzt.ogg, eule.ogg, buch-wirbel.ogg, kraehen.ogg, huhn.ogg, glitzer.ogg, marsch.ogg, dino-grunz.ogg, wasser.ogg, miau.ogg, ruestung.ogg, fackel.ogg", "titel": "BigSoundBank", "von": "Joseph Sardin (bigsoundbank.com)", "lizenz": "CC0", "url": "https://bigsoundbank.com" },
+    { "datei": "sounds/niesen.ogg", "titel": "Sneeze", "von": "Wikimedia Commons", "lizenz": "CC0", "url": "https://commons.wikimedia.org/wiki/File:Sneeze.ogg" },
+    { "datei": "sounds/elster.flac", "titel": "Pica pica (Elster)", "von": "Spyros Papanastasiou, Wikimedia Commons", "lizenz": "CC0", "url": "https://commons.wikimedia.org/wiki/File:Pica_pica-2015.6.11-part_11.flac" },
+    { "datei": "sounds/fanfare-klein.ogg, nuesse.ogg, schloss.ogg, stempel.ogg", "titel": "Music Jingles, Casino Audio, RPG Audio", "von": "Kenney (kenney.nl)", "lizenz": "CC0", "url": "https://kenney.nl" }
+  ]
+}

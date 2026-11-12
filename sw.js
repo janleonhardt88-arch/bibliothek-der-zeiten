@@ -1,10 +1,10 @@
 // Offline-Speicher der App. Mit Internet holt die App immer die neuesten Dateien,
 // ohne Internet nimmt sie die zuletzt gespeicherten.
-const CACHE = 'bdz-v2';
+const CACHE = 'bdz-v3';
 const KERN = [
   './', 'index.html', 'manifest.webmanifest', 'app/app.js', 'app/style.css',
   'app/icons/icon-192.png', 'app/icons/icon-512.png',
-  'data/regeln.json', 'data/helden.json', 'data/figuren.json', 'data/sounds.json', 'data/abenteuer/index.json',
+  'data/regeln.json', 'data/helden.json', 'data/figuren.json', 'data/sounds.json', 'data/quellen.json', 'data/abenteuer/index.json',
   'docs/spickzettel.md', 'docs/spielerkarte.md'
 ];
 

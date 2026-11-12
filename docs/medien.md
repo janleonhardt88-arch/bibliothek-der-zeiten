@@ -1,5 +1,7 @@
 # Musik und Bilder
 
+Stand 2026-11-12: Alle 12 Musikstücke und 20 Geräusche liegen in `assets/`. Herkunft und Lizenz jeder Datei stehen in `data/quellen.json`, die App zeigt sie unter Hilfe → Quellen. Wer eine Datei austauscht, trägt die neue Quelle dort ein.
+
 ## Musik
 
 Lege die Dateien in `assets/musik/` mit genau diesen Namen ab. Die App findet sie dann von selbst.

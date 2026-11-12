@@ -136,20 +136,22 @@ function quelle(datei) {
 const seite = (html, quer) => `<section class="seite${quer ? ' quer' : ''}">${html}</section>`;
 const SCHRIFTEN = '<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">';
 
-// ---------- Alle Druckvorlagen (für das PDF) ----------
-const seiten = [
-  ...helden.map(h => seite(heldenbogen(h))),
-  seite(heldenbogen(null)),
-  seite(quelle('Spielerkarte.dc.html')),
-  seite(quelle('Spielerkarte.dc.html')),
-  seite(quelle('Main.dc.html')),
-  seite(quelle('Figuren-2.dc.html')),
-  seite(quelle('Handout-Roemische-Zahlen.dc.html')),
-  seite(quelle('Handout-Hieroglyphen.dc.html')),
-  seite(quelle('Karte-Roemerlager.dc.html'), true),
-  seite(quelle('Karte-Aegypten.dc.html'), true),
-  seite(quelle('Karte-Burg.dc.html'), true)
+// ---------- Das Druckpaket: Reihenfolge = Seiten im PDF ----------
+// wann: 'erster' = am ersten Abend nötig, 'optional', 'spaeter' = erst für ein späteres Abenteuer.
+const PAKET = [
+  ...helden.map(h => ({ html: heldenbogen(h), titel: `Heldenbogen ${h.name || h.spieler.split(' ')[0]}`, wofuer: `für ${h.spieler.split(' ')[0]}`, wann: 'erster' })),
+  { html: heldenbogen(null), titel: 'Heldenbogen leer', wofuer: 'Reserve für neue Helden', wann: 'optional' },
+  { html: quelle('Spielerkarte.dc.html'), titel: 'Spielerkarten 1 und 2', wofuer: 'eine vor jeden Spieler, ausschneiden', wann: 'erster' },
+  { html: quelle('Spielerkarte.dc.html'), titel: 'Spielerkarten 3 und 4', wofuer: 'eine vor jeden Spieler, ausschneiden', wann: 'erster' },
+  { html: quelle('Main.dc.html'), titel: 'Figurenkarten Blatt 1', wofuer: 'Eulalia, Krümel, Gräfin Glitzer, Krähenbande', wann: 'erster' },
+  { html: quelle('Figuren-2.dc.html'), titel: 'Figurenkarten Blatt 2', wofuer: 'Gaius und Trixi für Abenteuer 1, Kamel Karl und Ritter Rostig für später', wann: 'erster' },
+  { html: quelle('Handout-Roemische-Zahlen.dc.html'), titel: 'Gaius’ Zahlen-Tafel', wofuer: 'Tor-Rätsel, Abenteuer 1, Szene 2', wann: 'erster' },
+  { html: quelle('Handout-Hieroglyphen.dc.html'), titel: 'Neferets Hieroglyphen-Tafel', wofuer: 'Tür-Rätsel, Abenteuer 2', wann: 'spaeter' },
+  { html: quelle('Karte-Roemerlager.dc.html'), quer: true, titel: 'Karte Römerlager', wofuer: 'Abenteuer 1, die App zeigt sie auch', wann: 'optional' },
+  { html: quelle('Karte-Aegypten.dc.html'), quer: true, titel: 'Karte Ägypten', wofuer: 'Abenteuer 2', wann: 'spaeter' },
+  { html: quelle('Karte-Burg.dc.html'), quer: true, titel: 'Karte Burg', wofuer: 'Abenteuer 3', wann: 'spaeter' }
 ];
+const seiten = PAKET.map(p => seite(p.html, p.quer));
 
 const druck = `<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Druckvorlagen – Bibliothek der Zeiten</title>
@@ -213,8 +215,83 @@ ${BOGEN_CSS}
 </script>
 `;
 
+// ---------- Vorschau des ganzen Druckpakets (Artefakt zum Anschauen) ----------
+const WANN = { erster: 'Erster Abend', optional: 'Optional', spaeter: 'Später' };
+const blattFigur = (p, i) => `<figure class="blatt-fig">
+    <figcaption><span class="nr">Seite ${i + 1}</span><b>${esc(p.titel)}</b><span class="marke ${p.wann}">${WANN[p.wann]}</span><small>${esc(p.wofuer)}</small></figcaption>
+    <div class="rahmen" data-breite="${p.quer ? 1123 : 794}" data-hoehe="${p.quer ? 794 : 1123}"><div class="inhalt-blatt">${p.html}</div></div>
+  </figure>`;
+const gruppe = (titel, text, filter) => {
+  const eintraege = PAKET.map((p, i) => [p, i]).filter(([p]) => filter(p));
+  return `<section class="gruppe"><h2>${titel}</h2><p class="hinweis">${text}</p>${eintraege.map(([p, i]) => blattFigur(p, i)).join('\n')}</section>`;
+};
+const ersteSeiten = PAKET.map((p, i) => [p, i]).filter(([p]) => p.wann !== 'spaeter').map(([, i]) => i + 1);
+const paket = `<title>Druckpaket Bibliothek der Zeiten</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+${SCHRIFTEN}
+<style>
+/* Ruhige graue Arbeitsfläche, darauf die weißen A4-Blätter wie auf einem Tisch. */
+:root { --grund: #ECECEE; --flaeche: #FFFFFF; --tinte: #1C1C1E; --leise: #6E6E73; --linie: #D9D9DD; --erster: #1C1C1E; --erster-text: #FFFFFF; --optional: #E2E2E6; --spaeter: transparent; --schatten: 0 1px 3px rgba(0,0,0,.12), 0 10px 28px rgba(0,0,0,.08); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --grund: #111113; --flaeche: #1C1C1F; --tinte: #F2F2F4; --leise: #9A9AA1; --linie: #2E2E33; --erster: #F2F2F4; --erster-text: #111113; --optional: #2E2E33; --schatten: none; color-scheme: dark; } }
+:root[data-theme="dark"] { --grund: #111113; --flaeche: #1C1C1F; --tinte: #F2F2F4; --leise: #9A9AA1; --linie: #2E2E33; --erster: #F2F2F4; --erster-text: #111113; --optional: #2E2E33; --schatten: none; color-scheme: dark; }
+body { background: var(--grund); color: var(--tinte); font-family: Nunito, "Segoe UI", Roboto, sans-serif; line-height: 1.5; }
+.huelle { max-width: 900px; margin: 0 auto; padding-block: 28px 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 36px; }
+.huelle > header h1 { font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 6px; text-wrap: balance; }
+.huelle > header p { margin: 0; color: var(--leise); max-width: 62ch; }
+.uebersicht { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 18px; }
+.uebersicht div { background: var(--flaeche); border-radius: 14px; padding: 14px 16px; border: 1px solid var(--linie); }
+.uebersicht b { display: block; font-family: Fredoka, sans-serif; font-weight: 600; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.uebersicht span { color: var(--leise); font-size: .9rem; }
+.gruppe { display: flex; flex-direction: column; gap: 26px; }
+.gruppe h2 { font-family: Fredoka, sans-serif; font-weight: 600; font-size: 1.3rem; margin: 0; }
+.gruppe .hinweis { margin: -18px 0 0; color: var(--leise); max-width: 62ch; }
+.blatt-fig { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+figcaption .nr { font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--leise); font-variant-numeric: tabular-nums; }
+figcaption b { font-size: 1.05rem; }
+figcaption small { flex-basis: 100%; color: var(--leise); font-size: .9rem; }
+.marke { font-size: .72rem; font-weight: 700; border-radius: 999px; padding: 2px 9px; }
+.marke.erster { background: var(--erster); color: var(--erster-text); }
+.marke.optional { background: var(--optional); color: var(--tinte); }
+.marke.spaeter { border: 1px solid var(--linie); color: var(--leise); }
+.rahmen { width: 100%; overflow: hidden; border-radius: 4px; box-shadow: var(--schatten); background: #fff; }
+.inhalt-blatt { transform-origin: 0 0; }
+${BOGEN_CSS}
+</style>
+<div class="huelle">
+  <header>
+    <h1>Druckpaket für die Bibliothek der Zeiten</h1>
+    <p>Alle ${PAKET.length} Seiten aus Druckvorlagen.pdf in der Reihenfolge des PDFs. Für den ersten Abend reichen die Seiten ${ersteSeiten.join(', ')}. Beim Drucken „Tatsächliche Größe“ wählen.</p>
+    <div class="uebersicht">
+      <div><b>${PAKET.filter(p => p.wann === 'erster').length} Seiten</b><span>für den ersten Abend</span></div>
+      <div><b>${PAKET.filter(p => p.wann === 'optional').length} Seiten</b><span>optional</span></div>
+      <div><b>${PAKET.filter(p => p.wann === 'spaeter').length} Seiten</b><span>erst für Abenteuer 2 und 3</span></div>
+    </div>
+  </header>
+  ${gruppe('Für den ersten Abend', 'Übungsszene und Abenteuer 1 „Der Dino im Römerlager“.', p => p.wann !== 'spaeter')}
+  ${gruppe('Für später', 'Diese Seiten brauchst du erst in Abenteuer 2 und 3.', p => p.wann === 'spaeter')}
+</div>
+<script>
+  // Jedes A4-Blatt auf die Bildschirmbreite verkleinern.
+  function passe() {
+    document.querySelectorAll('.rahmen').forEach(r => {
+      const b = Number(r.dataset.breite), h = Number(r.dataset.hoehe);
+      const s = Math.min(1, r.clientWidth / b);
+      const inhalt = r.firstElementChild;
+      inhalt.style.width = b + 'px'; inhalt.style.height = h + 'px';
+      inhalt.style.transform = 'scale(' + s + ')';
+      r.style.height = (h * s) + 'px';
+    });
+  }
+  passe();
+  window.addEventListener('resize', passe);
+  if (document.fonts) document.fonts.ready.then(passe);
+</script>
+`;
+
 const ziel = path.join(WURZEL, 'druck');
 fs.mkdirSync(ziel, { recursive: true });
 fs.writeFileSync(path.join(ziel, 'druckvorlagen.html'), druck, 'utf8');
 fs.writeFileSync(path.join(ziel, 'heldenbogen-vorschau.html'), vorschau, 'utf8');
-console.log(`druck/druckvorlagen.html: ${seiten.length} Seiten, druck/heldenbogen-vorschau.html: 2 Bögen`);
+fs.writeFileSync(path.join(ziel, 'druckpaket-vorschau.html'), paket, 'utf8');
+console.log(`druck/druckvorlagen.html: ${seiten.length} Seiten, Vorschauen: heldenbogen-vorschau.html, druckpaket-vorschau.html`);

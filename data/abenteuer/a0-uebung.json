@@ -1,0 +1,105 @@
+{
+  "id": "a0-uebung",
+  "nummer": 0,
+  "titel": "Die Bibliotheks-Prüfung",
+  "epoche": "Bibliothek",
+  "stempel": null,
+  "dauerMin": "10",
+  "kurz": "Übungsszene vor Abenteuer 1. Jeder Held macht einmal eine Probe, ein Rätsel und einen kleinen Kampf. Danach geht es direkt mit Abenteuer 1, Szene 1 weiter.",
+  "karte": null,
+  "erklaerHinweis": "Nie vorher erklären, immer im Moment. Erst sagt der Spieler, was sein Held tut. Dann sagt der Spielleiter Eigenschaft und Zielzahl.",
+  "vorbereitung": [
+    "Charakterbögen, je 6 W6 pro Spieler",
+    "Glückssterne und Plüschwürfel bereitlegen",
+    "Spielerkarte „So spielst du“ vor jeden Spieler"
+  ],
+  "szenen": [
+    {
+      "id": "a0-s1",
+      "titel": "Ankunft",
+      "ort": "Bibliothek",
+      "schauplatz": "bibliothek",
+      "dauerMin": 2,
+      "musik": { "datei": "bibliothek.mp3", "stimmung": "geheimnisvoll, gemütlich, leise Spieluhr" },
+      "bild": "assets/bilder/eulalia.png",
+      "vorlesen": [
+        "Ihr steht vor einer knarzenden alten Tür. Dahinter riecht es nach Staub, Papier und … Kakao? Regale ragen bis unter die Decke. Plötzlich flattert eine Eule mit Lesebrille herab. „Willkommen, willkommen! Ich bin Professorin Eulalia. Wer in der Bibliothek der Zeiten helfen will, braucht einen Bibliotheksausweis. Und den gibt es nur nach einer kleinen Prüfung!“",
+        "Aus Eulalias Federn lugt ein winziger grüner Drache. Er guckt euch mit großen Augen an und niest. Pff! Bunte Funken fliegen durch die Luft. „Das ist Krümel, mein kleiner Bücherdrache“, sagt Eulalia. „Er prüft mit.“"
+      ],
+      "loesung": "Jeder stellt seinen Helden in einem Satz vor, in Heldenstimme. Marvin fängt an."
+    },
+    {
+      "id": "a0-s2",
+      "titel": "Prüfung eins: Ein Buch holen",
+      "ort": "Bibliothek",
+      "schauplatz": "bibliothek",
+      "dauerMin": 3,
+      "musik": { "datei": "bibliothek.mp3", "stimmung": "geheimnisvoll, gemütlich" },
+      "vorlesen": [
+        "„Erste Aufgabe!“, ruft Eulalia. „Jeder bringt mir ein Buch aus dem Regal. Wie, ist eure Sache.“"
+      ],
+      "proben": [
+        { "was": "Jeder Held holt ein Buch, auf seine Art", "eigenschaften": ["Kraft", "Geschick", "Köpfchen", "Herz"], "schwierigkeit": 4, "hinweis": "Jeder Spieler würfelt einmal. Fehlschlag: etwas Lustiges, das Buch gibt es trotzdem. Eine 6: „Was passiert Tolles obendrauf?“ Zögert jemand: „Hilft jemand?“ (+1 Würfel)." }
+      ]
+    },
+    {
+      "id": "a0-s3",
+      "titel": "Prüfung zwei: Eulalias Rätsel",
+      "ort": "Bibliothek",
+      "schauplatz": "bibliothek",
+      "dauerMin": 2,
+      "musik": { "datei": "bibliothek.mp3", "stimmung": "geheimnisvoll, gemütlich" },
+      "vorlesen": [
+        "„Zweite Aufgabe! Ein echter Bibliothekar muss schlau sein.“ Eulalia schiebt ihre Brille hoch."
+      ],
+      "raetsel": [
+        {
+          "von": "Eulalia",
+          "thema": "Tiere und Mathe",
+          "klasse1": { "frage": "Ich habe Federn und Flügel. Ich schlafe am Tag und bin nachts wach. Wer bin ich?", "antwort": "Eine Eule" },
+          "klasse2": { "frage": "In meinem Regal stehen 7 rote und 8 blaue Bücher. Wie viele sind es zusammen?", "antwort": "15" },
+          "belohnung": "1 Glücksstern",
+          "extra": "Emilia antwortet zuerst. Dabei erklären: Ein Stern gibt später +2 Würfel und darf verschenkt werden."
+        }
+      ],
+      "lernFakten": [
+        { "von": "Eulalia", "text": "Früher wurden Bücher mit der Hand abgeschrieben. Für ein einziges Buch brauchte man oft viele Monate!" }
+      ]
+    },
+    {
+      "id": "a0-s4",
+      "titel": "Prüfung drei: Die Staubmäuse",
+      "ort": "Bibliothek",
+      "schauplatz": "bibliothek",
+      "dauerMin": 3,
+      "musik": { "datei": "bibliothek.mp3", "stimmung": "geheimnisvoll, gemütlich" },
+      "kampfMusik": { "datei": "kampf-lustig.mp3", "stimmung": "schnell, verspielt, Pizzicato" },
+      "vorlesen": [
+        "Da raschelt es unter dem Regal. Kleine graue Wollknäuel mit Kulleraugen rollen heraus. „Staubmäuse!“, ruft Eulalia. „Die kitzeln jeden, der nicht aufpasst!“"
+      ],
+      "kampf": {
+        "gegner": "staubmaeuse",
+        "anzahl": "wie Helden",
+        "schwachstelle": "Wind und Niesen: pusten, fächeln, niesen. Lady Flämmchens Nieser passt perfekt.",
+        "hinweis": "Ablauf erklären, während er passiert: erst alle Helden, dann kitzeln die übrigen Mäuse, Ausweichen mit Geschick. Niemand stirbt, bei 0 Herzen kurz aussetzen."
+      },
+      "kruemel": "Bleibt am Ende eine Maus übrig, würfelt der Kleine. Bei 4 bis 6 niest Krümel, und die letzte Maus fliegt davon. Bei 1 bis 3 kitzelt die Maus Krümel, er kichert, und die Maus rollt beleidigt weg."
+    }
+  ],
+  "abschluss": {
+    "musik": { "datei": "sieg.mp3", "stimmung": "feierlich, Glockenspiel" },
+    "vorlesen": [
+      "„Bestanden! Alle bestanden!“ Eulalia überreicht jedem einen Bibliotheksausweis. „Tragt euren Namen ein und malt euer Bild dazu. Und jetzt schnell, da oben qualmt ein Buch!“"
+    ],
+    "punkte": [
+      "Die Spieler füllen den Ausweis auf ihrem Charakterbogen aus.",
+      "Noch kein Stempel, der erste kommt im Römerlager.",
+      "Direkt weiter mit Abenteuer 1, Szene 1, ab dem dritten Vorlesetext."
+    ]
+  },
+  "planB": [
+    { "situation": "Ein Spieler weiß nicht, was er sagen soll", "loesung": "Auf die Spielerkarte zeigen und zwei Ideen anbieten: „Kletterst du oder fragst du Eulalia?“" },
+    { "situation": "Alle Mäuse sind in der ersten Runde weg", "loesung": "Eine Nachzüglerin rollt unter dem Regal hervor, damit jeder einmal ausweichen kann." },
+    { "situation": "Es dauert länger als 10 Minuten", "loesung": "Den Kampf weglassen. Er kommt im Römerlager ohnehin." }
+  ]
+}

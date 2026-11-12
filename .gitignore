@@ -1,0 +1,4 @@
+# Bleibt nur auf diesem Rechner, wird nicht veröffentlicht:
+# CLAUDE.md und .claude/ enthalten Angaben zur Familie und die Claude-Befehle.
+CLAUDE.md
+.claude/

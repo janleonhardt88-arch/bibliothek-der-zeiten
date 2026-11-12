@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 170" width="380" height="340" role="img" aria-label="Ein kleiner grüner Drache, der Funken niest">
+<rect x="0" y="0" width="190" height="170" fill="#EEF5E8"/>
+<path d="M48 92 C20 70 18 50 30 44 C38 66 50 74 62 80 Z" fill="#7DB36A"/>
+<path d="M128 92 C156 70 158 50 146 44 C138 66 126 74 114 80 Z" fill="#7DB36A"/>
+<ellipse cx="88" cy="118" rx="44" ry="40" fill="#5F9C4C"/>
+<ellipse cx="88" cy="126" rx="28" ry="28" fill="#D8EBC2"/>
+<path d="M128 132 C150 138 158 124 166 116" stroke="#5F9C4C" stroke-width="10" fill="none" stroke-linecap="round"/>
+<circle cx="88" cy="66" r="36" fill="#5F9C4C"/>
+<path d="M66 36 L72 22 L80 34 M96 34 L104 22 L110 36" fill="#E6B84A"/>
+<circle cx="76" cy="64" r="9" fill="#FFFFFF"/>
+<circle cx="100" cy="64" r="9" fill="#FFFFFF"/>
+<circle cx="77" cy="66" r="5" fill="#2A2733"/>
+<circle cx="101" cy="66" r="5" fill="#2A2733"/>
+<path d="M78 84 Q88 92 98 84" stroke="#2A2733" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="130" cy="58" r="5" fill="#E6B84A"/>
+<circle cx="146" cy="44" r="4" fill="#D9822B"/>
+<circle cx="140" cy="70" r="3.5" fill="#C0508A"/>
+<circle cx="158" cy="60" r="3" fill="#3C88B8"/>
+</svg>

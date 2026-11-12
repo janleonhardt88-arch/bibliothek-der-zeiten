@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 170" width="360" height="340" role="img" aria-label="Eine Eule mit runder Brille">
+<rect x="0" y="0" width="180" height="170" fill="#EAF2EF"/>
+<ellipse cx="90" cy="105" rx="58" ry="60" fill="#B98A5E"/>
+<ellipse cx="90" cy="118" rx="38" ry="42" fill="#F3E3C8"/>
+<path d="M44 62 L52 30 L70 52 Z" fill="#B98A5E"/>
+<path d="M136 62 L128 30 L110 52 Z" fill="#B98A5E"/>
+<ellipse cx="90" cy="72" rx="52" ry="40" fill="#F7EBD6"/>
+<circle cx="68" cy="72" r="17" fill="#FFFFFF" stroke="#2A2733" stroke-width="4"/>
+<circle cx="112" cy="72" r="17" fill="#FFFFFF" stroke="#2A2733" stroke-width="4"/>
+<line x1="85" y1="72" x2="95" y2="72" stroke="#2A2733" stroke-width="4"/>
+<circle cx="70" cy="74" r="7" fill="#2A2733"/>
+<circle cx="110" cy="74" r="7" fill="#2A2733"/>
+<path d="M84 88 L96 88 L90 100 Z" fill="#D9822B"/>
+<path d="M60 160 L66 150 L72 160 M108 160 L114 150 L120 160" stroke="#D9822B" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

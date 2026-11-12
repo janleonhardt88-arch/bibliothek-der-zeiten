@@ -1,0 +1,155 @@
+{
+  "figuren": [
+    {
+      "id": "eulalia",
+      "name": "Professorin Eulalia",
+      "art": "Schleiereule, Bibliothekarin",
+      "rolle": "Helferin",
+      "abenteuer": [
+        "alle"
+      ],
+      "bild": "assets/bilder/eulalia.png",
+      "stimme": "Hoch, schnell, verwechselt Wörter. Schiebt die Brille hoch (an die Nase tippen).",
+      "satz": "Hervorragend! Ganz hervorragend!",
+      "lernFakt": "Eulen können ihren Kopf fast drei Viertel herumdrehen."
+    },
+    {
+      "id": "graefin-glitzer",
+      "name": "Gräfin Glitzer",
+      "art": "Elster mit Perlenkette und Federhut",
+      "rolle": "Gegenspielerin, Boss in Abenteuer 3",
+      "abenteuer": [
+        "a1-roemerlager",
+        "a2-aegypten",
+        "a3-burg"
+      ],
+      "bild": "assets/bilder/graefin-glitzer.png",
+      "stimme": "Eingebildet, lange Vokale: „Daaas ist MEIN Schaaatz!“",
+      "stufe": "Boss",
+      "herzen": 6,
+      "ausweichenAb": 5,
+      "angriff": "Sturzflug",
+      "spezial": "Glitzerblitz jede zweite Runde: Jeder Held hat bei der nächsten Probe 1 Würfel weniger.",
+      "schwachstelle": "Spiegel (+2 Würfel)",
+      "geheimnis": "Sie ist einsam. Komplimente zähmen sie.",
+      "lernFakt": "Elstern gehören zu den klügsten Vögeln und erkennen sich im Spiegel. Sie bauen Nester mit Dach."
+    },
+    {
+      "id": "kraehenbande",
+      "name": "Krähenbande",
+      "art": "Freche Krähen",
+      "rolle": "Gegner",
+      "abenteuer": [
+        "a1-roemerlager",
+        "a3-burg"
+      ],
+      "bild": "assets/bilder/kraehenbande.png",
+      "stimme": "Alle Erwachsenen dürfen mitkrächzen.",
+      "stufe": "Winzling",
+      "herzen": 1,
+      "ausweichenAb": 4,
+      "anzahl": "wie Helden",
+      "angriff": "Flattern los und zupfen an Haaren und Mützen.",
+      "schwachstelle": "Walnüsse (+2 Würfel)",
+      "lernFakt": "Krähen knacken Nüsse, indem sie sie aus der Luft fallen lassen."
+    },
+    {
+      "id": "gaius",
+      "name": "Gaius",
+      "art": "Römischer Wachsoldat",
+      "rolle": "Torwache",
+      "abenteuer": [
+        "a1-roemerlager"
+      ],
+      "bild": "assets/bilder/gaius.png",
+      "stimme": "Brummig, langsam, gähnt.",
+      "satz": "Halt! Wer da?",
+      "lernFakt": "I = 1, V = 5, X = 10."
+    },
+    {
+      "id": "trixi",
+      "name": "Trixi",
+      "art": "Baby-Triceratops",
+      "rolle": "Kein Gegner, braucht Hilfe",
+      "abenteuer": [
+        "a1-roemerlager"
+      ],
+      "bild": "assets/bilder/trixi.png",
+      "stimme": "Grunzt, schnieft.",
+      "lernFakt": "Triceratops fraß Pflanzen, vor allem Farne, und lebte vor etwa 66 Millionen Jahren."
+    },
+    {
+      "id": "neferet",
+      "name": "Neferet",
+      "art": "Ägyptische Schreiberin",
+      "rolle": "Helferin",
+      "abenteuer": [
+        "a2-aegypten"
+      ],
+      "bild": null,
+      "stimme": "Weinerlich am Anfang, dann begeistert.",
+      "lernFakt": "Hieroglyphen sind Bilderschrift. Papier aus Papyrus."
+    },
+    {
+      "id": "nilpferd",
+      "name": "Das Nilpferd",
+      "art": "Nilpferd",
+      "rolle": "Freundlich, Fähre über den Nil",
+      "abenteuer": [
+        "a2-aegypten"
+      ],
+      "bild": null,
+      "stimme": "Riesiges Gähnen.",
+      "lernFakt": "Nilpferde können nicht schwimmen. Sie laufen unter Wasser über den Grund."
+    },
+    {
+      "id": "kamel-karl",
+      "name": "Kamel Karl",
+      "art": "Kamel",
+      "rolle": "Rabauke",
+      "abenteuer": [
+        "a2-aegypten"
+      ],
+      "bild": "assets/bilder/kamel-karl.png",
+      "stimme": "Brummig, kaut beim Sprechen.",
+      "stufe": "Rabauke",
+      "herzen": 3,
+      "ausweichenAb": 4,
+      "angriff": "Spuckt.",
+      "spezial": "Einmal im Kampf Sandwirbel: nächste Probe aller Helden mit 1 Würfel weniger.",
+      "schwachstelle": "Datteln (+2 Würfel)",
+      "geheimnis": "Will nur gelobt werden.",
+      "lernFakt": "Im Höcker ist Fett, kein Wasser."
+    },
+    {
+      "id": "ritter-rostig",
+      "name": "Ritter Rostig",
+      "art": "Ritter in quietschender Rüstung",
+      "rolle": "Helfer",
+      "abenteuer": [
+        "a3-burg"
+      ],
+      "bild": "assets/bilder/ritter-rostig.png",
+      "stimme": "Gutmütig, stöhnt, quietscht bei jeder Bewegung.",
+      "satz": "Au, mein Bauch!",
+      "lernFakt": "Eine Ritterrüstung wog über 20 Kilo. Der höchste Burgturm heißt Bergfried."
+    },
+    {
+      "id": "staubmaeuse",
+      "name": "Staubmäuse",
+      "art": "Graue Wollknäuel mit Kulleraugen",
+      "rolle": "Übungsgegner",
+      "abenteuer": [
+        "a0-uebung"
+      ],
+      "bild": null,
+      "stimme": "Leises Fiepen und Rascheln.",
+      "stufe": "Winzling",
+      "herzen": 1,
+      "ausweichenAb": 4,
+      "anzahl": "wie Helden",
+      "angriff": "Sie kitzeln. Wer getroffen wird, verliert ein Herz und muss lachen.",
+      "schwachstelle": "Wind und Niesen (+2 Würfel)"
+    }
+  ]
+}

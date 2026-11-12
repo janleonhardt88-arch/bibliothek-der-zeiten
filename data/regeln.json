@@ -1,0 +1,63 @@
+{
+  "wuerfel": "W6",
+  "probe": "So viele W6 würfeln, wie die Eigenschaft Punkte hat. Nur der höchste Würfel zählt.",
+  "eigenschaften": {
+    "Kraft": "Heben, schieben, zuhauen",
+    "Geschick": "Klettern, schleichen, werfen, ausweichen",
+    "Köpfchen": "Nachdenken, zaubern, Tricks, Wissen",
+    "Herz": "Überreden, trösten, zähmen, Mut"
+  },
+  "punkteverteilung": [4, 3, 2, 1],
+  "schwierigkeit": { "leicht": 4, "schwer": 5, "episch": 6 },
+  "volltreffer": "Jede 6 ist ein Volltreffer: Es klappt, und es passiert noch etwas Tolles. Der Spieler bestimmt mit.",
+  "boni": {
+    "talent": 1,
+    "helfen": 1,
+    "helfenMax": "Pro Probe hilft höchstens ein Held.",
+    "gluecksstern": 2,
+    "schwachstelle": 2
+  },
+  "gluecksstern": "Für jedes gelöste Rätsel. +2 Würfel auf eine Probe. Darf verschenkt werden.",
+  "scheitern": "Ein Fehlschlag heißt nie „nichts passiert“. Es passiert etwas Lustiges oder Neues.",
+  "zaubergegenstand": "Einmal pro Abenteuer gelingt damit eine Sache automatisch.",
+  "start": { "herzen": 5, "gluecksstern": 0 },
+  "kampf": {
+    "reihenfolge": "Erst alle Helden, dann alle Gegner. Keine Initiative.",
+    "angriff": "Probe auf Kraft, Geschick oder Köpfchen. Ab 4 verliert der Gegner 1 Herz, ein Volltreffer nimmt 2.",
+    "ausweichen": "Gegner würfeln nie. Der angegriffene Held würfelt Geschick: ab 4 ausgewichen (Boss: ab 5), sonst 1 Herz weniger.",
+    "erschoepft": "Bei 0 Herzen setzt der Held aus. Aufmuntern: Herz-Probe ab 4, dann steht er mit 2 Herzen auf. Nach dem Kampf volle Herzen.",
+    "zaehmen": "Statt Angriff eine Herz-Probe ab 4: Der Gegner verliert 1 Herz Wut. Bei 0 wird er friedlich.",
+    "gegnerVerlieren": "Nie blutig: fliehen, Konfetti, einschlafen, gefangen, Freundschaft."
+  },
+  "gegnerstufen": {
+    "Winzling": { "herzen": 1, "ausweichenAb": 4, "besonderheit": "Kommen meist in Gruppen" },
+    "Rabauke": { "herzen": 3, "ausweichenAb": 4, "besonderheit": "Ein lustiger Spezialtrick" },
+    "Boss": { "herzen": 6, "ausweichenAb": 5, "besonderheit": "Spezialattacke jede zweite Runde" }
+  },
+  "aufstieg": {
+    "nachStempeln": 3,
+    "wahl": ["+1 Punkt in einer Eigenschaft (höchstens 5)", "ein neues Talent", "+1 Herz"]
+  },
+  "kruemel": {
+    "gluckswurf": "Einmal pro Szene wirft der Kleine den großen Plüschwürfel. 4–6: alle Helden +1 Würfel auf die nächste Probe. 1–3: etwas Lustiges, nie ein Nachteil.",
+    "sicher": "Krümel hat keine Herzen und wird nie angegriffen.",
+    "sicherheitAmTisch": "Nur großer Plüsch- oder Schaumstoffwürfel. Normale W6, Münzen und Steine außer Reichweite."
+  },
+  "spotlight": [
+    "Rätsel gehen zuerst an das Kind. Erwachsene helfen nur, wenn es fragt.",
+    "Jede Szene hat einen Moment, in dem der Held des Kindes glänzt.",
+    "Erwachsene kürzen nichts ab, was ein Rätsel für das Kind ist: keine Schlösser, kein Flunkern, kein Kristall vor dem Lösungsversuch.",
+    "Krümel bekommt pro Szene seinen Wurf."
+  ],
+  "wahrscheinlichkeiten": {
+    "quelle": "Selbst gerechnet: P(höchster von n W6 >= k) = 1 - ((k-1)/6)^n",
+    "tabelle": [
+      { "wuerfel": 1, "leicht": "50 %", "schwer": "33,33 %", "episch": "16,67 %" },
+      { "wuerfel": 2, "leicht": "75 %", "schwer": "55,56 %", "episch": "30,56 %" },
+      { "wuerfel": 3, "leicht": "87,5 %", "schwer": "70,37 %", "episch": "42,13 %" },
+      { "wuerfel": 4, "leicht": "93,75 %", "schwer": "80,25 %", "episch": "51,77 %" },
+      { "wuerfel": 5, "leicht": "96,88 %", "schwer": "86,83 %", "episch": "59,81 %" },
+      { "wuerfel": 6, "leicht": "98,44 %", "schwer": "91,22 %", "episch": "66,51 %" }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 170" width="340" height="340" role="img" aria-label="Ein römischer Wachsoldat mit Helm und Speer">
+<rect x="0" y="0" width="170" height="170" fill="#F6E9E4"/>
+<line x1="138" y1="20" x2="138" y2="165" stroke="#8A6A4A" stroke-width="5" stroke-linecap="round"/>
+<path d="M132 22 L138 6 L144 22 Z" fill="#8A8290"/>
+<path d="M52 104 L118 104 L126 160 L44 160 Z" fill="#A8322C"/>
+<rect x="58" y="104" width="54" height="40" rx="6" fill="#C9A24A"/>
+<circle cx="85" cy="74" r="28" fill="#F0C9A0"/>
+<path d="M55 70 C55 40 115 40 115 70 L108 70 L108 60 L62 60 L62 70 Z" fill="#C9A24A"/>
+<path d="M70 42 C72 22 98 22 100 42" fill="#A8322C"/>
+<circle cx="76" cy="76" r="3.5" fill="#2A2733"/>
+<circle cx="94" cy="76" r="3.5" fill="#2A2733"/>
+<ellipse cx="85" cy="90" rx="7" ry="4" fill="#2A2733"/>
+<line x1="118" y1="116" x2="138" y2="110" stroke="#F0C9A0" stroke-width="8" stroke-linecap="round"/>
+</svg>

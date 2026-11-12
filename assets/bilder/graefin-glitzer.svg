@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170" width="400" height="340" role="img" aria-label="Eine Elster mit Federhut und Perlenkette">
+<rect x="0" y="0" width="200" height="170" fill="#ECEAF2"/>
+<path d="M120 112 L190 140 L184 152 L114 126 Z" fill="#2B4C7E"/>
+<ellipse cx="96" cy="108" rx="44" ry="34" fill="#1F1D24"/>
+<ellipse cx="92" cy="114" rx="26" ry="20" fill="#FFFFFF"/>
+<path d="M104 96 C130 96 140 110 128 118 C118 110 110 104 100 104 Z" fill="#2B4C7E"/>
+<circle cx="66" cy="72" r="26" fill="#1F1D24"/>
+<path d="M42 70 L22 76 L42 80 Z" fill="#2A2733"/>
+<circle cx="60" cy="68" r="6" fill="#FFFFFF"/>
+<circle cx="59" cy="68" r="3" fill="#1F1D24"/>
+<ellipse cx="72" cy="46" rx="30" ry="7" fill="#C0508A"/>
+<path d="M56 46 C58 26 86 24 88 46 Z" fill="#C0508A"/>
+<path d="M86 34 C100 20 110 22 112 30" stroke="#E6B84A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<circle cx="56" cy="96" r="4" fill="#F4EFE6" stroke="#8A8290"/>
+<circle cx="65" cy="100" r="4" fill="#F4EFE6" stroke="#8A8290"/>
+<circle cx="74" cy="101" r="4" fill="#F4EFE6" stroke="#8A8290"/>
+<circle cx="83" cy="99" r="4" fill="#F4EFE6" stroke="#8A8290"/>
+<path d="M80 140 L80 156 M100 140 L100 156" stroke="#2A2733" stroke-width="4" stroke-linecap="round"/>
+</svg>

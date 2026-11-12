@@ -1,0 +1,237 @@
+{
+  "id": "a1-roemerlager",
+  "nummer": 1,
+  "titel": "Der Dino im Römerlager",
+  "epoche": "Römer am Limes",
+  "stempel": "Römerlager",
+  "dauerMin": "35-45",
+  "kurz": "Die Helden holen eine gestohlene Seite aus dem Römerlager zurück und bringen einen Baby-Triceratops nach Hause.",
+  "karte": "assets/bilder/karte-roemerlager.png",
+  "vorbereitung": [
+    "Ein Charakterbogen pro Held",
+    "Je 6 W6 pro Spieler",
+    "Münzen oder Steine als Glückssterne",
+    "Großer Plüschwürfel für Krümel",
+    "Handout römische Zahlen, Karte Römerlager"
+  ],
+  "szenen": [
+    {
+      "id": "a1-s1",
+      "titel": "Die qualmende Seite",
+      "ort": "Bibliothek",
+      "schauplatz": "bibliothek",
+      "dauerMin": 10,
+      "musik": {
+        "datei": "bibliothek.mp3",
+        "stimmung": "geheimnisvoll, gemütlich, leise Spieluhr"
+      },
+      "bild": "assets/bilder/eulalia.png",
+      "nachUebung": "Wurde die Übungsszene gespielt, die ersten beiden Vorlesetexte weglassen und mit „Eulalia zeigt mit dem Flügel nach oben“ beginnen.",
+      "vorlesen": [
+        "Ihr steht vor einer knarzenden alten Tür. Dahinter riecht es nach Staub, Papier und … Kakao? Regale ragen bis unter die Decke. Plötzlich flattert eine Eule mit Lesebrille herab. „Willkommen, willkommen! Ich bin Professorin Eulalia. Wie gut, dass ihr da seid. Jemand hat eine Seite gestohlen!“",
+        "Aus Eulalias Federn lugt ein winziger grüner Drache. Er guckt die Helden mit großen Augen an und niest. Pff! Bunte Funken fliegen durch die Luft. „Das ist Krümel, mein kleiner Bücherdrache“, sagt Eulalia. „Er kommt mit. Passt gut auf ihn auf!“",
+        "Eulalia zeigt mit dem Flügel nach oben. Ganz oben im Regal qualmt ein Buch. Auf dem Rücken steht: „Das Römerlager am Limes“. Auf den Regalbrettern liegen schwarz-weiße Federn."
+      ],
+      "kruemel": "Krümel krabbelt das Regal hoch und pustet in den Qualm. Wirft der Kleine den Plüschwürfel, ist der Qualm bei 4 bis 6 weg: Alle Helden +1 Würfel auf die nächste Probe. Bei 1 bis 3 niest er, und bunte Funken regnen auf Eulalias Brille.",
+      "proben": [
+        {
+          "was": "Das Buch herunterholen",
+          "eigenschaften": [
+            "Geschick",
+            "Kraft",
+            "Herz"
+          ],
+          "schwierigkeit": 4,
+          "hinweis": "Klettern = Geschick, Leiter schieben = Kraft, Eulalia bitten = Herz. Die Helden suchen sich die Idee aus."
+        }
+      ],
+      "raetsel": [
+        {
+          "von": "Eulalia",
+          "thema": "Mathe",
+          "klasse1": {
+            "frage": "Im Buch waren 5 Seiten mit Bildern. Die Elster hat 1 geklaut. Wie viele sind noch da?",
+            "antwort": "4"
+          },
+          "klasse2": {
+            "frage": "Mein Regal hat 4 Bretter. Auf jedem stehen 5 Bücher. Wie viele Bücher sind das?",
+            "antwort": "20"
+          },
+          "belohnung": "1 Glücksstern"
+        }
+      ],
+      "lernFakten": [
+        {
+          "von": "Eulalia",
+          "text": "Wusstet ihr, dass ich meinen Kopf fast ganz herumdrehen kann? Fast drei Viertel einer Runde!",
+          "regie": "Sie dreht den Kopf und schaut die Helden rückwärts an."
+        }
+      ],
+      "uebergang": "Ihr schlagt das Buch auf. Gemeinsam ruft ihr: „Lies mich, nimm mich mit!“ Die Buchstaben wirbeln wie Blätter im Wind. Alles dreht sich. Und dann: Gras unter den Füßen."
+    },
+    {
+      "id": "a1-s2",
+      "titel": "Das Tor am Limes",
+      "ort": "Römerlager",
+      "schauplatz": "roemerlager",
+      "dauerMin": 15,
+      "musik": {
+        "datei": "roemerlager.mp3",
+        "stimmung": "Marschtrommeln, Lagerfeuer, Vögel"
+      },
+      "kampfMusik": {
+        "datei": "kampf-lustig.mp3",
+        "stimmung": "schnell, verspielt, Pizzicato"
+      },
+      "bild": "assets/bilder/gaius.png",
+      "vorlesen": [
+        "Ihr steht vor einer hohen Mauer aus Holz und Stein. Das ist der Limes, die Grenze der Römer. Dahinter liegt ein Lager mit Zelten und Häusern. Vor dem großen Tor steht ein Wachsoldat mit rotem Umhang und Helm. Er gähnt. „Halt! Ich bin Gaius. Ohne Zahlencode kommt hier keiner rein!“"
+      ],
+      "lernFakten": [
+        {
+          "von": "Gaius",
+          "text": "Römer schrieben Zahlen mit Buchstaben. I ist 1, V ist 5, X ist 10.",
+          "regie": "Gaius malt sie mit dem Speer in den Sand."
+        }
+      ],
+      "raetsel": [
+        {
+          "von": "Gaius",
+          "thema": "Römische Zahlen",
+          "handout": "assets/bilder/handout-roemische-zahlen.png",
+          "klasse1": {
+            "frage": "I, II, III … was kommt als Nächstes?",
+            "antwort": "IV, also 4"
+          },
+          "klasse2": {
+            "frage": "V und III zusammen. Wie schreibe ich das?",
+            "antwort": "VIII, also 8"
+          },
+          "belohnung": "1 Glücksstern",
+          "ohneLoesung": "Gaius überreden (Herz, 5+) oder über die Mauer (Geschick, 5+)."
+        }
+      ],
+      "nachVorlesen": [
+        "Kaum seid ihr drinnen, rauscht es über euch. Eine Bande schwarzer Krähen landet auf dem Dach und krächzt frech. Sie picken nach den Helmen der Wachen und klauen einen Löffel. „Die Krähenbande!“, ruft Gaius. „Die gehören zur Gräfin Glitzer!“"
+      ],
+      "kruemel": "Die Krähen haben so einen kleinen Drachen noch nie gesehen. Wirft der Kleine den Plüschwürfel, niest Krümel bei 4 bis 6 eine Funkenwolke, und die Krähen flattern erschrocken hoch: Alle Helden +1 Würfel auf die nächste Probe. Bei 1 bis 3 krächzt eine Krähe Krümel an, und Krümel krächzt zurück. Alle Erwachsenen krächzen mit.",
+      "kampf": {
+        "gegner": "kraehenbande",
+        "anzahl": "wie Helden",
+        "schwachstelle": "Walnüsse im Vorratslager",
+        "schloss": {
+          "was": "Tür zum Vorratslager",
+          "eigenschaft": "Geschick",
+          "schwierigkeit": 5,
+          "ohneSchlossknacker": "Gaius rückt den Schlüssel heraus."
+        },
+        "fallback": "Kommt niemand auf die Nüsse, stolpert Gaius über einen Sack, und die Nüsse kullern über den Platz.",
+        "lernFakt": "Die Römer haben die Walnuss zu uns gebracht. Krähen knacken Nüsse, indem sie sie aus der Luft fallen lassen."
+      }
+    },
+    {
+      "id": "a1-s3",
+      "titel": "Ein Dino frisst das Brot",
+      "ort": "Bäckerei und Farnwald",
+      "schauplatz": "roemerlager",
+      "dauerMin": 15,
+      "musik": {
+        "datei": "dino.mp3",
+        "stimmung": "tapsig, Tuba, fröhlich"
+      },
+      "bild": "assets/bilder/trixi.png",
+      "vorlesen": [
+        "Aus der Bäckerei des Lagers kommt lautes Geschrei. „Mein Brot! Mein ganzes Brot!“ Ein Bäcker rennt heraus, Mehl im Gesicht. Hinter ihm stapft etwas Großes, Grünes heraus. Es hat drei Hörner, einen riesigen Kragen um den Hals und Brotkrümel im Maul. Es ist ein Baby-Triceratops! Und an seinem Kragen klebt eine Buchseite."
+      ],
+      "figurHinweis": "Trixi ist kein Gegner. Sie hat Bauchweh vom Brot und ist traurig, weil sie nicht nach Hause findet.",
+      "kruemel": "Trixi entdeckt Krümel und senkt neugierig den Kopf. Wirft der Kleine den Plüschwürfel, wird Trixi bei 4 bis 6 ruhiger: Die Herz-Probe wird leicht (4+) statt schwer.",
+      "raetsel": [
+        {
+          "von": "Spielleiter",
+          "thema": "Tiere",
+          "klasse1": {
+            "frage": "Was frisst ein Triceratops eigentlich: Fleisch oder Pflanzen?",
+            "antwort": "Pflanzen, zum Beispiel Farn"
+          },
+          "klasse2": {
+            "frage": "Triceratops heißt ‚Dreihorngesicht‘. Wie viele Hörner haben drei Triceratopse zusammen?",
+            "antwort": "9"
+          },
+          "belohnung": "1 Glücksstern"
+        }
+      ],
+      "lernFakten": [
+        {
+          "von": "Eulalia",
+          "text": "Triceratops lebte vor etwa 66 Millionen Jahren. Das war lange vor den Römern. Er fraß Pflanzen, vor allem niedrige wie Farne.",
+          "regie": "Sie ruft aus dem Buch."
+        }
+      ],
+      "proben": [
+        {
+          "was": "Trixi beruhigen",
+          "eigenschaften": [
+            "Herz"
+          ],
+          "schwierigkeit": 5
+        },
+        {
+          "was": "Farn im Wald hinter dem Lager suchen",
+          "eigenschaften": [
+            "Köpfchen",
+            "Geschick"
+          ],
+          "schwierigkeit": 4
+        },
+        {
+          "was": "Die Seite vorsichtig vom Kragen lösen",
+          "eigenschaften": [
+            "Geschick"
+          ],
+          "schwierigkeit": 5
+        }
+      ],
+      "loesung": "Die Seite löst sich, sobald Trixi ruhig ist und Farn frisst.",
+      "nachVorlesen": [
+        "Ihr haltet die Seite in den Händen. Sie leuchtet. Trixi leckt euch dankbar über das Gesicht. Dann wird sie durchsichtig und verschwindet mit einem glücklichen Grunzen zurück in ihre Zeit.",
+        "Da zetert es über euch. Auf dem Dach der Bäckerei sitzt eine Elster mit Perlenkette und Federhut. „Pah! Ihr hattet nur Glück! Ich habe noch viel mehr glitzernde Seiten!“ Sie wedelt mit einer Seite, auf der eine goldene Pyramide glänzt. Dann flattert sie davon."
+      ]
+    }
+  ],
+  "abschluss": {
+    "musik": {
+      "datei": "sieg.mp3",
+      "stimmung": "feierlich, Glockenspiel"
+    },
+    "vorlesen": [
+      "Die Buchstaben wirbeln. Ihr landet wieder in der Bibliothek. Eulalia klebt die Seite ins Buch, und das Qualmen hört auf. „Hervorragend! Ganz hervorragend!“ Sie drückt jedem von euch einen goldenen Stempel in den Ausweis."
+    ],
+    "punkte": [
+      "Jeder Held bekommt Stempel 1: „Römerlager“.",
+      "Jeder Held bekommt einen Glücksstern zum Behalten.",
+      "Frage an alle: „Was war heute euer liebster Moment?“"
+    ]
+  },
+  "planB": [
+    {
+      "situation": "Die Helden wollen woandershin",
+      "loesung": "Alles im Lager führt zurück zur Bäckerei. Man hört Trixi brüllen oder riecht frisches Brot."
+    },
+    {
+      "situation": "Ein Kind ist frustriert",
+      "loesung": "Sofort Hilfe anbieten, Eulalia gibt einen Tipp, oder die nächste Probe wird leicht."
+    },
+    {
+      "situation": "Die Zeit wird knapp",
+      "loesung": "Den Kampf auf eine Runde kürzen. Gaius schüttet einen Sack Nüsse aus, und alle Krähen stürzen sich darauf."
+    },
+    {
+      "situation": "Ein Rätsel ist zu schwer",
+      "loesung": "Die Klasse-1-Version nehmen oder Eulalia gibt eine Auswahl aus zwei Antworten."
+    },
+    {
+      "situation": "Jemand will die Gräfin fangen",
+      "loesung": "Sie fliegt immer knapp davon. Dafür verliert sie eine Feder, die auf das nächste Abenteuer hinweist."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "helden": [
+    {
+      "id": "marvin",
+      "spieler": "Marvin",
+      "erwachsen": true,
+      "name": null,
+      "wer": "Ein Dieb, Steingolem",
+      "eigenschaften": { "Geschick": 4, "Köpfchen": 3, "Kraft": 2, "Herz": 1 },
+      "talent": { "name": "Schlösser knacken", "bonus": 1, "gilt": "Schlösser knacken (Geschick)" },
+      "zaubergegenstand": {
+        "name": "Beutel mit unendlich viel Platz",
+        "regel": "Alles Normale passt hinein, Lebewesen nicht. Einmal pro Abenteuer zieht Marvin genau den Gegenstand heraus, den die Gruppe gerade braucht, ohne Probe."
+      },
+      "herzen": 5, "herzenMax": 5, "gluecksstern": 0, "stempel": [],
+      "notiz": "Name und Aussehen folgen am Spieltisch."
+    },
+    {
+      "id": "melanie",
+      "spieler": "Melanie",
+      "erwachsen": true,
+      "name": "Lady Flauschepfote",
+      "wer": "Eine Füchsin",
+      "eigenschaften": { "Köpfchen": 4, "Geschick": 3, "Herz": 2, "Kraft": 1 },
+      "talent": { "name": "Die Schummelschnauze", "bonus": 1, "gilt": "Herz-Proben, wenn sie jemanden beschwindelt. Wirkt nur auf Figuren, nie auf Rätsel, Türen oder Zahlencodes." },
+      "zaubergegenstand": {
+        "name": "Die Glitzerkrone",
+        "regel": "Einmal pro Abenteuer verwandelt sie einen Gegner oder eine nervige Figur in ein Huhn, bis zum Ende der Szene. Ein Boss bleibt nur eine Runde Huhn. Andere Helden und Krümel nur, wenn sie zustimmen."
+      },
+      "herzen": 5, "herzenMax": 5, "gluecksstern": 0, "stempel": []
+    },
+    {
+      "id": "filipa",
+      "spieler": "Filipa",
+      "erwachsen": true,
+      "name": "Lady Flämmchen",
+      "wer": "Eine kleine Drachendame",
+      "eigenschaften": { "Kraft": 4, "Herz": 3, "Geschick": 2, "Köpfchen": 1 },
+      "talent": { "name": "Glitzerspucke", "bonus": 1, "gilt": "Gegner ablenken, dunkle Räume erhellen, unsichtbare Spuren sichtbar machen. Ihr Nieser wirft Regale um (Kraft +1)." },
+      "zaubergegenstand": {
+        "name": "Der Glitzerkristall",
+        "regel": "Einmal pro Abenteuer rettet er sie und alle Freunde aus einer gefährlichen Situation, ohne Probe."
+      },
+      "herzen": 5, "herzenMax": 5, "gluecksstern": 0, "stempel": [],
+      "notiz": "Krümel bewundert Tante Flämmchen und macht ihr alles nach. Das erste Licht in der Pyramide gehört trotzdem Krümel."
+    },
+    {
+      "id": "emilia",
+      "spieler": "Emilia",
+      "erwachsen": false,
+      "name": null,
+      "wer": "Eine Waldfee. Richtig schlau, pflegt alle Tiere.",
+      "eigenschaften": { "Köpfchen": 4, "Geschick": 3, "Herz": 2, "Kraft": 1 },
+      "talent": { "name": "Naturblick", "bonus": 1, "gilt": "Erkennt alles in der Natur: Bäume, Büsche, Tiere, Spuren. Darf Lern-Fakten zu Tieren und Pflanzen als Erste verraten." },
+      "zaubergegenstand": {
+        "name": "Der Waldstab",
+        "regel": "Kleine Waldzauber immer (Blumen, Ranken, Tiere rufen) als Köpfchen-Probe mit Talent. Einmal pro Abenteuer verzaubert sie alles, was sie will, ohne Probe. Bei Rätseln leuchtet der Stab erst, wenn sie die Lösung gefunden hat."
+      },
+      "herzen": 5, "herzenMax": 5, "gluecksstern": 0, "stempel": [],
+      "notiz": "Hauptheldin. Rätsel immer auf Klasse 1 oder 2. Spotlight: Farn (A1), Papyrus und Nilpferd (A2), Kamille (A3). Name und Aussehen folgen am Spieltisch."
+    }
+  ],
+  "begleiter": [
+    {
+      "id": "kruemel",
+      "spieler": "Kleiner Bruder",
+      "name": "Krümel",
+      "wer": "Baby-Bücherdrache, Eulalias Helfer",
+      "regel": "Einmal pro Szene Glückswurf mit dem großen Plüschwürfel. 4–6: alle Helden +1 Würfel. 1–3: etwas Lustiges. Keine Herzen, wird nie angegriffen.",
+      "stempel": []
+    }
+  ]
+}

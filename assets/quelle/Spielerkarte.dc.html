@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Spielerkarte</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 794px; height: 1123px; box-sizing: border-box; padding: 36px 48px; background: #FFFFFF; color: #2A2733; font-family: Nunito, sans-serif; display: flex; flex-direction: column; gap: 0px">
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="2">
+<div style="height: 525px; box-sizing: border-box; padding: 6px 0; border-bottom: 2px dashed #8A8290; display: flex; align-items: center">
+<div style="width: 100%; height: 495px; box-sizing: border-box; background: #F8F2E4; border: 3px solid #2E7472; border-radius: 22px; padding: 26px 30px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h1 style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 600; font-size: 34px; color: #2E7472">So spielst du</h1>
+<p style="margin: 0; font-size: 13px; color: #5A5560">Bibliothek der Zeiten</p>
+</div>
+
+<div style="display: flex; gap: 16px; align-items: flex-start">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 8 H34 V26 H18 L10 33 V26 H6 Z" fill="none" stroke="#2E7472" stroke-width="3.5" stroke-linejoin="round"/></svg>
+<p style="margin: 0; font-size: 18px; line-height: 1.4"><b>Sag, was dein Held tut.</b> „Ich klettere aufs Regal!“ – „Ich frage die Eule!“</p>
+</div>
+
+<div style="display: flex; gap: 16px; align-items: flex-start">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E7472" stroke-width="3.5"/><path d="M15 15 C15 9 25 9 25 15 C25 19 20 19 20 23" fill="none" stroke="#2E7472" stroke-width="3.5" stroke-linecap="round"/><circle cx="20" cy="29" r="2.2" fill="#2E7472"/></svg>
+<p style="margin: 0; font-size: 18px; line-height: 1.4"><b>Frag alles, was du wissen willst.</b> „Was sehe ich da oben?“ – „Kann ich mit dem Kamel reden?“</p>
+</div>
+
+<div style="display: flex; gap: 16px; align-items: flex-start">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="28" height="28" rx="6" fill="none" stroke="#2E7472" stroke-width="3.5"/><circle cx="14" cy="14" r="2.5" fill="#2E7472"/><circle cx="20" cy="20" r="2.5" fill="#2E7472"/><circle cx="26" cy="26" r="2.5" fill="#2E7472"/></svg>
+<p style="margin: 0; font-size: 18px; line-height: 1.4"><b>Würfeln, wenn es spannend wird.</b> So viele Würfel, wie du Punkte hast. Der höchste zählt: ab 4 klappt es, bei Schwerem ab 5, eine 6 ist ein Volltreffer.</p>
+</div>
+
+<div style="display: flex; gap: 16px; align-items: flex-start">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5 L24.5 15 L35 16 L27 23 L29.5 34 L20 28.5 L10.5 34 L13 23 L5 16 L15.5 15 Z" fill="#E6B84A" stroke="#A86A1E" stroke-width="2" stroke-linejoin="round"/></svg>
+<p style="margin: 0; font-size: 18px; line-height: 1.4"><b>Helft euch.</b> „Ich helfe dir!“ gibt +1 Würfel. Ein gelöstes Rätsel gibt einen Glücksstern: +2 Würfel.</p>
+</div>
+
+<div style="display: flex; gap: 16px; align-items: flex-start">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34 C8 25 4 18 7 12 C10 6 17 7 20 13 C23 7 30 6 33 12 C36 18 32 25 20 34 Z" fill="#E58AA8" stroke="#A8322C" stroke-width="2" stroke-linejoin="round"/></svg>
+<p style="margin: 0; font-size: 18px; line-height: 1.4"><b>Es gibt kein Verlieren.</b> Klappt etwas nicht, wird es lustig. Pause gefällig? Sag: „Eulalia, Pause!“</p>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+renderVals() {
+return { cards: [{ id: 1 }, { id: 2 }] };
+}
+}
+</script>
+</body>
+</html>

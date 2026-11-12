@@ -1,0 +1,9 @@
+{
+  "hinweis": "Liste aller Abenteuer-Dateien in diesem Ordner. Neues Abenteuer = Datei hier eintragen. Die App sortiert nach dem Feld 'nummer'.",
+  "abenteuer": [
+    "a0-uebung.json",
+    "a1-roemerlager.json",
+    "a2-aegypten.json",
+    "a3-burg.json"
+  ]
+}

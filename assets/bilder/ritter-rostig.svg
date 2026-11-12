@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 170" width="340" height="340" role="img" aria-label="Ein Ritter in quietschender Rüstung">
+<rect x="0" y="0" width="170" height="170" fill="#E9ECF2"/>
+<rect x="50" y="88" width="70" height="60" rx="14" fill="#A9B1C0"/>
+<rect x="56" y="148" width="20" height="16" rx="4" fill="#8E97A8"/>
+<rect x="94" y="148" width="20" height="16" rx="4" fill="#8E97A8"/>
+<path d="M50 70 C50 30 120 30 120 70 L120 88 L50 88 Z" fill="#A9B1C0"/>
+<rect x="60" y="62" width="50" height="8" rx="3" fill="#2A2733"/>
+<path d="M85 34 C80 14 96 6 104 14" stroke="#4D5B7A" stroke-width="7" fill="none" stroke-linecap="round"/>
+<circle cx="85" cy="118" r="10" fill="#4D5B7A"/>
+<path d="M126 70 L138 62 M130 82 L144 80 M126 94 L138 100" stroke="#C0508A" stroke-width="3" stroke-linecap="round"/>
+<text x="140" y="56" font-family="Fredoka, sans-serif" font-size="16" fill="#C0508A">quietsch</text>
+</svg>

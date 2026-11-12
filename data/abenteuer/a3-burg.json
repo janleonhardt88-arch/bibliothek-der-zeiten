@@ -1,0 +1,188 @@
+{
+  "id": "a3-burg",
+  "nummer": 3,
+  "titel": "Das Nest im Burgturm",
+  "epoche": "Mittelalter",
+  "stempel": "Burg",
+  "dauerMin": "40-45",
+  "kurz": "Im Finale finden die Helden das Nest der Gräfin Glitzer, holen alle Seiten zurück und machen die Elster zur Freundin. Danach steigen alle Helden auf.",
+  "karte": "assets/bilder/karte-burg.png",
+  "vorbereitung": [
+    "Karte Burg bereitlegen",
+    "Bonus: ein kleiner Taschenspiegel als echtes Requisit"
+  ],
+  "szenen": [
+    {
+      "id": "a3-s1",
+      "titel": "Der quietschende Ritter",
+      "ort": "Zugbrücke und Kräutergarten",
+      "schauplatz": "burg",
+      "dauerMin": 10,
+      "musik": {
+        "datei": "burg.mp3",
+        "stimmung": "Laute, Fanfare, mittelalterlich, heiter"
+      },
+      "bild": "assets/bilder/ritter-rostig.png",
+      "vorlesen": [
+        "Eulalia hat einen Plan. „Ich habe die Gräfin beobachtet. Sie fliegt immer zum Ritterbuch. Ich glaube, dort ist ihr Nest!“ Ihr öffnet das Buch mit dem glänzenden Helm und ruft: „Lies mich, nimm mich mit!“",
+        "Ihr steht auf einer Zugbrücke. Vor euch ragt eine Burg mit Mauern, Fahnen und einem hohen Turm auf. Ganz oben auf dem Turm glitzert etwas. Neben euch sitzt ein Ritter auf einer Kiste. Seine Rüstung quietscht bei jeder Bewegung. „Au, mein Bauch!“, stöhnt er. „Ich bin Ritter Rostig. Und ich habe zu viel Pflaumenkuchen gegessen.“"
+      ],
+      "lernFakten": [
+        {
+          "von": "Rostig",
+          "text": "Eine Ritterrüstung wog über 20 Kilo. Der höchste Turm einer Burg hieß Bergfried."
+        }
+      ],
+      "nachVorlesen": [
+        "Rostig zeigt auf einen Garten hinter der Mauer. „Die Köchin sagt, dort wächst etwas gegen Bauchweh. Aber ich weiß nicht, welches Kraut!“"
+      ],
+      "raetsel": [
+        {
+          "von": "Rostig",
+          "thema": "Pflanzen",
+          "klasse1": {
+            "frage": "Zwei Pflanzen: Die eine hat weiße Blütenblätter und eine gelbe Mitte und riecht gut. Die andere hat Haare, die brennen, wenn man sie anfasst. Welche ist gut für den Bauch?",
+            "antwort": "Die Kamille. Die andere ist die Brennnessel."
+          },
+          "klasse2": {
+            "frage": "Im Garten gibt es 3 Beete. In jedem Beet wachsen 6 Kamillen. Rostig braucht 10 für seinen Tee. Bleiben welche übrig?",
+            "antwort": "Ja, 8."
+          },
+          "belohnung": "1 Glücksstern"
+        }
+      ],
+      "kruemel": "Krümel klettert auf Rostigs Helm und klopft dagegen. Wirft der Kleine den Plüschwürfel, klingt es bei 4 bis 6 wie eine Glocke, und Rostig fühlt sich gleich besser: Alle Helden +1 Würfel auf die nächste Probe. Bei 1 bis 3 rutscht Krümel ins Visier und guckt aus dem Helm heraus. Rostig quietscht vor Schreck.",
+      "loesung": "Rostig trinkt den Tee, fühlt sich besser und hilft den Helden. Er kennt den Weg zum Turm, hat aber den Schlüssel für die Turmtür verloren.",
+      "schloss": {
+        "was": "Turmtür",
+        "eigenschaft": "Geschick",
+        "schwierigkeit": 5,
+        "ohneSchlossknacker": "Alle drücken gemeinsam die Tür auf (Kraft, 5+), oder Krümel buddelt den Schlüssel aus dem Kräuterbeet."
+      }
+    },
+    {
+      "id": "a3-s2",
+      "titel": "Die Wendeltreppe",
+      "ort": "Bergfried",
+      "schauplatz": "burg",
+      "dauerMin": 15,
+      "musik": {
+        "datei": "turm.mp3",
+        "stimmung": "aufsteigend, Spannung, Fackelknistern"
+      },
+      "kampfMusik": {
+        "datei": "kampf-lustig.mp3",
+        "stimmung": "schnell, verspielt, Pizzicato"
+      },
+      "bild": "assets/bilder/karte-burg.png",
+      "vorlesen": [
+        "Die Treppe im Turm dreht sich immer höher, rundherum, rundherum. Krümel wird schwindelig. An den Wänden hängen Fackeln, und auf jeder Stufe ist eine Zahl eingeritzt. Doch an einer Stelle fehlt eine Stufe. Darunter ist ein dunkles Loch."
+      ],
+      "raetsel": [
+        {
+          "von": "Treppe",
+          "thema": "Zahlenreihen",
+          "einleitung": "Nur wer die fehlende Zahl ruft, lässt die Stufe wieder erscheinen.",
+          "klasse1": {
+            "frage": "1, 2, 3, 4, … welche Zahl fehlt?",
+            "antwort": "5"
+          },
+          "klasse2": {
+            "frage": "3, 6, 9, … welche Zahl fehlt?",
+            "antwort": "12"
+          },
+          "belohnung": "1 Glücksstern",
+          "ohneLoesung": "Springen ist Geschick, 5+. Rostig kann als Brücke dienen, quietscht aber fürchterlich."
+        }
+      ],
+      "kruemel": "Krümel hüpft die Stufen hoch und zählt laut mit. Wirft der Kleine den Plüschwürfel, niest er bei 4 bis 6 vor Freude, und seine Funken machen die ganze Treppe hell: Alle Helden +1 Würfel auf die nächste Probe. Bei 1 bis 3 rutscht er drei Stufen auf dem Po hinunter, landet weich auf Rostigs Bauch und lacht.",
+      "nachVorlesen": [
+        "Oben angekommen, krächzt es von allen Seiten. Die Krähenbande! „Hier kommt keiner rein! Die Gräfin hat Besuchsverbot!“"
+      ],
+      "kampf": {
+        "gegner": "kraehenbande",
+        "anzahl": "wie Helden",
+        "schwachstelle": "Walnüsse – Rostig hat noch welche in der Tasche",
+        "hinweis": "Wer sich an das Römerlager erinnert, bekommt +2 Würfel."
+      }
+    },
+    {
+      "id": "a3-s3",
+      "titel": "Das Nest der Gräfin",
+      "ort": "Turmspitze",
+      "schauplatz": "burg",
+      "dauerMin": 15,
+      "musik": {
+        "datei": "boss.mp3",
+        "stimmung": "dramatisch-komisch, Cembalo, eitle Fanfare"
+      },
+      "versoehnungsMusik": {
+        "datei": "versoehnung.mp3",
+        "stimmung": "sanft, Klavier, rührend"
+      },
+      "bild": "assets/bilder/graefin-glitzer.png",
+      "vorlesen": [
+        "Ganz oben im Turm ist ein riesiges Nest aus Zweigen. Es hat sogar ein Dach. Darin funkelt und glitzert es: Löffel, Knöpfe, Murmeln, und all die gestohlenen Buchseiten. Mittendrin sitzt die Gräfin Glitzer und putzt sich die Federn. „Was wollt IHR denn hier? Das ist MEIN Schatz!“"
+      ],
+      "lernFakten": [
+        {
+          "von": "Spielleiter",
+          "text": "Elstern bauen wirklich Nester mit einem Dach aus Zweigen. So sind ihre Eier vor anderen Vögeln geschützt."
+        }
+      ],
+      "kampf": {
+        "gegner": "graefin-glitzer",
+        "anzahl": 1,
+        "schwachstelle": "Ein Spiegel. Im Nest liegt eine alte Spiegelscherbe, falls niemand selbst einen hat.",
+        "hinweis": "Der beste Weg ist Zähmen. Jede Herz-Probe mit einem echten Kompliment nimmt ihr 1 Herz Wut. Ein besonders schönes Kompliment gibt +1 Würfel. Glitzerspucke lenkt sie besonders gut ab. Die Glitzerkrone macht sie nur eine Runde lang zum Huhn."
+      },
+      "kruemel": "Krümel tapst zur Gräfin und legt ihr einen glänzenden Kieselstein hin. Wirft der Kleine den Plüschwürfel, verliert die Gräfin bei 4 bis 6 sofort 2 Herzen Wut.",
+      "nachVorlesen": [
+        "Die Gräfin schaut auf den Kieselstein. Dann auf euch. Ihre Augen werden feucht. „Das… das hat mir noch nie jemand geschenkt.“ Sie schiebt euch alle Buchseiten zu. „Ich wollte doch nur, dass mich mal jemand schön findet.“"
+      ],
+      "proben": [
+        {
+          "was": "Alle Seiten einsammeln, bevor der Wind sie wegpustet",
+          "eigenschaften": [
+            "Geschick"
+          ],
+          "schwierigkeit": 4,
+          "hinweis": "Jeder Held fängt eine."
+        }
+      ]
+    }
+  ],
+  "abschluss": {
+    "musik": {
+      "datei": "sieg.mp3",
+      "stimmung": "feierlich, Glockenspiel"
+    },
+    "vorlesen": [
+      "Zurück in der Bibliothek klebt Eulalia jede Seite an ihren Platz. Alle Bücher hören auf zu qualmen. Dann landet die Gräfin auf dem Regal. Eulalia räuspert sich. „Nun ja. Wenn Sie möchten, Gräfin, könnten Sie bei uns wohnen. Wir brauchen jemanden, der auf glänzende Dinge aufpasst.“ Die Gräfin plustert sich vor Stolz auf."
+    ],
+    "punkte": [
+      "Jeder Held bekommt Stempel 3: „Burg“. Das ist der dritte Stempel, also steigen alle auf.",
+      "Aufstieg: Jeder wählt +1 Punkt in einer Eigenschaft (höchstens 5), ein neues Talent oder +1 Herz.",
+      "Krümel bekommt einen extra großen Stempel auf die Hand.",
+      "Ausblick auf Staffel 2: In einer Ecke der Bibliothek klopft es. Ein Buch, das noch niemand gesehen hat, ruckelt im Regal. Auf dem Umschlag steht nur: „Die Tiefsee“."
+    ]
+  },
+  "planB": [
+    {
+      "situation": "Die Kinder wollen gegen die Gräfin kämpfen",
+      "loesung": "Das ist erlaubt. Bei 0 Herzen setzt sie sich erschöpft hin und schluchzt. Dann kommt trotzdem die Versöhnung."
+    },
+    {
+      "situation": "Der Kampf zieht sich",
+      "loesung": "Die Gräfin entdeckt ihr Spiegelbild in Rostigs Rüstung und vergisst den Kampf."
+    },
+    {
+      "situation": "Die Treppe ist zu schwer",
+      "loesung": "Eulalia fliegt hinterher und zählt die Zahlen leise mit."
+    },
+    {
+      "situation": "Ein Kind ist traurig, dass das Abenteuer endet",
+      "loesung": "Den Ausblick auf die Tiefsee groß machen. Das Kind darf das neue Buch schon anfassen."
+    }
+  ]
+}

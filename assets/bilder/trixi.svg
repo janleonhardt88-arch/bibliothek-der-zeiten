@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="400" height="320" role="img" aria-label="Ein kleiner Triceratops mit drei Hörnern">
+<rect x="0" y="0" width="200" height="160" fill="#E6F1F1"/>
+<ellipse cx="118" cy="98" rx="56" ry="38" fill="#6FA9A0"/>
+<path d="M168 92 C186 96 194 108 196 118 C182 112 172 108 164 106 Z" fill="#6FA9A0"/>
+<rect x="84" y="122" width="16" height="28" rx="6" fill="#5A938A"/>
+<rect x="134" y="122" width="16" height="28" rx="6" fill="#5A938A"/>
+<path d="M44 56 C30 70 30 100 46 112 C64 120 82 108 84 90 C86 70 64 50 44 56 Z" fill="#E6B84A"/>
+<ellipse cx="52" cy="92" rx="30" ry="22" fill="#6FA9A0"/>
+<path d="M30 92 L8 86 L28 98 Z" fill="#F4EFE6"/>
+<path d="M50 72 L40 44 L58 70 Z" fill="#F4EFE6"/>
+<path d="M68 74 L66 46 L78 74 Z" fill="#F4EFE6"/>
+<circle cx="54" cy="86" r="5" fill="#2A2733"/>
+<path d="M30 104 Q38 110 46 106" stroke="#2A2733" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="24" cy="116" r="3" fill="#D9A866"/>
+<circle cx="32" cy="122" r="2.5" fill="#D9A866"/>
+</svg>

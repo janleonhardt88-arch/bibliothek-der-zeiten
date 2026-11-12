@@ -1,0 +1,205 @@
+{
+  "id": "a2-aegypten",
+  "nummer": 2,
+  "titel": "Das Rätsel der Hieroglyphen",
+  "epoche": "Altes Ägypten",
+  "stempel": "Ägypten",
+  "dauerMin": "35-45",
+  "kurz": "Die Helden bringen im alten Ägypten die durcheinandergeratene Schrift in Ordnung und holen die Pyramiden-Seite zurück.",
+  "karte": "assets/bilder/karte-aegypten.png",
+  "vorbereitung": [
+    "Handout Hieroglyphen-Alphabet ausdrucken",
+    "Karte Ägypten bereitlegen",
+    "Bonus: Datteln oder Rosinen als echte Snacks"
+  ],
+  "szenen": [
+    {
+      "id": "a2-s1",
+      "titel": "Am Nil",
+      "ort": "Nilufer",
+      "schauplatz": "aegypten",
+      "dauerMin": 10,
+      "musik": {
+        "datei": "nil.mp3",
+        "stimmung": "warm, Wasserplätschern, Flöte"
+      },
+      "bild": "assets/bilder/karte-aegypten.png",
+      "vorlesen": [
+        "Eulalia flattert aufgeregt hin und her. „Die Gräfin war schon wieder da! Sie hat die Pyramiden-Seite gestohlen. Jetzt ist im alten Ägypten alles durcheinander!“ Krümel klettert auf den Buchdeckel. Ihr ruft: „Lies mich, nimm mich mit!“",
+        "Heiße Luft schlägt euch entgegen. Ihr steht an einem breiten, glänzenden Fluss, dem Nil. Überall wachsen hohe Gräser. Am Ufer sitzt eine Frau mit einer Schilfrolle und weint. „Ich bin Neferet, die Schreiberin. Alle Zeichen auf meinen Rollen sind verrutscht! Keiner kann mehr lesen!“"
+      ],
+      "lernFakten": [
+        {
+          "von": "Neferet",
+          "text": "Die Ägypter schrieben mit Bildern, den Hieroglyphen. Es gab Hunderte davon. Ihr Papier machten sie aus der Papyruspflanze, die hier am Ufer wächst."
+        }
+      ],
+      "proben": [
+        {
+          "was": "Neferets Schriftrollen aus dem Wasser holen",
+          "eigenschaften": [
+            "Geschick",
+            "Kraft"
+          ],
+          "schwierigkeit": 4
+        }
+      ],
+      "nachVorlesen": [
+        "Plötzlich blubbert das Wasser. Zwei kleine Ohren, zwei Nasenlöcher, dann ein riesiges Maul. Ein Nilpferd! Es gähnt so groß, dass Krümel sich hinter euren Beinen versteckt."
+      ],
+      "kruemel": "Krümel lugt hinter euren Beinen hervor und winkt dem Nilpferd. Wirft der Kleine den Plüschwürfel, gähnt das Nilpferd bei 4 bis 6 freundlich zurück: Alle Helden +1 Würfel auf die nächste Probe. Bei 1 bis 3 spritzt es Krümel nass, und er schüttelt sich wie ein kleiner Hund.",
+      "raetsel": [
+        {
+          "von": "Spielleiter",
+          "thema": "Tiere",
+          "klasse1": {
+            "frage": "Nilpferde leben im Wasser. Können sie schwimmen?",
+            "antwort": "Nein! Sie laufen unter Wasser über den Grund."
+          },
+          "klasse2": {
+            "frage": "Ein Nilpferd frisst jede Nacht 4 Haufen Gras. Wie viele Haufen sind das in 5 Nächten?",
+            "antwort": "20"
+          },
+          "belohnung": "1 Glücksstern"
+        }
+      ],
+      "loesung": "Das Nilpferd ist freundlich. Wer es mit einer Herz-Probe (4+) fragt, darf auf seinem Rücken über den Nil reiten."
+    },
+    {
+      "id": "a2-s2",
+      "titel": "Kamel Karl",
+      "ort": "Wüstenweg",
+      "schauplatz": "aegypten",
+      "dauerMin": 15,
+      "musik": {
+        "datei": "wueste.mp3",
+        "stimmung": "Wind, Trommel, leicht komisch"
+      },
+      "kampfMusik": {
+        "datei": "kampf-lustig.mp3",
+        "stimmung": "schnell, verspielt, Pizzicato"
+      },
+      "bild": "assets/bilder/kamel-karl.png",
+      "vorlesen": [
+        "Am anderen Ufer führt ein Weg durch den Sand zur Pyramide. Doch mitten auf dem Weg steht ein Kamel. Es kaut, es schnaubt, und es bewegt sich keinen Zentimeter. „Hier kommt keiner vorbei!“, brummt es. „Die Elster hat gesagt, ich kriege ein glitzerndes Halsband, wenn ich aufpasse.“"
+      ],
+      "kruemel": "Krümel hält Karl einen Grashalm hin. Wirft der Kleine den Plüschwürfel, kaut Karl bei 4 bis 6 zufrieden und wird gleich weniger brummig: Karl verliert sofort 1 Herz. Bei 1 bis 3 schleckt Karl Krümel einmal quer übers Gesicht, und Krümel kichert.",
+      "kampf": {
+        "gegner": "kamel-karl",
+        "anzahl": 1,
+        "schwachstelle": "Datteln aus Neferets Korb",
+        "hinweis": "Zähmen geht besonders gut: Karl will eigentlich nur gelobt werden.",
+        "lernFakt": "Im Höcker eines Kamels ist kein Wasser, sondern Fett. Davon kann es tagelang leben."
+      },
+      "nachVorlesen": [
+        "Ist Karl friedlich, seufzt er: „Ich wollte doch nur auch mal was Schönes haben.“ Wer ihm ein Kompliment macht, hat einen neuen Freund. Karl trägt alle bis zur Pyramide."
+      ]
+    },
+    {
+      "id": "a2-s3",
+      "titel": "In der Pyramide",
+      "ort": "Pyramide und Geheimkammer",
+      "schauplatz": "aegypten",
+      "dauerMin": 15,
+      "musik": {
+        "datei": "pyramide.mp3",
+        "stimmung": "dunkel, hallend, spannend, nicht gruselig"
+      },
+      "bild": "assets/bilder/handout-hieroglyphen.png",
+      "vorlesen": [
+        "Vor euch ragt eine riesige Pyramide in den Himmel. Ein schmaler Gang führt hinein. Drinnen ist es stockdunkel. Da niest Krümel. Pff! Seine Funken leuchten den Gang aus wie kleine Laternen."
+      ],
+      "kruemel": "Das erste Licht in der Pyramide gehört Krümel. Lady Flämmchen macht danach mit ihrer Glitzerspucke die Krähenfedern-Spur der Gräfin sichtbar.",
+      "lernFakten": [
+        {
+          "von": "Eulalia",
+          "text": "Die größte Pyramide ist über 4.500 Jahre alt. Sie besteht aus mehr als zwei Millionen Steinblöcken.",
+          "regie": "Sie ruft aus dem Buch."
+        },
+        {
+          "von": "Spielleiter",
+          "text": "Katzen waren im alten Ägypten heilig. Es gab sogar eine Katzengöttin, Bastet.",
+          "regie": "Erst erzählen, wenn die Katzenstatue auftaucht."
+        }
+      ],
+      "raetsel": [
+        {
+          "von": "Steinwand",
+          "thema": "Mathe",
+          "klasse1": {
+            "frage": "Eine kleine Pyramide hat oben 1 Stein, darunter 2, ganz unten 3. Wie viele Steine sind es zusammen?",
+            "antwort": "6"
+          },
+          "klasse2": {
+            "frage": "Die Pyramide hat noch eine vierte Reihe mit 4 Steinen. Wie viele Steine sind es jetzt?",
+            "antwort": "10"
+          },
+          "belohnung": "1 Glücksstern"
+        },
+        {
+          "von": "Steintür",
+          "thema": "Hieroglyphen",
+          "handout": "assets/bilder/handout-hieroglyphen.png",
+          "einleitung": "Am Ende des Ganges ist eine Tür aus Stein. Darauf sind Bilder gemalt. Daneben steht in Neferets Schrift: „Nur wer das Wort lesen kann, darf hinein.“",
+          "klasse1": {
+            "frage": "Wasserwelle, Schilfblatt, Löwe",
+            "antwort": "NIL"
+          },
+          "klasse2": {
+            "frage": "Korb, Geier, Mund, Löwe",
+            "antwort": "KARL – die Tür kennt den Kamel-Freund!"
+          },
+          "belohnung": "1 Glücksstern",
+          "extra": "Auf dem Handout ist die Eule das Zeichen für M. Eulalia ist sehr stolz darauf.",
+          "keinSchloss": true
+        }
+      ],
+      "nachVorlesen": [
+        "Die Tür gleitet auf. In der Kammer sitzt eine goldene Katzenstatue. Unter ihrer Pfote klemmt die Pyramiden-Seite. Neben der Statue liegen drei Krähenfedern."
+      ],
+      "proben": [
+        {
+          "was": "Die Seite unter der Pfote herausziehen, ohne die Statue umzuwerfen",
+          "eigenschaften": [
+            "Geschick"
+          ],
+          "schwierigkeit": 5,
+          "hinweis": "Bei einem Fehlschlag miaut die Statue laut, und alle erschrecken sich. Beim zweiten Versuch klappt es automatisch."
+        }
+      ],
+      "schlussVorlesen": [
+        "Kaum habt ihr die Seite, zetert es über euch. Durch ein Luftloch in der Decke guckt die Gräfin Glitzer. „Pah! Behaltet doch euren alten Papyrus! Ich habe etwas viel Schöneres!“ Sie wedelt mit einer Seite, auf der ein glänzender Ritterhelm zu sehen ist. Dann ist sie weg."
+      ]
+    }
+  ],
+  "abschluss": {
+    "musik": {
+      "datei": "sieg.mp3",
+      "stimmung": "feierlich, Glockenspiel"
+    },
+    "vorlesen": [],
+    "punkte": [
+      "Neferets Schrift ist wieder in Ordnung. Sie schenkt jedem Helden seinen Namen in Hieroglyphen.",
+      "Jeder Held bekommt Stempel 2: „Ägypten“, und einen Glücksstern.",
+      "Krümel bekommt einen Stempel auf die Hand."
+    ]
+  },
+  "planB": [
+    {
+      "situation": "Die Helden wollen nicht aufs Nilpferd",
+      "loesung": "Ein Fischer mit Schilfboot bringt sie rüber. Ein Ruder-Wettrennen ist eine Kraft-Probe (4+)."
+    },
+    {
+      "situation": "Der Kampf mit Karl dauert zu lange",
+      "loesung": "Karl riecht die Datteln von selbst und wird friedlich."
+    },
+    {
+      "situation": "Das Tür-Rätsel ist zu schwer",
+      "loesung": "Neferet zeigt auf das erste Zeichen und verrät den ersten Buchstaben."
+    },
+    {
+      "situation": "Ein Kind hat Angst im Dunkeln",
+      "loesung": "Krümel niest so viele Funken, dass es hell wie am Tag wird."
+    }
+  ]
+}

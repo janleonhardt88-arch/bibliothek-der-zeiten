@@ -954,8 +954,16 @@ async function starte() {
 }
 
 if ('serviceWorker' in navigator) {
+  // Gibt es eine neue Version, übernimmt der neue Offline-Speicher und die App lädt sich einmal neu.
+  const hatteAlteVersion = !!navigator.serviceWorker.controller;
+  let neuGeladen = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hatteAlteVersion && !neuGeladen) { neuGeladen = true; location.reload(); }
+  });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update().catch(() => {}); });
+    }).catch(() => {});
     navigator.serviceWorker.ready.then(r => r.active && r.active.postMessage('vorladen')).catch(() => {});
   });
 }

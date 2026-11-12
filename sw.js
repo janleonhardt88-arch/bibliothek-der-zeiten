@@ -1,9 +1,9 @@
 // Offline-Speicher der App. Mit Internet holt die App immer die neuesten Dateien,
 // ohne Internet nimmt sie die zuletzt gespeicherten.
-const CACHE = 'bdz-v4';
+const CACHE = 'bdz-v5';
 const KERN = [
   './', 'index.html', 'manifest.webmanifest', 'app/app.js', 'app/style.css',
-  'app/icons/icon-192.png', 'app/icons/icon-512.png', 'app/schriften/fredoka.woff2', 'app/schriften/nunito.woff2',
+  'app/icons/icon-192.png', 'app/icons/icon-512.png',
   'data/regeln.json', 'data/helden.json', 'data/figuren.json', 'data/sounds.json', 'data/quellen.json', 'data/abenteuer/index.json',
   'docs/spickzettel.md', 'docs/spielerkarte.md'
 ];
@@ -67,7 +67,7 @@ self.addEventListener('fetch', e => {
   e.respondWith((async () => {
     const c = await caches.open(CACHE);
     try {
-      const r = await mitZeitlimit(fetch(req), 4000);
+      const r = await mitZeitlimit(fetch(req, { cache: 'no-cache' }), 4000); // immer beim Server nachfragen, ob es Neues gibt
       if (r.ok && r.status === 200) c.put(req, r.clone());
       return r;
     } catch {

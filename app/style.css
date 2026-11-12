@@ -1,27 +1,34 @@
+/* Schriften liegen in app/schriften/ (SIL Open Font License), damit sie auch offline gehen. */
+@font-face { font-family: "Fredoka"; src: url("schriften/fredoka.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("schriften/nunito.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+
 :root {
-  --papier: #F8F2E4;
-  --karte: #FFFDF7;
+  --papier: #F6EFE0;
+  --karte: #FFFDF8;
   --tinte: #2A2733;
-  --leise: #5A5560;
-  --linie: #D9CFBA;
+  --leise: #6A6470;
+  --linie: #E4DAC6;
   --petrol: #2E7472;
-  --petrol-hell: #EAF2EF;
+  --petrol-dunkel: #245C5A;
   --gold: #E6B84A;
   --rot: #A8322C;
-  --notiz: #FFF3C4;
+  --notiz: #FFF4CC;
   --notiz-rand: #E6B84A;
-  --schatten: 0 2px 10px rgba(42, 39, 51, .08);
+  --schatten: 0 1px 2px rgba(42, 39, 51, .06), 0 6px 18px rgba(42, 39, 51, .07);
+  --rund: 18px;
+  --kopf: "Fredoka", "Segoe UI", Roboto, system-ui, sans-serif;
+  --text: "Nunito", "Segoe UI", Roboto, system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --papier: #1E1C24;
-    --karte: #2A2733;
+    --papier: #1C1A21;
+    --karte: #27242E;
     --tinte: #F4EFE6;
-    --leise: #B9B2C2;
-    --linie: #46414F;
+    --leise: #B4ADBD;
+    --linie: #3B3644;
     --petrol: #5FB3AF;
-    --petrol-hell: #24383A;
-    --notiz: #3F3620;
+    --petrol-dunkel: #2E7472;
+    --notiz: #3A321D;
     --notiz-rand: #B8902E;
     --rot: #E07A70;
     --schatten: none;
@@ -33,138 +40,281 @@ html, body { margin: 0; height: 100%; }
 body {
   background: var(--papier);
   color: var(--tinte);
-  font-family: "Nunito", "Segoe UI", Roboto, system-ui, sans-serif;
+  font-family: var(--text);
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.5;
   -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
 }
-h1, h2, h3 { font-family: "Fredoka", "Segoe UI", Roboto, system-ui, sans-serif; line-height: 1.2; }
-h1 { font-size: 1.6rem; margin: .2em 0 .3em; }
-h2 { font-size: 1.15rem; margin: 1.2em 0 .4em; }
+h1, h2, h3 { font-family: var(--kopf); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; }
+h1 { font-size: 1.65rem; margin: .35em 0 .25em; }
+h2 { font-size: 1.12rem; margin: 1.4em 0 .5em; }
+p { margin: .5em 0; }
 button { font: inherit; color: inherit; cursor: pointer; }
-.laden { padding: 40px 20px; text-align: center; color: var(--leise); }
+a { color: var(--petrol); }
+.laden { padding: 40px 20px; text-align: center; color: var(--leise); font-family: var(--kopf); }
+.icon { width: 24px; height: 24px; flex: none; }
 
-/* Grundgerüst */
+/* ---------- Grundgerüst ---------- */
 #app { height: 100dvh; display: flex; flex-direction: column; }
+
 .kopf {
-  display: flex; align-items: center; gap: 8px;
-  padding: calc(env(safe-area-inset-top) + 8px) 12px 8px;
-  background: var(--petrol); color: #fff;
+  background: var(--petrol-dunkel); color: #fff;
+  padding: calc(env(safe-area-inset-top) + 6px) 8px 0;
 }
-.kopf .titel { flex: 1; min-width: 0; background: none; border: 0; text-align: left; padding: 4px; color: #fff; }
-.kopf .titel b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.kopf .titel small { opacity: .85; }
-.kopf .rund {
-  background: rgba(255,255,255,.18); border: 0; color: #fff;
-  min-width: 48px; height: 44px; border-radius: 22px; padding: 0 14px; font-weight: 700;
+.kopf-zeile { display: flex; align-items: center; gap: 4px; min-height: 52px; }
+.kopf .titel {
+  flex: 1; min-width: 0; background: none; border: 0; color: #fff; text-align: left;
+  padding: 6px 8px; border-radius: 12px;
 }
-.inhalt { flex: 1; overflow-y: auto; padding: 18px 16px 28px; -webkit-overflow-scrolling: touch; }
-.inhalt.neu { animation: rein .18s ease-out; }
-@keyframes rein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.kopf .titel small { display: block; font-size: .78rem; opacity: .8; font-weight: 700; letter-spacing: .02em; }
+.kopf .titel b { display: block; font-family: var(--kopf); font-weight: 600; font-size: 1.12rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.symbol {
+  width: 44px; height: 44px; flex: none; display: grid; place-items: center;
+  background: none; border: 0; border-radius: 14px; color: inherit;
+}
+.symbol:active, .kopf .titel:active { background: rgba(255, 255, 255, .14); }
+
+.fortschritt { display: flex; gap: 4px; padding: 4px 8px 10px; }
+.fortschritt span { height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .25); overflow: hidden; }
+.fortschritt span i { display: block; height: 100%; background: var(--gold); border-radius: 3px; }
+
+.inhalt { flex: 1; overflow-y: auto; padding: 18px 16px 32px; -webkit-overflow-scrolling: touch; }
+.inhalt.neu .karte { animation: rein .2s ease-out; }
+@keyframes rein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
 .fuss {
-  display: grid; grid-template-columns: 1fr 1fr 1fr 1.3fr; gap: 8px;
+  display: flex; gap: 8px; align-items: stretch;
   padding: 10px 12px calc(env(safe-area-inset-bottom) + 10px);
   background: var(--karte); border-top: 1px solid var(--linie);
 }
 .fuss button {
-  height: 60px; border-radius: 16px; border: 2px solid var(--linie);
-  background: var(--papier); font-weight: 700; font-size: 1.05rem;
+  height: 60px; border-radius: 16px; border: 0; background: var(--papier);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  font-size: .72rem; font-weight: 800; color: var(--leise); min-width: 60px;
 }
-.fuss button { font-size: .95rem; padding: 0 4px; }
-.fuss .weiter { background: var(--petrol); border-color: var(--petrol); color: #fff; }
+.fuss button:active { filter: brightness(.94); }
+.fuss .weiter {
+  flex: 1; flex-direction: row; gap: 6px; background: var(--petrol); color: #fff;
+  font-family: var(--kopf); font-size: 1.2rem; font-weight: 600;
+}
 .fuss button:disabled { opacity: .35; }
 
-/* Karten-Bausteine */
-.art { margin: 0; font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--petrol); }
-.meta { margin: 0 0 1em; color: var(--leise); }
-.vorlese { font-size: 1.32rem; line-height: 1.55; margin: .6em 0; }
-.regie { font-size: .95rem; font-style: italic; color: var(--leise); margin: .3em 0 .8em; }
-.von { color: var(--leise); margin: .6em 0 0; }
-.notiz {
-  background: var(--notiz); border-left: 5px solid var(--notiz-rand);
-  border-radius: 10px; padding: 10px 12px; margin: 10px 0; font-size: .95rem;
+/* ---------- Karten ---------- */
+.karte { --typ: var(--petrol); --typ-hell: color-mix(in srgb, var(--typ) 14%, var(--karte)); }
+.typ-vorlesen  { --typ: #9A6B3C; }
+.typ-raetsel   { --typ: #B07D12; }
+.typ-probe     { --typ: #2E7472; }
+.typ-kampf     { --typ: #B23A30; }
+.typ-kruemel   { --typ: #4E8A3E; }
+.typ-fakt      { --typ: #3C6E9E; }
+.typ-hinweis, .typ-schloss { --typ: #6A5F78; }
+.typ-abschluss { --typ: #B07D12; }
+@media (prefers-color-scheme: dark) {
+  .typ-vorlesen { --typ: #D9A66E; } .typ-raetsel, .typ-abschluss { --typ: #E6B84A; } .typ-probe { --typ: #5FB3AF; }
+  .typ-kampf { --typ: #E07A70; } .typ-kruemel { --typ: #8CC47A; } .typ-fakt { --typ: #8DB6E0; } .typ-hinweis, .typ-schloss { --typ: #B7A9C9; }
 }
-.kasten { background: var(--karte); border: 1px solid var(--linie); border-radius: 16px; padding: 14px; margin: 12px 0; box-shadow: var(--schatten); }
+
+.art {
+  display: inline-flex; align-items: center; gap: 7px; margin: 0;
+  background: var(--typ-hell); color: var(--typ);
+  padding: 5px 13px 5px 9px; border-radius: 999px;
+  font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+}
+.art::before { content: ""; width: 17px; height: 17px; background: currentColor; -webkit-mask: var(--zeichen) center / contain no-repeat; mask: var(--zeichen) center / contain no-repeat; }
+.karte { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z'/><circle cx='12' cy='10' r='2.2'/></svg>"); }
+.typ-start { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z'/><path d='M9 4v14M15 6v14'/></svg>"); }
+.typ-vorlesen { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z'/><path d='M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z'/></svg>"); }
+.typ-raetsel { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'/><path d='M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7'/><path d='M12 17h.01'/></svg>"); }
+.typ-probe { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3.5' y='3.5' width='17' height='17' rx='4'/><path d='M8.5 8.5h.01M15.5 15.5h.01M12 12h.01' stroke-width='3.2'/></svg>"); }
+.typ-kampf { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3l7.5 3v6c0 4.4-3.2 7.4-7.5 9-4.3-1.6-7.5-4.6-7.5-9V6z'/></svg>"); }
+.typ-kruemel { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z'/></svg>"); }
+.typ-fakt { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 18h6M10 21h4'/><path d='M12 3a6 6 0 0 0-3.8 10.6c.6.6.8 1.4.8 2.4h6c0-1 .2-1.8.8-2.4A6 6 0 0 0 12 3z'/></svg>"); }
+.typ-hinweis { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'/><path d='M12 11v6M12 7.5h.01'/></svg>"); }
+.typ-schloss { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='4.5' y='10.5' width='15' height='10' rx='2.5'/><path d='M8 10.5V7.5a4 4 0 0 1 8 0v3'/></svg>"); }
+.typ-ende { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'/><path d='M8 12.5l2.7 2.7L16 9.8'/></svg>"); }
+.typ-abschluss { --zeichen: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z'/></svg>"); }
+
+.karte h1 { margin-top: .45em; }
+.meta { margin: 0 0 1em; color: var(--leise); font-size: .95rem; }
+
+/* Vorlesetext: wie eine Buchseite */
+.vorlese {
+  font-size: 1.3rem; line-height: 1.62; margin: 14px 0;
+  background: color-mix(in srgb, var(--typ) 7%, var(--karte));
+  border-left: 4px solid var(--typ); border-radius: 6px var(--rund) var(--rund) 6px;
+  padding: 16px 18px; box-shadow: var(--schatten);
+}
+.typ-hinweis .vorlese, .typ-ende .vorlese { font-size: 1.15rem; }
+.regie { font-size: .95rem; font-style: italic; color: var(--leise); margin: -4px 4px 12px; }
+.von { color: var(--leise); margin: 14px 0 0; }
+.von b { color: var(--tinte); }
+
+.notiz {
+  background: var(--notiz); border-left: 4px solid var(--notiz-rand);
+  border-radius: 6px 14px 14px 6px; padding: 10px 14px; margin: 12px 0; font-size: .95rem;
+}
+.kasten {
+  background: var(--karte); border: 1px solid var(--linie); border-radius: var(--rund);
+  padding: 14px 16px; margin: 14px 0; box-shadow: var(--schatten);
+}
 .kasten h2:first-child { margin-top: 0; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
-.chip { background: var(--petrol-hell); color: var(--tinte); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: .95rem; }
-.chip.ziel { background: var(--gold); color: #2A2733; }
+.kasten > :last-child { margin-bottom: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.chip { background: var(--typ-hell, #EAF2EF); color: var(--tinte); border-radius: 999px; padding: 5px 13px; font-weight: 800; font-size: .92rem; }
+.chip.ziel { background: var(--typ); color: #fff; }
 ul.liste { padding-left: 1.2em; margin: .4em 0; }
-ul.liste li { margin: .25em 0; }
+ul.liste li { margin: .3em 0; }
 
 .knopf {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  min-height: 48px; padding: 10px 18px; border-radius: 14px;
-  border: 2px solid var(--petrol); background: var(--karte); color: var(--petrol); font-weight: 700;
+  min-height: 50px; padding: 10px 18px; border-radius: 14px;
+  border: 2px solid var(--linie); background: var(--karte); color: var(--tinte); font-weight: 800;
 }
-.knopf.voll { background: var(--petrol); color: #fff; }
-.knopf.breit { width: 100%; margin: 6px 0; }
-.knopf.gross { min-height: 88px; font-size: 1.3rem; }
+.knopf.voll { background: var(--typ, var(--petrol)); border-color: transparent; color: #fff; }
+.knopf.breit { width: 100%; margin: 8px 0; }
+.knopf.gross { min-height: 84px; font-size: 1.3rem; font-family: var(--kopf); font-weight: 600; }
+.knopf:active { filter: brightness(.94); }
 .knopfreihe { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
-.knopfreihe .knopf { flex: 1 1 auto; }
+.knopfreihe .knopf { flex: 1 1 40%; }
 
-.umschalter { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--petrol); border-radius: 14px; overflow: hidden; margin: 10px 0; }
-.umschalter button { border: 0; background: var(--karte); padding: 12px; font-weight: 700; color: var(--petrol); }
-.umschalter button.an { background: var(--petrol); color: #fff; }
-.frage { font-size: 1.4rem; line-height: 1.45; font-weight: 700; margin: .5em 0; }
-details.antwort { background: var(--petrol-hell); border-radius: 14px; padding: 12px 14px; margin: 10px 0; }
-details.antwort summary { font-weight: 800; color: var(--petrol); cursor: pointer; }
-details.antwort p { font-size: 1.25rem; font-weight: 700; margin: .5em 0 0; }
+/* Rätsel */
+.umschalter { display: grid; grid-template-columns: 1fr 1fr; background: var(--typ-hell); border-radius: 14px; padding: 4px; margin: 12px 0; }
+.umschalter button { border: 0; background: none; padding: 10px; border-radius: 11px; font-weight: 800; color: var(--typ); }
+.umschalter button.an { background: var(--karte); color: var(--tinte); box-shadow: 0 1px 4px rgba(0, 0, 0, .12); }
+.frage {
+  font-family: var(--kopf); font-size: 1.45rem; line-height: 1.4; font-weight: 600; margin: 14px 0;
+  background: var(--karte); border: 2px solid var(--typ); border-radius: var(--rund); padding: 18px; box-shadow: var(--schatten);
+}
+details.antwort { background: var(--typ-hell); border-radius: 14px; padding: 12px 16px; margin: 10px 0; }
+details.antwort summary { font-weight: 800; color: var(--typ); cursor: pointer; list-style: none; }
+details.antwort summary::-webkit-details-marker { display: none; }
+details.antwort summary::before { content: "▸ "; }
+details.antwort[open] summary::before { content: "▾ "; }
+details.antwort p { font-size: 1.2rem; font-weight: 700; margin: .5em 0 0; }
 
-table.werte { width: 100%; border-collapse: collapse; margin: 8px 0; }
-table.werte th, table.werte td { padding: 8px 6px; border-bottom: 1px solid var(--linie); text-align: left; vertical-align: top; }
-table.werte td.zahl, table.werte th.zahl { text-align: center; font-weight: 800; font-size: 1.15rem; }
-table.werte small { color: var(--leise); font-weight: 400; }
+/* Werte-Tabelle */
+table.werte { width: 100%; border-collapse: collapse; margin: 10px 0; background: var(--karte); border-radius: var(--rund); overflow: hidden; box-shadow: var(--schatten); }
+table.werte th, table.werte td { padding: 10px 10px; border-bottom: 1px solid var(--linie); text-align: left; vertical-align: middle; }
+table.werte tr:last-child td { border-bottom: 0; }
+table.werte th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--leise); }
+table.werte td.zahl, table.werte th.zahl { text-align: center; }
+table.werte td.zahl { font-family: var(--kopf); font-weight: 600; font-size: 1.35rem; color: var(--typ); }
+table.werte small { color: var(--leise); font-weight: 400; font-size: .82rem; }
 
-.bild { margin: 10px 0; border-radius: 16px; overflow: hidden; background: var(--karte); border: 1px solid var(--linie); }
-.bild img { display: block; width: 100%; height: auto; max-height: 42vh; object-fit: contain; background: #fff; }
+.bild { margin: 14px 0; border-radius: var(--rund); overflow: hidden; background: var(--karte); box-shadow: var(--schatten); }
+.bild img { display: block; width: 100%; height: auto; max-height: 44vh; object-fit: contain; }
 .bild .fehlt { padding: 14px; color: var(--leise); font-size: .9rem; }
 
 /* Kampf */
-.gegner { border: 2px solid var(--linie); border-radius: 14px; padding: 10px 12px; margin: 8px 0; background: var(--karte); }
-.gegner.weg { opacity: .55; }
-.herzen { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-.herz { width: 46px; height: 46px; border-radius: 12px; border: 2px solid var(--rot); background: var(--karte); color: var(--rot); font-size: 1.5rem; line-height: 1; }
+.gegner { border-radius: 14px; padding: 10px 14px; margin: 8px 0; background: var(--karte); box-shadow: var(--schatten); display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.gegner b { font-family: var(--kopf); font-weight: 600; }
+.gegner.weg { opacity: .5; }
+.herzen { display: flex; flex-wrap: wrap; gap: 6px; }
+.herz { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--rot); background: none; color: var(--rot); font-size: 1.35rem; line-height: 1; }
 .herz.voll { background: var(--rot); color: #fff; }
-.runde { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-weight: 700; }
-.runde .knopf { min-width: 52px; padding: 8px; }
+.runde { display: flex; align-items: center; gap: 12px; margin: 12px 0; font-weight: 800; }
+.runde .knopf { min-width: 50px; min-height: 44px; padding: 6px; }
+.runde .zahl { font-family: var(--kopf); font-size: 1.5rem; min-width: 1.5em; text-align: center; }
 
-/* Start */
-.held-wahl { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 2px solid var(--linie); border-radius: 14px; margin: 6px 0; background: var(--karte); }
-.held-wahl input { flex: none; width: 26px; height: 26px; accent-color: var(--petrol); }
-.abenteuer-knopf { display: block; width: 100%; text-align: left; padding: 14px; margin: 8px 0; border-radius: 16px; border: 2px solid var(--linie); background: var(--karte); }
-.abenteuer-knopf b { display: block; font-size: 1.1rem; }
-.abenteuer-knopf small { color: var(--leise); }
-.abenteuer-knopf.erster { border-color: var(--gold); }
-
-/* Ebene (Overlay) */
-#ebene { position: fixed; inset: 0; z-index: 10; background: rgba(20, 18, 26, .55); display: flex; align-items: flex-end; }
-#ebene[hidden] { display: none; }
-.blatt {
-  width: 100%; max-height: 92dvh; overflow-y: auto; background: var(--papier);
-  border-radius: 22px 22px 0 0; padding: 16px 16px calc(env(safe-area-inset-bottom) + 20px);
+/* ---------- Start ---------- */
+.start-kopf {
+  background: var(--petrol-dunkel); color: #fff;
+  padding: calc(env(safe-area-inset-top) + 8px) 8px 22px 20px;
+  border-radius: 0 0 28px 28px;
 }
-.blatt-kopf { display: flex; align-items: center; gap: 10px; position: sticky; top: -16px; background: var(--papier); padding: 4px 0 8px; z-index: 1; }
-.blatt-kopf h1 { flex: 1; margin: 0; font-size: 1.35rem; }
-.reiter { display: flex; gap: 6px; margin: 4px 0 10px; overflow-x: auto; }
-.reiter button { border: 2px solid var(--linie); background: var(--karte); border-radius: 999px; padding: 8px 14px; font-weight: 700; white-space: nowrap; }
-.reiter button.an { background: var(--petrol); border-color: var(--petrol); color: #fff; }
+.start-kopf .kopf-zeile { justify-content: flex-end; min-height: 44px; }
+.start-kopf h1 { font-size: 1.9rem; margin: 0 0 2px; }
+.start-kopf p { margin: 0; opacity: .85; }
+.fortsetzen {
+  display: block; width: 100%; text-align: left; border: 0; margin: -6px 0 6px;
+  background: var(--karte); border-radius: 20px; padding: 16px 18px; box-shadow: var(--schatten);
+}
+.fortsetzen small { color: var(--petrol); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: .75rem; }
+.fortsetzen b { display: block; font-family: var(--kopf); font-weight: 600; font-size: 1.25rem; margin: 2px 0 8px; }
+.fortsetzen .balken { height: 6px; background: var(--linie); border-radius: 3px; overflow: hidden; }
+.fortsetzen .balken i { display: block; height: 100%; background: var(--petrol); }
+.fortsetzen .weiter-zeile { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; color: var(--leise); font-size: .9rem; }
+.fortsetzen .weiter-zeile span:last-child { color: var(--petrol); font-weight: 800; }
 
-.held { background: var(--karte); border: 1px solid var(--linie); border-radius: 16px; padding: 12px; margin: 10px 0; }
+.helden-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.held-kachel {
+  position: relative; display: block; text-align: left; border: 2px solid var(--linie); background: var(--karte);
+  border-radius: 16px; padding: 12px 12px 12px 14px; min-height: 76px;
+}
+.held-kachel b { display: block; font-family: var(--kopf); font-weight: 600; font-size: 1.02rem; line-height: 1.2; padding-right: 22px; }
+.held-kachel small {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  color: var(--leise); font-size: .82rem; margin-top: 3px; line-height: 1.3;
+}
+.held-kachel input { position: absolute; opacity: 0; pointer-events: none; }
+.held-kachel::after {
+  content: ""; position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid var(--linie);
+}
+.held-kachel:has(input:checked) { border-color: var(--petrol); background: color-mix(in srgb, var(--petrol) 8%, var(--karte)); }
+.held-kachel:has(input:checked)::after {
+  background: var(--petrol) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M6 12.5l4 4 8-9'/></svg>") center / 14px no-repeat;
+  border-color: var(--petrol);
+}
+.kruemel-zeile { color: var(--leise); font-size: .9rem; margin: 8px 2px 0; }
+
+.abenteuer-karte {
+  display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
+  background: var(--karte); border: 0; border-radius: 20px; padding: 10px; margin: 10px 0; box-shadow: var(--schatten);
+}
+.abenteuer-karte .vorschau {
+  width: 78px; height: 78px; flex: none; border-radius: 14px; overflow: hidden; background: color-mix(in srgb, var(--petrol) 12%, var(--karte));
+  display: grid; place-items: center; font-family: var(--kopf); font-size: 1.8rem; font-weight: 600; color: var(--petrol);
+}
+.abenteuer-karte .vorschau img { width: 100%; height: 100%; object-fit: cover; }
+.abenteuer-karte .text { flex: 1; min-width: 0; }
+.abenteuer-karte small { color: var(--leise); font-size: .85rem; }
+.abenteuer-karte .nr { color: var(--petrol); font-weight: 800; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.abenteuer-karte b { display: block; font-family: var(--kopf); font-weight: 600; font-size: 1.1rem; line-height: 1.25; margin: 1px 0 2px; }
+.abenteuer-karte .gespielt { display: inline-block; background: var(--gold); color: #2A2733; border-radius: 999px; padding: 1px 8px; font-size: .72rem; font-weight: 800; margin-left: 4px; }
+.werkzeuge { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.werkzeuge .knopf { flex-direction: column; min-height: 76px; gap: 4px; border: 0; box-shadow: var(--schatten); font-size: .9rem; }
+.werkzeuge .knopf .icon { color: var(--petrol); }
+
+/* ---------- Ebene (Overlay) ---------- */
+#ebene { position: fixed; inset: 0; z-index: 10; background: rgba(20, 18, 26, .5); display: flex; align-items: flex-end; animation: dunkel .15s ease-out; }
+#ebene[hidden] { display: none; }
+@keyframes dunkel { from { opacity: 0; } }
+.blatt {
+  width: 100%; max-height: 90dvh; overflow-y: auto; background: var(--papier);
+  border-radius: 24px 24px 0 0; padding: 8px 16px calc(env(safe-area-inset-bottom) + 20px);
+  animation: hoch .2s ease-out;
+}
+@keyframes hoch { from { transform: translateY(30px); opacity: .6; } }
+.blatt::before { content: ""; display: block; width: 40px; height: 5px; border-radius: 3px; background: var(--linie); margin: 0 auto 6px; }
+.blatt-kopf { display: flex; align-items: center; gap: 10px; position: sticky; top: -8px; background: var(--papier); padding: 6px 0 10px; z-index: 1; }
+.blatt-kopf h1 { flex: 1; margin: 0; font-size: 1.35rem; }
+.blatt-kopf .knopf { min-height: 42px; padding: 6px 16px; background: var(--petrol); color: #fff; border: 0; }
+.reiter { display: flex; gap: 6px; margin: 2px 0 12px; overflow-x: auto; scrollbar-width: none; }
+.reiter button { border: 0; background: var(--karte); border-radius: 999px; padding: 8px 14px; font-weight: 800; white-space: nowrap; color: var(--leise); }
+.reiter button.an { background: var(--petrol); color: #fff; }
+
+.menue { list-style: none; padding: 0; margin: 0; background: var(--karte); border-radius: var(--rund); overflow: hidden; box-shadow: var(--schatten); }
+.menue button { display: flex; align-items: center; gap: 14px; width: 100%; padding: 15px 16px; border: 0; border-bottom: 1px solid var(--linie); background: none; text-align: left; font-weight: 700; }
+.menue li:last-child button { border-bottom: 0; }
+.menue .icon { color: var(--petrol); }
+
+.held { background: var(--karte); border-radius: var(--rund); padding: 14px; margin: 10px 0; box-shadow: var(--schatten); }
 .held-name { display: flex; align-items: baseline; gap: 8px; }
-.held-name button { background: none; border: 0; padding: 0; font-size: 1.15rem; font-weight: 800; text-align: left; }
+.held-name button { background: none; border: 0; padding: 0; font-family: var(--kopf); font-size: 1.2rem; font-weight: 600; text-align: left; }
 .held-name small { color: var(--leise); }
 .zaehler { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
 .zaehler span.label { flex: 1; font-weight: 700; }
-.zaehler .wert { min-width: 92px; text-align: center; font-size: 1.15rem; font-weight: 800; }
-.zaehler .knopf { min-width: 48px; padding: 6px; }
+.zaehler .wert { min-width: 96px; text-align: center; font-size: 1.15rem; font-weight: 800; letter-spacing: .04em; }
+.zaehler .knopf { min-width: 46px; min-height: 44px; padding: 4px; }
 .zauber { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
-.zauber input { width: 26px; height: 26px; accent-color: var(--rot); }
+.zauber input { width: 24px; height: 24px; accent-color: var(--rot); }
 
 .schritt-liste { list-style: none; padding: 0; margin: 0; }
 .schritt-liste li button { width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--linie); background: none; padding: 12px 6px; }
-.schritt-liste li.szene-kopf { font-family: "Fredoka", system-ui, sans-serif; font-weight: 700; padding: 14px 6px 4px; color: var(--petrol); }
-.schritt-liste li button.aktuell { background: var(--petrol-hell); font-weight: 800; }
+.schritt-liste li.szene-kopf { font-family: var(--kopf); font-weight: 600; padding: 16px 6px 4px; color: var(--petrol); }
+.schritt-liste li button.aktuell { background: color-mix(in srgb, var(--petrol) 12%, transparent); border-radius: 10px; font-weight: 800; }
 
 .vollbild { position: fixed; inset: 0; z-index: 20; background: #111; display: flex; flex-direction: column; }
 .vollbild .flaeche { flex: 1; overflow: auto; display: flex; align-items: center; justify-content: center; }
@@ -175,17 +325,18 @@ table.werte small { color: var(--leise); font-weight: 400; }
 .vollbild iframe { border: 0; transform-origin: 0 0; display: block; background: #fff; }
 .vollbild .leiste { display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px calc(env(safe-area-inset-bottom) + 10px); }
 .vollbild .leiste .knopf { flex: 1; }
+.vollbild .leiste .knopf.voll { background: var(--petrol); }
 
 /* Ton */
-.kopf .rund[data-aktion="stumm"] { min-width: 44px; padding: 0 10px; font-size: 1.15rem; }
 .lautstaerke { display: flex; align-items: center; gap: 12px; margin: 4px 0 8px; }
 .lautstaerke label { flex: 1; display: flex; flex-direction: column; font-weight: 700; }
 .lautstaerke input { width: 100%; height: 36px; accent-color: var(--petrol); }
 .sound-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 .sound {
-  min-height: 76px; padding: 10px; border-radius: 16px; border: 2px solid var(--linie);
+  min-height: 76px; padding: 10px 12px; border-radius: 16px; border: 0; box-shadow: var(--schatten);
   background: var(--karte); text-align: left; display: flex; flex-direction: column; gap: 2px;
 }
+.sound b { font-family: var(--kopf); font-weight: 600; }
 .sound:active { background: var(--petrol); color: #fff; }
 .sound small { color: var(--leise); font-size: .78rem; line-height: 1.25; }
 #hinweis {
@@ -197,4 +348,4 @@ table.werte small { color: var(--leise); font-weight: 400; }
 
 .md table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: .95rem; }
 .md th, .md td { border-bottom: 1px solid var(--linie); padding: 6px; text-align: left; vertical-align: top; }
-.md code { background: var(--petrol-hell); padding: 1px 5px; border-radius: 5px; }
+.md code { background: color-mix(in srgb, var(--petrol) 12%, transparent); padding: 1px 5px; border-radius: 5px; }

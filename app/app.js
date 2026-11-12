@@ -416,7 +416,7 @@ const KARTE = {
       <h1>${esc(g.name)}${anzahl > 1 ? ` × ${anzahl}` : ''}</h1>
       <div class="chips"><span class="chip">${g.herzen} Herz${g.herzen > 1 ? 'en' : ''}</span><span class="chip ziel">Ausweichen ab ${g.ausweichenAb}</span></div>
       <div class="runde"><span>Runde</span><button class="knopf" data-aktion="runde" data-s="${s.schluessel}" data-d="-1">−</button>
-        <span style="font-size:1.4rem">${kst.runde}</span><button class="knopf" data-aktion="runde" data-s="${s.schluessel}" data-d="1">+</button></div>
+        <span class="zahl">${kst.runde}</span><button class="knopf" data-aktion="runde" data-s="${s.schluessel}" data-d="1">+</button></div>
       ${boss && kst.runde % 2 === 0 ? notiz(`Runde ${kst.runde}: Spezialattacke! ${g.spezial}`) : ''}
       ${kst.herzen.map((h, i) => `<div class="gegner ${h === 0 ? 'weg' : ''}">
         <b>${esc(g.name)}${anzahl > 1 ? ` ${i + 1}` : ''}</b>${h === 0 ? ' – besiegt!' : ''}
@@ -511,52 +511,117 @@ function kampfStand(schluessel, anzahl, herzen) {
 
 // ---------- Bildschirme ----------
 
-const stummKnopf = () => `<button class="rund" data-aktion="stumm" aria-label="Ton an oder aus">${ST.stumm ? '🔇' : '🔊'}</button>`;
+// Kleine Symbole für Knöpfe, gezeichnet mit der Textfarbe.
+const SVG = inhalt => `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inhalt}</svg>`;
+const ICON = {
+  heim: SVG('<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/>'),
+  mehr: SVG('<circle cx="5" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="19" cy="12" r="1.3" fill="currentColor"/>'),
+  zurueck: SVG('<path d="M15 5l-7 7 7 7"/>'),
+  weiter: SVG('<path d="M9 5l7 7-7 7"/>'),
+  helden: SVG('<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-6 6.5-6s5.9 2.4 6.5 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c2 .9 3.2 3 3.5 5.7"/>'),
+  sounds: SVG('<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>'),
+  liste: SVG('<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01" stroke-width="3"/>'),
+  hilfe: SVG('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/>'),
+  ton: SVG('<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>'),
+  stumm: SVG('<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/>')
+};
+
+// Fortschritt: ein Balken pro Szene, gefüllt bis zum aktuellen Schritt.
+function fortschrittsBalken() {
+  return `<div class="fortschritt">${ABENTEUER.szenen.map(sz => {
+    const idx = SCHRITTE.map((s, i) => (s.sz === sz ? i : -1)).filter(i => i >= 0);
+    const erster = idx[0], letzter = idx[idx.length - 1];
+    const anteil = ST.schritt > letzter ? 1 : ST.schritt < erster ? 0 : (ST.schritt - erster + 1) / idx.length;
+    return `<span style="flex:${idx.length}"><i style="width:${Math.round(anteil * 100)}%"></i></span>`;
+  }).join('')}</div>`;
+}
 
 function zeigeStart() {
   ansicht = 'start';
   spieleMusik(null);
   const lauf = ST.abenteuerId && D.abenteuer.find(a => a.id === ST.abenteuerId);
+  const laufSchritte = lauf ? baueSchritte(lauf).length : 0;
   app.innerHTML = `
-    <header class="kopf"><div class="titel"><b>Die Bibliothek der Zeiten</b><small>Spielleiter-Walkthrough</small></div>
-      ${stummKnopf()}<button class="rund" data-aktion="hilfe">Hilfe</button></header>
+    <header class="start-kopf">
+      <div class="kopf-zeile">
+        <button class="symbol" data-aktion="stumm" aria-label="Ton an oder aus">${ST.stumm ? ICON.stumm : ICON.ton}</button>
+        <button class="symbol" data-aktion="hilfe" aria-label="Hilfe">${ICON.hilfe}</button>
+      </div>
+      <h1>Die Bibliothek der Zeiten</h1>
+      <p>Lies mich, nimm mich mit!</p>
+    </header>
     <main class="inhalt">
-      ${lauf ? `<button class="knopf voll breit gross" data-aktion="fortsetzen">Fortsetzen: ${esc(lauf.titel)}</button>` : ''}
+      ${lauf ? `<button class="fortsetzen" data-aktion="fortsetzen">
+        <small>Weiterspielen</small><b>${esc(lauf.titel)}</b>
+        <div class="balken"><i style="width:${Math.round((ST.schritt + 1) / laufSchritte * 100)}%"></i></div>
+        <div class="weiter-zeile"><span>Schritt ${ST.schritt + 1} von ${laufSchritte}</span><span>Fortsetzen ›</span></div>
+      </button>` : ''}
       <h2>Wer spielt heute mit?</h2>
-      ${D.helden.map(h => `<label class="held-wahl"><input type="checkbox" data-aktion="anwesend" data-held="${h.id}" ${ST.anwesend.includes(h.id) ? 'checked' : ''}>
-        <span><b>${esc(heldName(h))}</b><br><small>${esc(h.spieler)} · ${esc(h.wer)}</small></span></label>`).join('')}
-      <p class="meta">${esc(kruemel().name)} ist immer dabei.</p>
+      <div class="helden-raster">${D.helden.map(h => {
+        const titel = heldName(h);
+        const vorname = h.spieler.split(' ')[0];
+        const unter = titel === vorname ? h.wer : `${vorname} · ${h.wer}`;
+        return `<label class="held-kachel"><input type="checkbox" data-aktion="anwesend" data-held="${h.id}" ${ST.anwesend.includes(h.id) ? 'checked' : ''}>
+          <b>${esc(titel)}</b><small>${esc(unter)}</small></label>`;
+      }).join('')}</div>
+      <p class="kruemel-zeile">${esc(kruemel().name)} ist immer dabei.</p>
       <h2>Neuer Spielabend</h2>
-      ${D.abenteuer.map(a => `<button class="abenteuer-knopf ${a.nummer === 0 ? 'erster' : ''}" data-aktion="neu" data-id="${a.id}">
-        <b>${a.nummer === 0 ? 'Erster Abend: ' : `${a.nummer}. `}${esc(a.titel)}${ST.fertig.includes(a.id) ? ' ✓' : ''}</b>
-        <small>${esc(a.epoche)} · ${esc(a.dauerMin)} Minuten</small></button>`).join('')}
-      <button class="knopf breit" data-aktion="tracker">Helden-Tracker</button>
-      <button class="knopf breit" data-aktion="soundboard">Soundboard</button>
+      ${D.abenteuer.map(a => {
+        const vorschau = a.karte || a.szenen.find(sz => sz.bild)?.bild;
+        return `<button class="abenteuer-karte" data-aktion="neu" data-id="${a.id}">
+          <span class="vorschau" ${vorschau ? `data-vorschau="${esc(vorschau)}"` : ''}>${a.nummer}</span>
+          <span class="text">
+            <span class="nr">${a.nummer === 0 ? 'Erster Abend' : `Abenteuer ${a.nummer}`}</span>
+            <b>${esc(a.titel)}</b>
+            <small>${esc(a.epoche)} · ${esc(a.dauerMin)} Min.</small>${ST.fertig.includes(a.id) ? '<span class="gespielt">gespielt</span>' : ''}
+          </span>
+        </button>`;
+      }).join('')}
+      <div class="werkzeuge">
+        <button class="knopf" data-aktion="tracker">${ICON.helden}Helden-Tracker</button>
+        <button class="knopf" data-aktion="soundboard">${ICON.sounds}Soundboard</button>
+      </div>
     </main>`;
+  app.querySelectorAll('[data-vorschau]').forEach(async el => {
+    const datei = await findeBild(el.dataset.vorschau);
+    if (datei && !datei.endsWith('.html')) el.innerHTML = `<img src="${esc(datei)}" alt="">`;
+  });
 }
 
 function zeigeSchritt(neu = true) {
   ansicht = 'walk';
   const s = SCHRITTE[ST.schritt];
   const sz = s.sz;
-  const kopfTitel = sz ? sz.titel : ABENTEUER.titel;
+  const oben = sz ? `Szene ${ABENTEUER.szenen.indexOf(sz) + 1} von ${ABENTEUER.szenen.length}` : (ABENTEUER.nummer === 0 ? 'Erster Abend' : `Abenteuer ${ABENTEUER.nummer}`);
   app.innerHTML = `
     <header class="kopf">
-      <button class="rund" data-aktion="heim" aria-label="Start">⌂</button>
-      <button class="titel" data-aktion="uebersicht"><b>${esc(kopfTitel)}</b><small>Schritt ${ST.schritt + 1} von ${SCHRITTE.length} · Übersicht</small></button>
-      ${stummKnopf()}
-      <button class="rund" data-aktion="hilfe">Hilfe</button>
+      <div class="kopf-zeile">
+        <button class="symbol" data-aktion="heim" aria-label="Zum Start">${ICON.heim}</button>
+        <button class="titel" data-aktion="uebersicht" aria-label="Alle Schritte"><small>${oben}</small><b>${esc(sz ? sz.titel : ABENTEUER.titel)}</b></button>
+        <button class="symbol" data-aktion="menue" aria-label="Menü">${ICON.mehr}</button>
+      </div>
+      ${fortschrittsBalken()}
     </header>
-    <main class="inhalt ${neu ? 'neu' : ''}">${KARTE[s.art](s)}</main>
+    <main class="inhalt ${neu ? 'neu' : ''}"><article class="karte typ-${s.art}">${KARTE[s.art](s)}</article></main>
     <nav class="fuss">
-      <button data-aktion="zurueck" ${ST.schritt === 0 ? 'disabled' : ''}>‹ Zurück</button>
-      <button data-aktion="tracker">Helden</button>
-      <button data-aktion="soundboard">Sounds</button>
-      <button class="weiter" data-aktion="weiter" ${ST.schritt >= SCHRITTE.length - 1 ? 'disabled' : ''}>Weiter ›</button>
+      <button data-aktion="zurueck" aria-label="Zurück" ${ST.schritt === 0 ? 'disabled' : ''}>${ICON.zurueck}</button>
+      <button data-aktion="tracker">${ICON.helden}Helden</button>
+      <button data-aktion="soundboard">${ICON.sounds}Sounds</button>
+      <button class="weiter" data-aktion="weiter" ${ST.schritt >= SCHRITTE.length - 1 ? 'disabled' : ''}>Weiter${ICON.weiter}</button>
     </nav>`;
   fuelleBilder(app);
   wachHalten();
   spieleMusik(musikFuer(ST.schritt));
+}
+
+function zeigeMenue() {
+  oeffneEbene('Menü', `<ul class="menue">
+    <li><button data-aktion="uebersicht">${ICON.liste}Alle Schritte</button></li>
+    <li><button data-aktion="hilfe">${ICON.hilfe}Hilfe, Plan B, Spickzettel</button></li>
+    <li><button data-aktion="stumm">${ST.stumm ? `${ICON.ton}Ton einschalten` : `${ICON.stumm}Ton ausschalten`}</button></li>
+    <li><button data-aktion="heim">${ICON.heim}Zum Startbildschirm</button></li>
+  </ul>`);
+  ebene.dataset.art = 'menue';
 }
 
 function neuZeichnen() {
@@ -640,7 +705,7 @@ function zeigeSoundboard() {
     `<button class="sound" data-aktion="geraeusch" data-id="${esc(g.id)}"><b>${esc(g.name)}</b><small>${esc(g.wann)}</small></button>`).join('')}</div>`;
   oeffneEbene('Soundboard', `
     <div class="lautstaerke">
-      <button class="knopf" data-aktion="stumm">${ST.stumm ? '🔇 Ton aus' : '🔊 Ton an'}</button>
+      <button class="knopf" data-aktion="stumm">${ST.stumm ? `${ICON.stumm}Ton aus` : `${ICON.ton}Ton an`}</button>
       <label>Musik ${Math.round(ST.lautstaerke * 100)} %<input type="range" min="0" max="100" step="5" value="${Math.round(ST.lautstaerke * 100)}" data-aktion="lautstaerke"></label>
     </div>
     ${ort ? `<h2>Hier: ${esc(sz.ort)}</h2>${raster(hier)}<h2>Alle anderen</h2>${raster(rest)}` : raster(D.sounds)}`);
@@ -785,10 +850,15 @@ async function aktion(el) {
     case 'tracker': return zeigeTracker();
     case 'soundboard': return zeigeSoundboard();
     case 'geraeusch': return spieleGeraeusch(el.dataset.id);
-    case 'stumm':
+    case 'menue': return zeigeMenue();
+    case 'stumm': {
       ST.stumm = !ST.stumm; speichere(); setzeLautstaerke();
-      if (ebene.dataset.art === 'soundboard' && !ebene.hidden) zeigeSoundboard();
+      const offen = !ebene.hidden && ebene.dataset.art;
+      if (offen === 'soundboard') zeigeSoundboard();
+      if (offen === 'menue') schliesseEbene();
+      hinweis(ST.stumm ? 'Ton aus' : 'Ton an');
       return ansicht === 'walk' ? zeigeSchritt(false) : zeigeStart();
+    }
     case 'lautstaerke':
       ST.lautstaerke = Number(el.value) / 100; speichere(); setzeLautstaerke();
       el.parentElement.firstChild.textContent = `Musik ${el.value} % `;

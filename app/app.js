@@ -588,7 +588,18 @@ function zeigeStart() {
   });
 }
 
+// Sound-Leiste über der Fußleiste: erst die Geräusche dieses Schauplatzes, dann die für alle Orte.
+function schnellSounds(ort) {
+  const hier = D.sounds.filter(g => g.schauplatz.includes(ort));
+  const alle = D.sounds.filter(g => g.schauplatz.includes('alle') && !hier.includes(g));
+  const liste = [...hier, ...alle];
+  if (!liste.length) return '';
+  return `<div class="schnell" aria-label="Geräusche">${liste.map(g =>
+    `<button data-aktion="geraeusch" data-id="${esc(g.id)}" title="${esc(g.wann)}">${esc(g.name)}</button>`).join('')}</div>`;
+}
+
 function zeigeSchritt(neu = true) {
+  const altLeiste = app.querySelector('.schnell')?.scrollLeft || 0;
   ansicht = 'walk';
   const s = SCHRITTE[ST.schritt];
   const sz = s.sz;
@@ -603,12 +614,14 @@ function zeigeSchritt(neu = true) {
       ${fortschrittsBalken()}
     </header>
     <main class="inhalt ${neu ? 'neu' : ''}"><article class="karte typ-${s.art}">${KARTE[s.art](s)}</article></main>
+    ${schnellSounds(sz?.schauplatz || 'bibliothek')}
     <nav class="fuss">
       <button data-aktion="zurueck" aria-label="Zurück" ${ST.schritt === 0 ? 'disabled' : ''}>${ICON.zurueck}</button>
       <button data-aktion="tracker">${ICON.helden}Helden</button>
       <button data-aktion="soundboard">${ICON.sounds}Sounds</button>
       <button class="weiter" data-aktion="weiter" ${ST.schritt >= SCHRITTE.length - 1 ? 'disabled' : ''}>Weiter${ICON.weiter}</button>
     </nav>`;
+  if (!neu) { const l = app.querySelector('.schnell'); if (l) l.scrollLeft = altLeiste; }
   fuelleBilder(app);
   wachHalten();
   spieleMusik(musikFuer(ST.schritt));
@@ -660,12 +673,37 @@ function oeffneAbenteuer() {
 
 // ---------- Ebenen: Helden-Tracker, Übersicht, Hilfe ----------
 
+// Ein Blatt (Helden, Sounds, Menü, Hilfe …) schiebt sich von unten herein.
+// Schließen geht mit ✕, Tippen daneben, nach unten Wischen und der Zurück-Geste des Handys.
+let ebeneImVerlauf = false;
 function oeffneEbene(titel, inhalt) {
   ebene.innerHTML = `<div class="blatt"><div class="blatt-kopf"><h1>${esc(titel)}</h1>
-    <button class="knopf voll" data-aktion="ebene-zu">Fertig</button></div><div class="ebene-inhalt">${inhalt}</div></div>`;
+    <button class="zu" data-aktion="ebene-zu" aria-label="Schließen"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="ebene-inhalt">${inhalt}</div></div>`;
   ebene.hidden = false;
+  if (!ebeneImVerlauf) { history.pushState({ ebene: true }, ''); ebeneImVerlauf = true; }
 }
-function schliesseEbene() { ebene.hidden = true; ebene.innerHTML = ''; }
+function schliesseEbene() {
+  ebene.hidden = true; ebene.innerHTML = '';
+  if (ebeneImVerlauf) { ebeneImVerlauf = false; history.back(); }
+}
+// Zurück-Geste: schließt das Blatt statt die App zu verlassen.
+window.addEventListener('popstate', () => {
+  if (!ebeneImVerlauf) return;
+  ebeneImVerlauf = false;
+  ebene.hidden = true; ebene.innerHTML = '';
+  neuZeichnen();
+});
+// Nach unten wischen, wenn das Blatt ganz oben steht.
+let blattStart = null;
+ebene.addEventListener('touchstart', e => {
+  const blatt = ebene.querySelector('.blatt');
+  blattStart = blatt && blatt.scrollTop <= 0 ? e.touches[0].clientY : null;
+}, { passive: true });
+ebene.addEventListener('touchend', e => {
+  if (blattStart !== null && e.changedTouches[0].clientY - blattStart > 90) { schliesseEbene(); neuZeichnen(); }
+  blattStart = null;
+}, { passive: true });
 
 function trackerInhalt() {
   const k = kruemel();
@@ -849,7 +887,9 @@ async function aktion(el) {
     case 'bild': return zeigeBild(el.dataset.pfad);
     case 'tracker': return zeigeTracker();
     case 'soundboard': return zeigeSoundboard();
-    case 'geraeusch': return spieleGeraeusch(el.dataset.id);
+    case 'geraeusch':
+      el.classList.add('spielt'); setTimeout(() => el.classList.remove('spielt'), 600);
+      return spieleGeraeusch(el.dataset.id);
     case 'menue': return zeigeMenue();
     case 'stumm': {
       ST.stumm = !ST.stumm; speichere(); setzeLautstaerke();

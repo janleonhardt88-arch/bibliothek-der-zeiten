@@ -269,7 +269,8 @@ table.werte small { color: var(--leise); font-size: .8rem; }
 .blatt::before { content: ""; display: block; width: 36px; height: 5px; border-radius: 3px; background: var(--flaeche-2); margin: 0 auto 6px; }
 .blatt-kopf { display: flex; align-items: center; gap: 10px; position: sticky; top: -8px; background: var(--grund); padding: 6px 0 10px; z-index: 1; }
 .blatt-kopf h1 { flex: 1; margin: 0; font-size: 1.4rem; }
-.blatt-kopf .knopf { min-height: 40px; padding: 6px 16px; background: var(--flaeche); }
+.blatt-kopf .zu { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--akzent); color: var(--akzent-text); }
+.blatt-kopf .zu:active { opacity: .8; }
 .reiter { display: flex; gap: 6px; margin: 2px 0 12px; overflow-x: auto; scrollbar-width: none; }
 .reiter button { border: 0; background: var(--flaeche); border-radius: 999px; padding: 8px 14px; font-weight: 600; white-space: nowrap; color: var(--leise); }
 .reiter button.an { background: var(--akzent); color: var(--akzent-text); }
@@ -327,3 +328,16 @@ table.werte small { color: var(--leise); font-size: .8rem; }
 .md table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: .93rem; }
 .md th, .md td { border-bottom: 1px solid var(--linie); padding: 7px 6px; text-align: left; vertical-align: top; }
 .md code { background: var(--flaeche); padding: 1px 5px; border-radius: 5px; }
+
+/* Sound-Leiste direkt über der Fußleiste */
+.schnell {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  padding: 10px 14px 0; background: var(--grund); border-top: 1px solid var(--linie);
+}
+.schnell::-webkit-scrollbar { display: none; }
+.schnell + .fuss { border-top: 0; }
+.schnell button {
+  flex: none; border: 0; background: var(--flaeche); border-radius: 999px;
+  padding: 9px 14px; font-size: .88rem; font-weight: 600; white-space: nowrap;
+}
+.schnell button.spielt, .sound.spielt { background: var(--akzent); color: var(--akzent-text); }

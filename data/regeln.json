@@ -39,7 +39,7 @@
     "wahl": ["+1 Punkt in einer Eigenschaft (höchstens 5)", "ein neues Talent", "+1 Herz"]
   },
   "kruemel": {
-    "gluckswurf": "Einmal pro Szene wirft der Kleine den großen Plüschwürfel. 4–6: alle Helden +1 Würfel auf die nächste Probe. 1–3: etwas Lustiges, nie ein Nachteil.",
+    "gluckswurf": "Einmal pro Abenteuer, beim Höhepunkt in Szene 3, wirft der Kleine den großen Plüschwürfel. 4–6: alle Helden +1 Würfel auf die nächste Probe. 1–3: etwas Lustiges, nie ein Nachteil.",
     "sicher": "Krümel hat keine Herzen und wird nie angegriffen.",
     "sicherheitAmTisch": "Nur großer Plüsch- oder Schaumstoffwürfel. Normale W6, Münzen und Steine außer Reichweite."
   },
@@ -47,7 +47,7 @@
     "Rätsel gehen zuerst an das Kind. Erwachsene helfen nur, wenn es fragt.",
     "Jede Szene hat einen Moment, in dem der Held des Kindes glänzt.",
     "Erwachsene kürzen nichts ab, was ein Rätsel für das Kind ist: keine Schlösser, kein Flunkern, kein Kristall vor dem Lösungsversuch.",
-    "Krümel bekommt pro Szene seinen Wurf."
+    "Krümel bekommt pro Abenteuer einen Wurf, beim Höhepunkt."
   ],
   "wahrscheinlichkeiten": {
     "quelle": "Selbst gerechnet: P(höchster von n W6 >= k) = 1 - ((k-1)/6)^n",

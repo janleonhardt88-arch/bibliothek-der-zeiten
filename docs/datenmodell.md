@@ -33,7 +33,7 @@ Bilder: Steht in den Daten `bild.png`, sucht die App erst `bild.png`, dann `bild
 | `nachUebung` | Text | Hinweis, wenn vorher die Übungsszene lief |
 | `vorlesen` | Liste Text | Vorlesetexte am Szenenanfang |
 | `figurHinweis` | Text | Hinweis zu einer Figur |
-| `kruemel` | Text | Krümels Moment in dieser Szene |
+| `kruemel` | Text | Krümels Moment. Genau einer pro Abenteuer, beim Höhepunkt (meist Szene 3) |
 | `lernFakten` | Liste `{ von, text, regie? }` | Wissen, das eine Figur erzählt |
 | `nachVorlesen` | Liste Text | Vorlesetexte nach den ersten Aufgaben |
 | `raetsel` | Liste Rätsel | Siehe unten |

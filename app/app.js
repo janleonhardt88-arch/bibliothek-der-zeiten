@@ -472,7 +472,7 @@ const KARTE = {
     const naechste = ABENTEUER.szenen[s.si + 1];
     return `<p class="art">Szenenende</p>
       <h1>${esc(s.sz.titel)} geschafft!</h1>
-      ${ST.kruemel.wurf[s.sz.id] ? '' : `<div class="notiz"><b>${esc(k.name)} hat in dieser Szene noch nicht gewürfelt!</b>
+      ${!s.letzte || kruemelHatGewuerfelt() ? '' : `<div class="notiz"><b>${esc(k.name)} hat in diesem Abenteuer noch nicht gewürfelt!</b>
         <div class="knopfreihe"><button class="knopf voll" data-aktion="kruemel" data-sz="${s.sz.id}" data-w="4–6">4 bis 6</button>
         <button class="knopf" data-aktion="kruemel" data-sz="${s.sz.id}" data-w="1–3">1 bis 3</button></div></div>`}
       <p>${naechste ? `Weiter mit Szene ${s.si + 2}: <b>${esc(naechste.titel)}</b>` : 'Weiter zum Abschluss.'}</p>`;
@@ -497,6 +497,9 @@ const KARTE = {
       <button class="knopf breit" data-aktion="heim">Zurück zum Start</button>`;
   }
 };
+
+// Krümel würfelt einmal pro Abenteuer. Gezählt wird jeder Wurf in irgendeiner Szene.
+const kruemelHatGewuerfelt = () => ABENTEUER.szenen.some(sz => ST.kruemel.wurf[sz.id]);
 
 function kampfStand(schluessel, anzahl, herzen) {
   let k = ST.kampf[schluessel];
@@ -601,7 +604,7 @@ function schliesseEbene() { ebene.hidden = true; ebene.innerHTML = ''; }
 
 function trackerInhalt() {
   const k = kruemel();
-  const szId = SCHRITTE[ST.schritt]?.sz?.id;
+  const wurf = ABENTEUER && ansicht === 'walk' ? ABENTEUER.szenen.map(sz => ST.kruemel.wurf[sz.id]).find(Boolean) : null;
   return anwesendeHelden().map(h => {
     const st = heldStand(h);
     return `<div class="held">
@@ -622,7 +625,7 @@ function trackerInhalt() {
       <p class="meta">Stempel: ${st.stempel.length ? esc(st.stempel.join(', ')) : 'noch keine'}</p>
     </div>`;
   }).join('') + `<div class="held"><div class="held-name"><b>${esc(k.name)}</b><small>${esc(k.spieler || '')}</small></div>
-      ${szId ? `<p>In dieser Szene: ${ST.kruemel.wurf[szId] ? `gewürfelt (${ST.kruemel.wurf[szId]})` : '<b>noch nicht gewürfelt</b>'}</p>` : ''}
+      ${ABENTEUER && ansicht === 'walk' ? `<p>In diesem Abenteuer: ${wurf ? `gewürfelt (${wurf})` : '<b>noch nicht gewürfelt</b>'}</p>` : ''}
       <p class="meta">Stempel: ${ST.kruemel.stempel.length ? esc(ST.kruemel.stempel.join(', ')) : 'noch keine'}</p></div>`;
 }
 

@@ -47,7 +47,6 @@
       "nachVorlesen": [
         "Plötzlich blubbert das Wasser. Zwei kleine Ohren, zwei Nasenlöcher, dann ein riesiges Maul. Ein Nilpferd! Es gähnt so groß, dass Krümel sich hinter euren Beinen versteckt."
       ],
-      "kruemel": "Krümel lugt hinter euren Beinen hervor und winkt dem Nilpferd. Wirft der Kleine den Plüschwürfel, gähnt das Nilpferd bei 4 bis 6 freundlich zurück: Alle Helden +1 Würfel auf die nächste Probe. Bei 1 bis 3 spritzt es Krümel nass, und er schüttelt sich wie ein kleiner Hund.",
       "raetsel": [
         {
           "von": "Spielleiter",
@@ -83,7 +82,6 @@
       "vorlesen": [
         "Am anderen Ufer führt ein Weg durch den Sand zur Pyramide. Doch mitten auf dem Weg steht ein Kamel. Es kaut, es schnaubt, und es bewegt sich keinen Zentimeter. „Hier kommt keiner vorbei!“, brummt es. „Die Elster hat gesagt, ich kriege ein glitzerndes Halsband, wenn ich aufpasse.“"
       ],
-      "kruemel": "Krümel hält Karl einen Grashalm hin. Wirft der Kleine den Plüschwürfel, kaut Karl bei 4 bis 6 zufrieden und wird gleich weniger brummig: Karl verliert sofort 1 Herz. Bei 1 bis 3 schleckt Karl Krümel einmal quer übers Gesicht, und Krümel kichert.",
       "kampf": {
         "gegner": "kamel-karl",
         "anzahl": 1,

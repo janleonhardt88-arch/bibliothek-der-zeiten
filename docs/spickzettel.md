@@ -22,7 +22,7 @@ Hinter einer knarzenden Tür liegt die Bibliothek der Zeiten. Jedes Buch ist ein
 | Glücksstern | +2 Würfel, für jedes gelöste Rätsel |
 | Kampf | Helden zuerst, Gegner würfeln nie, Ausweichen mit Geschick |
 | 0 Herzen | Erschöpft, Aufmuntern mit Herz 4+ |
-| Krümel | 1× pro Szene Plüschwürfel: 4–6 = alle +1 Würfel |
+| Krümel | 1× pro Abenteuer Plüschwürfel, beim Höhepunkt: 4–6 = alle +1 Würfel |
 
 ## Stimmen der Figuren
 
@@ -36,7 +36,7 @@ Hinter einer knarzenden Tür liegt die Bibliothek der Zeiten. Jedes Buch ist ein
 - Rätsel gehen zuerst an die Tochter. Erwachsene helfen nur, wenn sie fragt.
 - Jede Szene hat einen Moment, in dem ihr Held glänzt. Vorher einplanen.
 - Erwachsene kürzen keine Kinder-Rätsel ab: keine Schlösser, kein Flunkern, kein Kristall vor dem Lösungsversuch.
-- Krümel bekommt pro Szene seinen Wurf.
+- Krümel bekommt pro Abenteuer einen Wurf, beim Höhepunkt in Szene 3.
 
 ## Improvisieren
 

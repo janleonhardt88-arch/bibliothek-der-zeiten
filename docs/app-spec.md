@@ -37,7 +37,7 @@ Weitere Regeln:
 - **Szenen-Übersicht:** Ein Tipp auf den Titel zeigt alle Schritte. Jan kann springen, wenn die Spieler etwas überspringen.
 - **Plan B:** Jede Karte hat oben rechts einen Knopf „Hilfe“. Er zeigt die passenden Plan-B-Einträge, den Spickzettel und die Spielerkarte.
 - **Hinweise wie `nachUebung`** erscheinen als gelbe Notiz oben auf der Karte.
-- **Krümel-Erinnerung:** Hat Krümel in einer Szene noch nicht gewürfelt, erscheint vor dem Szenenende eine Erinnerung.
+- **Krümel-Erinnerung:** Hat Krümel im ganzen Abenteuer noch nicht gewürfelt, erscheint am Ende der letzten Szene eine Erinnerung.
 - **Fortsetzen:** Die App merkt sich den letzten Schritt. Nach einer Pause geht es genau dort weiter.
 
 ## Ton
